@@ -1,0 +1,2 @@
+# rert
+The HEED Renewable Energy Recommendations tool (HEED-RERT) for Camps. It aims to provide technology recommendations based on energy-economic-environment-health performance indicators to provide support for how best to increase energy access in refugee camps and improve sustainability for i) Cooking Energy, ii) Household Lighting and Electricity, iii) Community/Camp central Lighting and Electricity.
