@@ -32,14 +32,14 @@ in section 5.
 
 ## Contents
 
-[1. Overview of Calculation Flow](#1.-Overview-of-Calculation-Flow)
-[2. Energy Demand Calculations](#2.-Energy-Demand-Calculations)
-[3. Energy Supply Calculations](#3.-Energy-Supply-Calculations)
-[4. Option Indicator calculations](#4.-Option-Indicator-calculations)
-[4.1 Cooking – Indicators](#4.1-Cooking-–-Indicators)
-[4.2 Household/Family Electricity & Lighting – Indicators](#4.2-Household/Family-Electricity-&-Lighting-–-Indicators)
-[5. Energy Access Tiers, Threshold Grouping & Ranking Calculations](#5.-Energy-Access-Tiers,-Threshold-Grouping-&-Ranking-Calculations)
-[6. References](#6.-References)
+[1. Overview of Calculation Flow](#1.-Overview-of-Calculation-Flow)  
+[2. Energy Demand Calculations](#2.-Energy-Demand-Calculations)  
+[3. Energy Supply Calculations](#3.-Energy-Supply-Calculations)  
+[4. Option Indicator calculations](#4.-Option-Indicator-calculations)  
+[4.1 Cooking – Indicators](#4.1-Cooking-–-Indicators)  
+[4.2 Household/Family Electricity & Lighting – Indicators](#4.2-Household/Family-Electricity-&-Lighting-–-Indicators)  
+[5. Energy Access Tiers, Threshold Grouping & Ranking Calculations](#5.-Energy-Access-Tiers,-Threshold-Grouping-&-Ranking-Calculations)  
+[6. References](#6.-References)  
 
 ***
 
