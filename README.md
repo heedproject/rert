@@ -1,5 +1,4 @@
-# RERT
-The HEED Renewable Energy Recommendations tool (HEED-RERT) for Camps:
+# The HEED Renewable Energy Recommendations tool (HEED-RERT)
 The first version (v1) of the tool was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and August 2019. 
 
 It aims to provide technology recommendations based on energy-economic-environment-health performance indicators to provide support for how best to increase energy access in refugee camps and improve sustainability for:
