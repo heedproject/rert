@@ -10,10 +10,10 @@
 
 **Generalised Equations for Energy Use Calculations**
 
-Energy use ***E*** in kWh is calculated for sets of devices with `i = 1,2 ...
-n` as an index for the category of device, including cooking, lamps,
+Energy use $$E$$ in kWh is calculated for sets of devices with $$i = 1,2\ldots
+n\$$as an index for the category of device, including cooking, lamps,
 streetlights, electric appliances, and electricity generation devices. The index
-`j = 1,2 ... n` denotes the sub-type within a category, such as the type of
+$$j = 1,2\ldots n$$ denotes the sub-type within a category, such as the type of
 cooking device for example, and $$k = 1,2\ldots n$$ is an index for energy
 carrier type used including individual fuels and electricity. Energy use per
 period of time is thereby calculated as:
