@@ -35,4 +35,4 @@ deploy:
     local-dir: docs/build
     keep-history: false
     on:
-        branch: master
+        branch: markdown
