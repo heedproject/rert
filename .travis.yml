@@ -25,14 +25,14 @@ script:
     - pandoc -v
 
     # build manual
-    - cd manual
+    - cd docs
     - make dist
 
 deploy:
     provider: pages
     skip-cleanup: true
     github-token: $GH_REPO_TOKEN
-    local-dir: manual/build
+    local-dir: docs/build
     keep-history: false
     on:
         branch: master
