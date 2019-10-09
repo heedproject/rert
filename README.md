@@ -10,6 +10,6 @@ Users engage with an Excel spreadsheet where they answer questions to describe t
 
 Results are presented in the form of an indicator dashboard where different technology options can be compared with their performance indicator scoring.
 
-Please see the [User Guide](RERT_User_Guide_v1.2.pdf) for a better understanding of how to use the tool.
+Please see the [User Guide](docs/RERT_User_Guide_v1.2.pdf) for a better understanding of how to use the tool.
 
 Feel free to use the tool and contribute to its ongoing development using github issues and pull requests.
