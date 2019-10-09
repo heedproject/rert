@@ -19,7 +19,7 @@ carrier type used including individual fuels and electricity. Energy use per
 period of time is thereby calculated as:
 
 $$E_{\text{ijk}} = \ \frac{c_{\text{ijk}} \bullet \ u_{\text{ij}} \bullet
-\sum_{t}^{n}A_{\text{ijt}}}{\varepsilon_{\text{ijk}}}$$
+\sum_{t}^{n}A_{\text{ijt}}}{\varepsilon_{\text{ijk}}}$$ (1)
 
 With $$\varepsilon_{\text{ij}}$$ as the efficiency in %, $$c$$ as a capacity
 parameter typically in kW, $$u$$ as a utilisation parameter indicating the
