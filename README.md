@@ -12,6 +12,10 @@ Results are presented in the form of an indicator dashboard where different tech
 
 Please see the [User Guide](RERT_User_Guide_v1.2.pdf) for a better understanding of how to use the tool.
 
+For technical documentation, please visit this site <https://heedproject.github.io/rert/>
+There is also a [pdf](https://github.com/heedproject/rert/blob/gh-pages/RERT_Documentation.pdf) version of this documentation.
+These pages get automatically updated with any changes made to the markdown documentation on the master branch.
+
 **Note: The tool has been built with Excel 2018 and Excel 2019 versions. It is not backwards compatible with older versions at this time. Please use recent versions of Microsoft Excel to use it.**
 
-Feel free to use the tool and contribute to its ongoing development using github issues and pull requests.
+Feel free to use the tool and contribute to its ongoing development using github issues and pull requests. If you are not familiar with github, [please read this guide on how to collaborate on projects.](https://help.github.com/en/categories/collaborating-with-issues-and-pull-requests)
