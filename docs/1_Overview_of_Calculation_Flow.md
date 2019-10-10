@@ -7,7 +7,6 @@
 >   Authors: Rembrandt Koppelaar (Scene), Jonathon Nixon (Coventry University)
 
 # Overview of Calculation Flow
--------------------------------
 
 The calculation setup is a linear flow based on five calculation “modules”, and
 three mechanisms by which the user adds data and conditions for the calculations

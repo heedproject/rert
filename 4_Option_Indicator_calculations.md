@@ -1,5 +1,4 @@
 # Option Indicator calculations
---------------------------------
 
 ## Cooking – Indicators
 

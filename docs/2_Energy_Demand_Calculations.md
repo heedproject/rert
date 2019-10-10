@@ -1,10 +1,9 @@
 # Energy Demand Calculations 
-------------------------------
 
 **Generalised Equations for Energy Use Calculations**
 
 Energy use $$E$$ in kWh is calculated for sets of devices with $$i = 1,2\ldots
-n\$$as an index for the category of device, including cooking, lamps,
+n$$as an index for the category of device, including cooking, lamps,
 streetlights, electric appliances, and electricity generation devices. The index
 $$j = 1,2\ldots n$$ denotes the sub-type within a category, such as the type of
 cooking device for example, and $$k = 1,2\ldots n$$ is an index for energy
@@ -93,7 +92,7 @@ $$u_{i = c,jt}$$ were in the first iteration simplified to a standardised value
 of 1.0 kW for cookstove capacity, and an assumed 0.8 estimated for utilisation,
 indicating 80% utilisation of a cookstove’s capacity as it will not be fully
 loaded with wood or another fuel. The time of use variable value
-$$A_{\text{ijt}}\$$was approximated at 2.5 hours per day assuming three meals
+$$A_{\text{ijt}}$$was approximated at 2.5 hours per day assuming three meals
 per day. Analysis of these parameters has been carried out by Johnson & Chiang
 (2015)[6], Ruiz-Mercado et al. (2012)[7], Bentson et al. (2013)[8], Pillarisetti
 et al. (2014)[9].
@@ -395,7 +394,7 @@ families in the camp,$$n$$, the average camp area per person, $$x$$, in m2, a
 percentage of main road area per camp area parameter, $$s$$, and the average
 width of roads or streets, $$w$$, as:
 
-$$R = \frac{n \bullet x \bullet s}{w}\$$ (6)
+$$R = \frac{n \bullet x \bullet s}{w}$$ (6)
 
 The value of the parameter $$s$$ will vary per camp and is to be established
 (pre-loaded) by analysis of satellite imagery for a sample of refugee camps. As
