@@ -1,7 +1,5 @@
-![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
-
-**Humanitarian Engineering for Energy for Displacement (HEED)**
-
+  
+  
 # Technical Documentation for Tool Calculations
 
 >   Authors: Rembrandt Koppelaar (Scene), Jonathon Nixon (Coventry University)

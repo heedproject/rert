@@ -1,3 +1,7 @@
+![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
+
+**Humanitarian Engineering for Energy for Displacement (HEED)**
+
 # User Guide
 
 **This is the HEED-RERR tool user guide.** It is designed to provide an
@@ -6,11 +10,10 @@ spreadsheet.
 
 <https://github.com/heedproject/rert> Version 1.2
 
-Developed by: Rembrandt Koppelaar (Scene Connect)
+>   Developed by: Rembrandt Koppelaar (Scene Connect)
+>   Reviewed by: Jonathan Nixon (Coventry University)
 
-Reviewed by: Jonathan Nixon (Coventry University)
-
-##Tool use background
+## Tool use background
 
 **The Humanitarian Engineering and Energy for Displacement (HEED) project aims
 to understand the energy needs of forcibly displaced people to increase access
@@ -47,6 +50,7 @@ versions of Microsoft Excel to use it.
 3. **Feel free to modify and adjust the tool for your own purposes.** HEED-RERT
 is built on Open Source principles
 
+  
 ## Five Steps in HEED-RER Tool Usage
 
 
@@ -70,6 +74,7 @@ is built on Open Source principles
 
 ![](media/7e7bf52f716cd1368c4fb22704b8536b.png)
 
+  
 ## Using the tool
 
 ### Step 1 – Opening the Spreadsheet
@@ -274,6 +279,7 @@ calculations. Once editing a value here (or in the camp questions) you can run
 the results again and get an updated insight in the performance of the
 solutions.
 
+  
 ## Overview of Models and Methods used
 
 The user guide explained the usage process for the RER tool. More detailed
@@ -284,3 +290,4 @@ calculation steps is shown in the figure below.
 ![A screenshot of a cell phone Description automatically generated](media/bf4ed8ad8815b791bd9411d8fc825d9e.jpg)
 
 Please see the technical documentation for more details
+  

@@ -10,10 +10,10 @@ Users engage with an Excel spreadsheet where they answer questions to describe t
 
 Results are presented in the form of an indicator dashboard where different technology options can be compared with their performance indicator scoring.
 
-Please see the [User Guide](RERT_User_Guide_v1.2.pdf) for a better understanding of how to use the tool.
+For a user guide and technical documentation, please visit this site <https://heedproject.github.io/rert/>
 
-For technical documentation, please visit this site <https://heedproject.github.io/rert/>
 There is also a [pdf](https://github.com/heedproject/rert/blob/gh-pages/RERT_Documentation.pdf) version of this documentation.
+
 These pages get automatically updated with any changes made to the markdown documentation on the master branch.
 
 **Note: The tool has been built with Excel 2018 and Excel 2019 versions. It is not backwards compatible with older versions at this time. Please use recent versions of Microsoft Excel to use it.**
