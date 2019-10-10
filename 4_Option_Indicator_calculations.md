@@ -99,7 +99,7 @@ Household Air Pollution Intervention Tool (HAPIT).[^3]
 
 **Cooking Solutions – Carbon Emissions indicators**
 
-The amount of carbon dioxide emissions $$E_{\text{ijk}}\$$associated with
+The amount of carbon dioxide emissions $$E_{\text{ijk}}$$associated with
 cooking can be established based on a direct association of CO2 emissions, per
 unit of fuel consumed, as :
 

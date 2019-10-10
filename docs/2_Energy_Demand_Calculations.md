@@ -455,8 +455,8 @@ formula:
 $$E_{j,t} = \frac{m\  \bullet \ U}{H\eta_{j}}{p \bullet DD}_{t}$$ (8)
 
 With $$E$$ as energy consumption, $$p$$, as the share of time that the system is
-heating or cooling for non-continuous operation,$$\ m,\$$as the building surface
-area in m2, $$U,\$$as the building heat transfer coefficient in W per m2 per
+heating or cooling for non-continuous operation, $$\ m$$ as the building surface
+area in m2, $$\ U$$ as the building heat transfer coefficient in W per m2 per
 degree, $$H$$, as the fuel heating value (with 1 if no fuel is used), $$\eta$$,
 the efficiency of the heating system per type $$j$$, and $$\text{DD}$$ the
 cooling or heating degree days value.
