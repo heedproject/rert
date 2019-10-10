@@ -1,6 +1,6 @@
-# Option Indicator calculations
+## Option Indicator calculations
 
-## Cooking – Indicators
+### Cooking – Indicators
 
 The RERT tool v1 incorporates ten performance indicators for cooking solutions
 as presented in table 11, calculated for each of the 16 cooking solutions. The
@@ -133,7 +133,7 @@ standard value from Ugande et al. (2001).[32] Thereby the total area used for
 providing plantation woodfuel is calculated, through estimating the amount
 supplied, and the area needed to grow this supply.
 
-## Household/Family Electricity & Lighting – Indicators
+### Household/Family Electricity & Lighting – Indicators
 
 The RERT tool v1 incorporates 6 performance indicators for household/family
 lighting and electricity solutions as presented in table 11, calculated for each
@@ -187,7 +187,7 @@ are ranked higher under these indicators.
 The calculation is carried out in a similar fashion as the cooking solution
 carbon emission indicators, as described in section 5.1.
 
-## Household/Family Electricity & Lighting – Indicators
+### Household/Family Electricity & Lighting – Indicators
 
 The RERT tool v1 incorporates 3 performance indicators for
 community/institutional electricity solutions as presented in table 12,

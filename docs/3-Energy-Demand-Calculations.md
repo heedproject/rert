@@ -1,4 +1,4 @@
-# Energy Demand Calculations 
+## Energy Demand Calculations 
 
 **Generalised Equations for Energy Use Calculations**
 

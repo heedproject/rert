@@ -1,4 +1,4 @@
-# Energy Access Tiers, Threshold Grouping & Ranking Calculations
+## Energy Access Tiers, Threshold Grouping & Ranking Calculations
 
 **Energy Access Tier Calculations**
 
