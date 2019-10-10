@@ -4,7 +4,7 @@
 
 # User Guide
 
-**This is the HEED-RERR tool user guide.** It is designed to provide an
+**This is the HEED-RER tool user guide.** It is designed to provide an
 accessible step-wise explanation for users on how to navigate the Excel Tool
 spreadsheet.
 
