@@ -26,3 +26,4 @@ described in section 2, the calculations of supply options to meet the demands
 energy supply options (D) is described in section 4, and the threshold grouping
 & ranking based on energy access tiers and indicator thresholds (E) is described
 in section 5.  
+  

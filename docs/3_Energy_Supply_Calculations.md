@@ -197,3 +197,4 @@ Battery capacity for household/families with solar-PV plus battery is based on
 the average evening time capacity requirement to meet demand from 18:00 plus
 additional hours (2 hours for the 2 hours of battery scenario until 20:00 4
 hours for the 4 hour battery scenarios, and so forth).  
+  

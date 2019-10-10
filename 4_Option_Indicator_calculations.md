@@ -215,3 +215,4 @@ estimated operational costs on an annual basis.
 
 The calculation is carried out in a similar fashion as the cooking solution
 carbon emission indicators, as described in section 4.1.  
+  
