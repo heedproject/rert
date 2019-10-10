@@ -1,4 +1,4 @@
-6. References
+# References
 -------------
 
 [1] Vianello, M. A Review of Cooking Systems for Humanitarian Settings. *Mov.

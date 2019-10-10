@@ -1,4 +1,4 @@
-3. Energy Supply Calculations
+# Energy Supply Calculations
 -----------------------------
 
 **Linking Energy Demands to Energy Supply Sources**
