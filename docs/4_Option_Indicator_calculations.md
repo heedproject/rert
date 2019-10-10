@@ -82,11 +82,11 @@ scaling from very low to very high risks.
 
 | IWA Tier  | Thermal Efficiency (%) |  Carbon   Monoxide   Emissions (gram/megajoule   delivered)  | Fine Particulate   Matter Emissions   (milligram/megajoule   delivered) |  Safety   (score)   |  Durability   (score)   |
 |-----------|------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------|---------------------|-------------------------|
-| 5         | ≥50                    | ≤3.0                                                         | ≤5                                                                      | ≥95                 | \<10                    |
-| 4         | ≥40                    | ≤4.4                                                         | ≤62                                                                     | ≥86                 | \<15                    |
-| 3         | ≥30                    | ≤7.2                                                         | ≤218                                                                    | ≥77                 | \<20                    |
-| 2         | ≥20                    | ≤11.5                                                        | ≤481                                                                    | ≥68                 | \<25                    |
-| 1         | ≥10                    | ≤18.3                                                        | ≤1031                                                                   | ≥60                 | \<35                    |
+| 5         | $$\geq$$50                    | $$\leq$$3.0                                                         | $$\leq$$5                                                                      | $$\geq$$95                 | \<10                    |
+| 4         | $$\geq$$40                    | $$\leq$$4.4                                                         | $$\leq$$62                                                                     | $$\geq$$86                 | \<15                    |
+| 3         | $$\geq$$30                    | $$\leq$$7.2                                                         | $$\leq$$218                                                                    | $$\geq$$77                 | \<20                    |
+| 2         | $$\geq$$20                    | $$\leq$$11.5                                                        | $$\leq$$481                                                                    | $$\geq$$68                 | \<25                    |
+| 1         | $$\geq$$10                    | $$\leq$$18.3                                                        | $$\leq$$1031                                                                   | $$\geq$$60                 | \<35                    |
 | 0         | \<10                   | \>18.3                                                       | \>1031                                                                  | \<60                | \>35                    |
 
 The approach provides for a robust simple means to categorise different stoves
