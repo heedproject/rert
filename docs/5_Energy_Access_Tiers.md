@@ -17,11 +17,7 @@ an option meets a particular tier. The if-then matching rules are defined at an
 abstract level as:
 
 $$
-If\ for\ Energy\ option\ j\ service\ the\ service\ and\ availability\ is\ met\ for\ Tier\ X,\ \text{set\ the\ Energy\ Access\ Tier\ to\ X}
-$$
-
-$$
-\ for\ the\ \%\ of\ the\ population\ using\ option\ j.
+If\ for\ Energy\ option\ j\ service\ the\ service\ and\ availability\ is\ met\ for\ Tier\ X,\ \text{set\ the\ Energy\ Access\ Tier\ to\ X} \ for\ the\ \%\ of\ the\ population\ using\ option\ j.
 $$
 
 After the current Energy Access Tiers are calculated, each potential technology
@@ -61,8 +57,8 @@ ESMAP (2015)[33]
 |             | Availability                       | \>4 hours per day                                       | \>4 hours per day                                                | \>8 hours per day                                                                                         |
 | Cooking     | Fuel acquisition preparation time  | \<7 hours per week                                      | \<3 hours per week                                               | \<1.5 hours per week                                                                                      |
 |             | Stove preparation time             | \<15 minutes per meal                                   | \<10 minutes per meal                                            | \<5 minutes per meal                                                                                      |
-|             | PM2.5 Exposure ($$\mu$$g/m3)             | $$leq\$$800                                                    | $$leq\$$400                                                             | $$leq\$$170                                                                                                      |
-|             | CO Exposure (mg/m3)                | $$leq\$$35                                                     | $$leq\$$25                                                              | $$leq\$$18                                                                                                       |
+|             | PM2.5 Exposure ($$\mu$$g/m3)             | $$\leq$$800                                                    | $$\leq$$400                                                             | $$\leq$$170                                                                                                      |
+|             | CO Exposure (mg/m3)                | $$\leq$$35                                                     | $$\leq$$25                                                              | $$\leq$$18                                                                                                       |
 |             | Health Risk\*                      | Tentatively 60% higher long-term mortality than level 5 | Tentatively 45% higher long-term mortality than level 5          | Tentatively 30% higher long-term mortality than level 5                                                   |
 | Heating     | Capacity                           | Personal space around individuals heated                | One or more rooms heated                                         | One or more rooms heated                                                                                  |
 |             | Convenience / fuel collection time | 7 hours per week                                        | 3 hours per week                                                 | 1.5 hours per week                                                                                        |
