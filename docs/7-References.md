@@ -1,4 +1,4 @@
-# References
+## References
 
 [1] Vianello, M. A Review of Cooking Systems for Humanitarian Settings. *Mov.
 Energy Initiat.* May (2016).
