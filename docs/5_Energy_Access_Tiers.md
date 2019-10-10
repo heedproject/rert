@@ -17,7 +17,11 @@ an option meets a particular tier. The if-then matching rules are defined at an
 abstract level as:
 
 $$
-If\ for\ Energy\ option\ j\ service\ the\ service\ and\ availability\ is\ met\ for\ Tier\ X,\ \text{set\ the\ Energy\ Access\ Tier\ to\ X} \ for\ the\ \%\ of\ the\ population\ using\ option\ j.
+If\ for\ Energy\ option\ j\ service\ the\ service\ and\ availability\ is\ met\ for\ Tier\ X,\ \text{set\ the\ Energy\ Access\ Tier\ to\ X}
+$$
+
+$$
+\ for\ the\ \%\ of\ the\ population\ using\ option\ j.
 $$
 
 After the current Energy Access Tiers are calculated, each potential technology
