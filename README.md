@@ -12,4 +12,6 @@ Results are presented in the form of an indicator dashboard where different tech
 
 Please see the [User Guide](RERT_User_Guide_v1.2.pdf) for a better understanding of how to use the tool.
 
+**Note: The tool has been built with Excel 2018 and Excel 2019 versions. It is not backwards compatible with older versions at this time. Please use recent versions of Microsoft Excel to use it.**
+
 Feel free to use the tool and contribute to its ongoing development using github issues and pull requests.
