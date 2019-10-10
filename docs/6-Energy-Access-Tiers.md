@@ -97,14 +97,14 @@ In case of qualitative indicators a ranking value $$R_{j}$$ is assigned using a
 value assignment depending on the number of categories within the indicators,
 whereby:
 
-$$\R_{j} = \left\{ \begin{matrix} \frac{1}{8}\ \text{n\ \ \ }\text{if\
+$$\ R_{j} = \left\{ \begin{matrix} \frac{1}{8}\ \text{n\ \ \ }\text{if\
 }\text{ranking\ is\ low\ \ \ \ \ \ \ \ } \\ \frac{4}{8}\text{n\ \ \ if\
 }\text{ranking\ is\ medium} \\ \frac{7}{8}\text{n\ \ \ if\ }\text{ranking\ is\
 high\ \ \ \ \ \ \ \ } \\ \end{matrix} \right.$$ (14)
 
 And
 
-$$\R_{j} = \left\{ \begin{matrix} \frac{2}{16}\ \text{n\ \ \ }\text{if\
+$$\ R_{j} = \left\{ \begin{matrix} \frac{2}{16}\ \text{n\ \ \ }\text{if\
 }\text{ranking\ is\ very\ low\ \ \ \ \ \ \ \ } \\ \frac{5}{16}\ \text{n\ \ \
 }\text{if\ }\text{ranking\ is\ low\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \\
 \frac{8}{16}\text{n\ \ \ if\ r}\text{anking\ is\ medium\ \ \ \ \ \ \ \ \ \ \ \ \
