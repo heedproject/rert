@@ -83,7 +83,7 @@ options therefore there will be a scoring of 1 to 16 points (16 the highest, 1
 the lowest).
 
 In mathematical terms the ranking can be described as having a number of options
-$$j = 1,2,\ldots,n\$$, with an integer value assigned based on the relative
+$$\j = 1,2,\ldots,n$$, with an integer value assigned based on the relative
 quantitative ranking between options. The best indicator scoring received the
 highest number, and the lowest indicator the lowest number. The total number of
 points that can be awarded in case of 16 options and ten performance criteria is
@@ -96,6 +96,21 @@ therefore 160 points (16 x 10). See figure
 In case of qualitative indicators a ranking value $$R_{j}$$ is assigned using a
 value assignment depending on the number of categories within the indicators,
 whereby:
+
+$$\R_{j} = \left\{ \begin{matrix} \frac{1}{8}\ \text{n\ \ \ }\text{if\
+}\text{ranking\ is\ low\ \ \ \ \ \ \ \ } \\ \frac{4}{8}\text{n\ \ \ if\
+}\text{ranking\ is\ medium} \\ \frac{7}{8}\text{n\ \ \ if\ }\text{ranking\ is\
+high\ \ \ \ \ \ \ \ } \\ \end{matrix} \right.$$ (14)
+
+And
+
+$$\R_{j} = \left\{ \begin{matrix} \frac{2}{16}\ \text{n\ \ \ }\text{if\
+}\text{ranking\ is\ very\ low\ \ \ \ \ \ \ \ } \\ \frac{5}{16}\ \text{n\ \ \
+}\text{if\ }\text{ranking\ is\ low\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \\
+\frac{8}{16}\text{n\ \ \ if\ r}\text{anking\ is\ medium\ \ \ \ \ \ \ \ \ \ \ \ \
+} \\ \frac{11}{16}\ \text{n\ \ \ }\text{if\ }\text{ranking\ is\ high\ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ } \\ \frac{14}{16}\text{n\ \ \ if\ r}\text{anking\ is\
+very\ high\ \ \ \ \ \ \ \ \ \ } \\ \end{matrix} \right.$$ (15)
 
 Second, out of the ranking the options are selected that are at or closest to
 the Energy Access Tier that is selected by the user (1, 2, or 3). The **best
