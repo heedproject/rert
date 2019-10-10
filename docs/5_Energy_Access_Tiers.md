@@ -106,7 +106,7 @@ whereby:
 $$R_{j} = \left\{ \begin{matrix} \frac{1}{8}\ \text{n\ \ \ }\text{if\
 }\text{ranking\ is\ low\ \ \ \ \ \ \ \ }\  \\ \frac{4}{8}\text{n\ \ \ if\
 r}\text{anking\ is\ medium} \\ \frac{7}{8}\text{n\ \ \ if\ r}\text{anking\ is\
-high\ \ \ \ \ \ \ \ } \\ \end{matrix} \right.\$$ (14)
+high\ \ \ \ \ \ \ \ } \\ \end{matrix} \right.$$ (14)
 
 And
 
@@ -116,7 +116,7 @@ $$R_{j} = \left\{ \begin{matrix} \frac{2}{16}\ \text{n\ \ \ }\text{if\
 \frac{8}{16}\text{n\ \ \ if\ r}\text{anking\ is\ medium\ \ \ \ \ \ \ \ \ \ \ \ \
 } \\ \frac{11}{16}\ \text{n\ \ \ }\text{if\ }\text{ranking\ is\ high\ \ \ \ \ \
 \ \ \ \ \ \ \ \ \ \ \ \ \ } \\ \frac{14}{16}\text{n\ \ \ if\ r}\text{anking\ is\
-very\ high\ \ \ \ \ \ \ \ \ \ } \\ \end{matrix} \right.\$$ (15)
+very\ high\ \ \ \ \ \ \ \ \ \ } \\ \end{matrix} \right.$$ (15)
 
 Second, out of the ranking the options are selected that are at or closest to
 the Energy Access Tier that is selected by the user (1, 2, or 3). The **best
@@ -154,4 +154,4 @@ The ranking is displayed for each option so that the user can understand how
 well each option performance based on the design needs. The ranking provides a
 similar solution idea to the more precise performance ranking as explained
 above. And helps users understand how well the options fit within their specific
-camp solution needs.
+camp solution needs.  

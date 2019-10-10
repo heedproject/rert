@@ -530,4 +530,4 @@ used for pump efficiency are 44%, and for the friction in the pump system is
 10%. The system efficiency fin converting electricity to mechanical energy to
 lift the water is based on a large number of real life evaluations (Conlon et
 al. 1996).[28] Based on these values total energy costs amount to 0.24 kWh per
-m3 of water pumped for a 35 meter vertical distance.
+m3 of water pumped for a 35 meter vertical distance.  

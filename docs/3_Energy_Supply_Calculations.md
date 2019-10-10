@@ -145,7 +145,7 @@ In case of intermittent wind and solar-PV sources a different approach was taken
 to establish the required capacity. First, an hourly profile was generated using
 the Merra-2 Global dataset using the renewables ninja tool.[^2] In case of solar
 a zero tracking system was assumed with a system loss or performance ratio,
-$$\upsilon,\$$estimated at an average of 80% based on real-life evaluations from
+$$\upsilon$$, estimated at an average of 80% based on real-life evaluations from
 tens of thousands of existing solar systems from the literature.[29] Second, a
 lithium-ion battery supply option is added where relevant, in order to meet the
 availability needs for the electricity supply in the evening.
@@ -196,4 +196,4 @@ community/institutional use, and a factor 2 for household/family use.
 Battery capacity for household/families with solar-PV plus battery is based on
 the average evening time capacity requirement to meet demand from 18:00 plus
 additional hours (2 hours for the 2 hours of battery scenario until 20:00 4
-hours for the 4 hour battery scenarios, and so forth).
+hours for the 4 hour battery scenarios, and so forth).  

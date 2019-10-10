@@ -214,4 +214,4 @@ estimated operational costs on an annual basis.
 **Household/family lighting and electricity – Carbon Emissions indicators**
 
 The calculation is carried out in a similar fashion as the cooking solution
-carbon emission indicators, as described in section 4.1.
+carbon emission indicators, as described in section 4.1.  
