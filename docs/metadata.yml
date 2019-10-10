@@ -11,7 +11,7 @@ titlepage: true
 titlepage-text-color: "005e85"
 titlepage-rule-color: "005e85"
 titlepage-rule-height: 2
-logo: "libresolar-logo-lateral.pdf"
+logo: "images/libresolar-logo-lateral.pdf"
 logo-width: 200
 toc-own-page: true
 ...
