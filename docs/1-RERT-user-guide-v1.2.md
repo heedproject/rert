@@ -1,4 +1,4 @@
-![HEED logo](media/c1b04cd81c7afefa111aeac4b966ad18.png)
+![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
 
 **Humanitarian Engineering for Energy for Displacement (HEED)**
 
@@ -102,8 +102,7 @@ otherwise the results cannot be calculated.**
     calculations
 
 -   Select if you want to look only at i) cooking energy use, ii) at household
-    electricity and lighting, iii) community/central lighting & electricity, or
-    iv) all three of these
+    electricity and lighting, iii) community/central lighting & electricity, or iv) all three of these
 
 ![](media/50f27b5363e8e5457191c009027642bc.png)
 
