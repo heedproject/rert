@@ -121,4 +121,4 @@ Mean Annual Volume Increment of Selected Industrial Forest Plantation Species*.
 27 pages (2001). doi:10.1017/S0020818300006160
 
 [33] Bhatia, M. & Angelou, N. *BEYOND CONNECTIONS Energy Access Redefined*. 244
-pages (2015).
+pages (2015)
