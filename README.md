@@ -19,3 +19,5 @@ These pages get automatically updated with any changes made to the markdown docu
 **Note: The tool has been built with Excel 2018 and Excel 2019 versions. It is not backwards compatible with older versions at this time. Please use recent versions of Microsoft Excel to use it.**
 
 Feel free to use the tool and contribute to its ongoing development using github issues and pull requests. If you are not familiar with github, [please read this guide on how to collaborate on projects.](https://help.github.com/en/categories/collaborating-with-issues-and-pull-requests)
+
+The markdown template and automatic deployment comes from [this repository](https://github.com/LibreSolar/md-manual-template/tree/master/manual) under the Creative Commons Attribution-ShareAlike licence.
