@@ -1,6 +1,11 @@
-![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
+![HEED logo](media/c1b04cd81c7afefa111aeac4b966ad18.png)
 
 **Humanitarian Engineering for Energy for Displacement (HEED)**
+
+This template comes from the md-manual-template repository developed by LibreSolar
+<https://github.com/LibreSolar/md-manual-template/tree/master/manual>
+
+![The Creative Commons Attribution-ShareAlike logo](media/cc-by-sa.png)
 
 # User Guide
 

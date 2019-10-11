@@ -103,7 +103,7 @@ The amount of carbon dioxide emissions $$E_{\text{ijk}}$$associated with
 cooking can be established based on a direct association of CO2 emissions, per
 unit of fuel consumed, as :
 
-$$E_{\text{ijk}} = \ F_{\text{ijk}} \bullet \ \gamma_{\text{jk}}$$ (13)
+$$E_{\text{ijk}} = \ F_{\text{ijk}} \cdot \ \gamma_{\text{jk}}$$ (13)
 
 With $$\gamma_{\text{jk}}$$ as a parameter to establish the carbon dioxide
 emissions in weight value per cookstove and fuel type weight that is burnt. Data

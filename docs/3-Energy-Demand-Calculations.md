@@ -10,7 +10,7 @@ cooking device for example, and $$k = 1,2\ldots n$$ is an index for energy
 carrier type used including individual fuels and electricity. Energy use per
 period of time is thereby calculated as:
 
-$$E_{\text{ijk}} = \ \frac{c_{\text{ijk}} \bullet \ u_{\text{ij}} \bullet
+$$E_{\text{ijk}} = \ \frac{c_{\text{ijk}} \cdot \ u_{\text{ij}} \cdot
 \sum_{t}^{n}A_{\text{ijt}}}{\varepsilon_{\text{ijk}}}$$ (1)
 
 With $$\varepsilon_{\text{ij}}$$ as the efficiency in %, $$c$$ as a capacity
@@ -21,7 +21,7 @@ days in a month to obtain monthly device energy use.
 
 Fuel used in weight or volume unit can then be calculated as:
 
-$$F_{\text{ijk}} = \frac{\text{\ E}_{\text{ijk}} \bullet 3.6}{f_{\text{ijk}}}$$
+$$F_{\text{ijk}} = \frac{\text{\ E}_{\text{ijk}} \cdot 3.6}{f_{\text{ijk}}}$$
 (2)
 
 With $$f_{\text{ijk}}$$ as a variable for fuel energy content per fuel type
@@ -193,8 +193,7 @@ indoor-emission tiers
 Lighting energy needs are calculated on the basis of equation (1) with $$i = l$$
 with subtypes $$j$$ using energy carriers $$k$$. Capacity of a light source for
 lighting $$c$$ is expressed in Wh/hour, the $$\varepsilon$$ parameter is not
-utilised here and set to 1. Values for Average use per day in hours$$\text{\
-A}$$ can be entered by the user and are pre-loaded with literature values from
+utilised here and set to 1. Values for Average use per day in hours$$\text{A}$$ can be entered by the user and are pre-loaded with literature values from
 surveys.[10] The utilisation rate $$u$$ is set to 0.95 indicating the frequency
 of using the lighting source.[10] In case of kerosene lamps, fuel use can be
 calculated using equation 2 to obtain litres of Kerosene used per family per
@@ -267,7 +266,7 @@ the basis of the number of times the phone is charged per day, $$r_{j}$$
 full charge as battery capacity, $$\theta$$, and the average depth of charging
 from a discharged to charged state, $$d$$ , as:
 
-$$E_{j} = r_{j} \bullet \theta_{j} \bullet d \bullet t$$ (3)
+$$E_{j} = r_{j} \cdot \theta_{j} \cdot d \cdot t$$ (3)
 
 The assumption for the depth of charging parameter $$d$$ is 0.8 indicating an
 80% average charge of the battery capacity. Electricity required for a full
@@ -315,7 +314,7 @@ establish battery capacity in terms of energy usable in kilowatt-hours, the mAh
 value is converted by multiplication with the battery voltage (typically 4 volt)
 as:
 
-$$\theta_{j} = \frac{\text{mAh}_{j}\  \bullet V}{10^{6}}$$ (4)
+$$\theta_{j} = \frac{\text{mAh}_{j}\  \cdot V}{10^{6}}$$ (4)
 
 The following values were obtained at 0.0035, 0.0044, 0.0079, and 0.0120 kWh for
 dumb, feature, low end, and high-end smart phones, based on the average for each
@@ -342,7 +341,7 @@ variable appliances their utilisation rate per day in hours.
 
 Appliance use is then calculated using a simplified version of formula (1) as:
 
-$$E_{\text{ijk}} = \ c_{\text{ijk}} \bullet \ \sum_{t}^{n}A_{\text{ijt}}$$ (5)
+$$E_{\text{ijk}} = \ c_{\text{ijk}} \cdot \ \sum_{t}^{n}A_{\text{ijt}}$$ (5)
 
 The capacity value in watts is predetermined based on literature values. A
 preliminary assessment for capacity wattage can be found in Table 6 below.
@@ -394,7 +393,7 @@ families in the camp,$$n$$, the average camp area per person, $$x$$, in m2, a
 percentage of main road area per camp area parameter, $$s$$, and the average
 width of roads or streets, $$w$$, as:
 
-$$R = \frac{n \bullet x \bullet s}{w}$$ (6)
+$$R = \frac{n \cdot x \cdot s}{w}$$ (6)
 
 The value of the parameter $$s$$ will vary per camp and is to be established
 (pre-loaded) by analysis of satellite imagery for a sample of refugee camps. As
@@ -404,7 +403,7 @@ After the main road area length is calculated the number of streetlights can be
 determined based on the spacing,$$\text{\ S}$$, required per pole. The formula
 for this is taken from Shehadeh (2015)[21] as:
 
-$$S = \frac{l \bullet u \bullet 0.8}{lt \bullet w}$$ (7)
+$$S = \frac{l \cdot u \cdot 0.8}{lt \cdot w}$$ (7)
 
 With$$\text{\ l}$$ as the amount of lamp lumens,$$\ u,$$ as a coefficient of
 utilisation, and$$\text{\ lt}$$, as a threshold minimum required average
@@ -452,7 +451,7 @@ The energy use associated with HDD and CDD is estimated based on an amended
 version of the formulation in Sarak & Satman (2003)[23], resulting in the
 formula:
 
-$$E_{j,t} = \frac{m\  \bullet \ U}{H\eta_{j}}{p \bullet DD}_{t}$$ (8)
+$$E_{j,t} = \frac{m\  \cdot \ U}{H\eta_{j}}{p \cdot DD}_{t}$$ (8)
 
 With $$E$$ as energy consumption, $$p$$, as the share of time that the system is
 heating or cooling for non-continuous operation, $$\ m$$ as the building surface
@@ -507,7 +506,7 @@ distance from the groundwater source to the points of consumption, the hours of
 operation, and a standard hydraulic pumping equation that incorporates the flow
 needs for water usage. The hydraulic power equation utilised is expressed as:
 
-$$P_{\text{hydraulic}} = H \bullet \rho \bullet g \bullet Q*(1 + \varepsilon)$$
+$$P_{\text{hydraulic}} = H \cdot \rho \cdot g \cdot Q*(1 + \varepsilon)$$
 (9)
 
 Where H is the difference in height between the inlet and outlet of the pipe
