@@ -141,6 +141,8 @@ Recommendations are provided, based on the input baseline data and parameters re
 
 For Kigeme refugee camp, the top three best all round recommended options – based on their performance across ten indicators was quantified as listed in table 1 below – are listed below.
 
+| |
+| ------------------------------------------------------------ |
 | Gasifier stove for burning pellets: equivalent to the existing Inyenyeri mimi-moto stove that has been provided to 4 out of 10 families to date. |
 | Cookstove for liquid fuel combustion with ethanol supply: not in use in the camp |
 | Cookstove for gas burning with biogas supply: not in use in the camp |
