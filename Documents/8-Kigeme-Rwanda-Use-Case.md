@@ -1,4 +1,4 @@
-![](media/f02e74c3599518984984f5a9dd1d0349.png)
+![c1b04cd81c7afefa111aeac4b966ad18](media/c1b04cd81c7afefa111aeac4b966ad18.png)
 
 **Humanitarian Engineering for Energy for Displacement (HEED)**
 
@@ -63,6 +63,10 @@ The improved cook stove solution scheme is being delivered in the camp by a Rwan
 
 Data utilised in this use case was collected using existing data sources and via an integrated questionnaire deployed in Kigeme camp in 2018/19. Data was provided / collected by the HEED project team, with the support of UN humanitarian staff, Kigeme camp authorities and humanitarian energy researchers.
 
+<img src="media/Usecase_Fig1a.png" alt="Usecase_Fig1a" style="zoom: 67%;" />
+
+<img src="media/Usecase_Fig1b.jpg" alt="Usecase_Fig1b" style="zoom:67%;" />
+
 Use Case methodology
 --------------------
 
@@ -81,9 +85,9 @@ Baseline data was sourced and inserted into the RERT (see Figure 2), including:
 
 -   Landscape around the camp: **Evergreen Forest / Rainforest**
 
-![](media/f5e11178bf9e136ef3b4cb1e115ce7b3.jpg)
+![Usecase_Fig2a](media/Usecase_Fig2a.jpg)
 
-![](media/0cf1b5c8124a4c52f2e1f18d3bdfc697.jpg)
+![Usecase_Fig2b](media/Usecase_Fig2b.jpg)
 
 Figure 2 - Setting Baseline Data
 
@@ -120,9 +124,9 @@ Finally, baseline income values, distribution and in-kind provision by camp auth
 
 Further to this a number of further variables are taken into account, including: monthly food cost per household; camp fuel provision and / or subsidisation; fuel production methods.
 
-![](media/756adcf27e8b38af5c03b5ce5538002d.jpg)
+<img src="media/Usecase_Fig3a.jpg" alt="Usecase_Fig3a" style="zoom:80%;" />
 
-![](media/c143d732c068f4a73b521f0a2e3104bb.jpg)
+<img src="media/Usecase_Fig3b.jpg" alt="Usecase_Fig3b" style="zoom:80%;" />
 
 Figure 3 - Setting baseline cookstove use
 
