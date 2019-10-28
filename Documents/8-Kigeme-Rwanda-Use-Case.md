@@ -1,6 +1,4 @@
-![c1b04cd81c7afefa111aeac4b966ad18](media/c1b04cd81c7afefa111aeac4b966ad18.png)
-
-**Humanitarian Engineering for Energy for Displacement (HEED)**
+### **Humanitarian Engineering for Energy for Displacement (HEED)**
 
 ##### Funded by the ESPRC Global Challenges Research Fund
 
