@@ -1,17 +1,16 @@
-### **Humanitarian Engineering for Energy for Displacement (HEED)**
+**Humanitarian Engineering for Energy for Displacement (HEED)**
 
-##### Funded by the ESPRC Global Challenges Research Fund
+**Funded by the ESPRC Global Challenges Research Fund**
 
-### Renewable Energy Recommendations Tool (RERT) 
+## Renewable Energy Recommendations Tool (RERT) 
 
-**Use Case:** Kigeme Camp Rwanda - Cooking Solutions Evaluation
+### **Use Case:** Kigeme Camp Rwanda - Cooking Solutions Evaluation
 
 **Authors:** Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)
 
 v.2.0 10th October 2019
 
-**Overview** 
--------------
+### **Overview** 
 
 This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of cook stove interventions at Kigeme Camp, Rwanda, and was undertaken in June 2019. When seeking to use the RERT, it is recommended that this case study is read in conjunction with the RERT User Guide.
 
@@ -31,8 +30,7 @@ The RERT was built by Scene Connect with support from Coventry University and Pr
 
 Users engage with an Excel spreadsheet where they answer questions to describe the population of the camp and the social and economic situation, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy options.
 
-**Use Case Scenario**
-=====================
+### **Use Case Scenario**
 
 The purpose of providing a use case scenario is to give tool users a practical guide through a real-world example of using the tool in a humanitarian setting. The following evaluation details how to:
 
@@ -65,13 +63,11 @@ Data utilised in this use case was collected using existing data sources and via
 
 <img src="media/Usecase_Fig1b.jpg" alt="Usecase_Fig1b" style="zoom:67%;" />
 
-Use Case methodology
---------------------
+### Use Case methodology
 
 This methodology is provided to guide users through using the RERT with real-world data and application to Kigeme Refugee Camp, Rwanda. The aim of this use case is to **understand the current (2019) cooking situation in Kigeme Camp and provide projections for viable cookstove interventions and their potential impacts.**
 
-Stage 1: Baseline Data
-======================
+### Stage 1: Baseline Data
 
 Baseline data was sourced and inserted into the RERT (see Figure 2), including:
 
@@ -128,8 +124,7 @@ Further to this a number of further variables are taken into account, including:
 
 Figure 3 - Setting baseline cookstove use
 
-Stage 2: Baseline Result
-========================
+### Stage 2: Baseline Result
 
 The evaluation of the current state of cooking covered, **ten baseline performance indicators are output by the model,** of which the results are shown in Table 1 below in the column headed ‘Current Situation’. An aggregate energy access indicator for cooking for the camp is also shown.
 
@@ -138,8 +133,7 @@ Energy access is estimated by looking at the tier level - from 0 to 5 - for each
 In terms of current cooking stove performance results, the **monthly total fuel expenditure was estimated at close to 1.6 million RWF**, versus a **capital cost of 5.5 million RWF in case all current cookstoves would need to be replaced** (asset value of the cookstoves used). Current **annual CO2 emissions for the camp were evaluated at 6,475 tonnes** for cooking which comes down to 1.33 tonnes per year per family. The utilisation of wood-fuel without provisioning of such fuels in a sustainable manner is evaluated by RERT to be associated with a
 **forest area of 0.24 km2 that is at annual risk of deforestation**, given biomass needs to supply cooking fuels for all the 4,000 families in the camp. Finally, **health risks due to stove usage are still high** given the prominence of three stone post cookstoves, and to a lesser extent fired clay (ceramic) stoves.
 
-Stage 3: Energy Intervention Recommendations
-============================================
+### Stage 3: Energy Intervention Recommendations
 
 Recommendations are provided, based on the input baseline data and parameters relating to the cost, performance (capacity & utilisation), energy efficiency, fuel type and efficiency, emissions and energy tier. **Sixteen different cooking solutions are evaluated based on the current stove and fuel options in the tool, with the three most viable options recommended**. All recommendations are considered against the baseline results and displayed comparatively with all economic, social and environmental variables.
 
@@ -179,8 +173,7 @@ case or subsidy support scheme.
 
 **Table 1:** Overview of the performance of the **top three** recommended cooking stove solutions
 
-Stage 5: Recommendation Scenarios & Parameters
-----------------------------------------------
+### Stage 4: Recommendation Scenarios & Parameters
 
 Though not utilised within the Kigeme use case, the RERT offers the ability to set recommendation scenarios, where specific criteria or thresholds may be set for the recommendation system. This may include setting a maximum capital cost level limit, emission target or affordability criteria. Further to this adjustment may be made to the data parameters to fit particular use contexts, such as a specific cook stove product.
 
@@ -205,9 +198,7 @@ When set, the RERT will not recommend any interventions / technologies which bre
 
 Cookstove variables include: Stove Type; Fuel; IWA efficiency tier; efficiency; IWA indoor  missions Tie; Indoor emissions CO (g/min); Indoor emissions PM2.5 (mg/min); Capacity (kW); utilisation rate; Average daily stove use (hours). Other variables include: Energy fuel content (MJ/kg); Charcoal generation efficiency (%); Fuel emissions data (tCO2e per t/fuel); Forestry density (t/km2); Wood fuel plantation density (t/m3); Camp centre wood fuel variables.
 
-
-Kigeme Use Case Conclusions
----------------------------
+## Kigeme Use Case Conclusions
 
 The use case detailed above shows how the use case can be utilised, with a working example of data input and analysis. The recommendations for Kigeme Refugee Camp show that energy interventions may offer a host of benefits including health and environmental impacts.
 
