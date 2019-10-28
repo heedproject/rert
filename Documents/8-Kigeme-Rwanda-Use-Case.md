@@ -2,23 +2,23 @@
 
 **Funded by the ESPRC Global Challenges Research Fund**
 
-## Renewable Energy Recommendations Tool (RERT) 
+**Renewable Energy Recommendations Tool (RERT) **
 
-### **Use Case:** Kigeme Camp Rwanda - Cooking Solutions Evaluation
+# **Use Case:** Kigeme Camp Rwanda - Cooking Solutions Evaluation
 
-**Authors:** Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)
+> **Authors:** Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)
 
-v.2.0 10th October 2019
+> v.2.0 10th October 2019
 
-### **Overview** 
+## **Overview** 
 
 This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of cook stove interventions at Kigeme Camp, Rwanda, and was undertaken in June 2019. When seeking to use the RERT, it is recommended that this case study is read in conjunction with the RERT User Guide.
 
-### About Humanitarian Energy and Engineering for Development (HEED)
+**About Humanitarian Energy and Engineering for Development (HEED)**
 
 The HEED project is an innovative response to growing recognition of the need to improve access to energy, particularly renewable energy sources, for populations displaced by conflict and natural disasters. The focus of HEED is on the lived experiences in three refugee camps in Rwanda (Nyabiheke, Gihembe and Kigeme) and internally displaced persons (IDPs) forced to leave their homes as a result of the 2015 earthquake in Nepal.
 
-### Renewable Energy Recommendations Tool (RERT)
+**Renewable Energy Recommendations Tool (RERT)**
 
 The RERT was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and April 2019. It aims to provide technology recommendations based on 23 performance indicators to increase energy access in refugee camps and improve sustainability for:
 
@@ -30,7 +30,7 @@ The RERT was built by Scene Connect with support from Coventry University and Pr
 
 Users engage with an Excel spreadsheet where they answer questions to describe the population of the camp and the social and economic situation, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy options.
 
-### **Use Case Scenario**
+## **Use Case Scenario**
 
 The purpose of providing a use case scenario is to give tool users a practical guide through a real-world example of using the tool in a humanitarian setting. The following evaluation details how to:
 
@@ -49,7 +49,7 @@ The purpose of providing a use case scenario is to give tool users a practical g
 
 A special focus included to provide an understanding of which solutions could provide significant **climate change carbon emission impacts reductions,** as part of the improvements that could be achieved with shifts to better cooking solutions.
 
-### Kigeme Refugee Camp
+**Kigeme Refugee Camp**
 
 The Kigeme displaced people camp in Rwanda was setup in 2012 to address the influx of Congolese refugees into the country. As of early 2019 there are close to 21,000 residents and over 4,000 families living in the camp. The camp is situated in Nyamagabe district in South-West Rwanda, to the east of Nyungwe Forest National Park (see Figure 1). The area is hilly with land uses including forests, agriculture and host community settlements.
 
@@ -63,7 +63,7 @@ Data utilised in this use case was collected using existing data sources and via
 
 <img src="media/Usecase_Fig1b.jpg" alt="Usecase_Fig1b" style="zoom:67%;" />
 
-### Use Case methodology
+## **Use Case methodology**
 
 This methodology is provided to guide users through using the RERT with real-world data and application to Kigeme Refugee Camp, Rwanda. The aim of this use case is to **understand the current (2019) cooking situation in Kigeme Camp and provide projections for viable cookstove interventions and their potential impacts.**
 
