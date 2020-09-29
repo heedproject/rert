@@ -1,4 +1,5 @@
-﻿![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
+
+![](media/c1b04cd81c7afefa111aeac4b966ad18.png)
 
 **Humanitarian Engineering for Energy for Displacement (HEED)**
 

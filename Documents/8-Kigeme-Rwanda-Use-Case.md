@@ -4,13 +4,17 @@
 
 **Renewable Energy Recommendations Tool (RERT) **
 
-# **Use Case:** Kigeme Camp Rwanda - Cooking Solutions Evaluation
+=======
+# Use Case: Kigeme Camp Rwanda - Cooking Solutions Evaluation
+
 
 > **Authors:** Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)
 
 > v.2.0 10th October 2019
 
-## **Overview** 
+=======
+## Overview 
+
 
 This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of cook stove interventions at Kigeme Camp, Rwanda, and was undertaken in June 2019. When seeking to use the RERT, it is recommended that this case study is read in conjunction with the RERT User Guide.
 
@@ -30,7 +34,7 @@ The RERT was built by Scene Connect with support from Coventry University and Pr
 
 Users engage with an Excel spreadsheet where they answer questions to describe the population of the camp and the social and economic situation, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy options.
 
-## **Use Case Scenario**
+## Use Case Scenario
 
 The purpose of providing a use case scenario is to give tool users a practical guide through a real-world example of using the tool in a humanitarian setting. The following evaluation details how to:
 
@@ -63,7 +67,11 @@ Data utilised in this use case was collected using existing data sources and via
 
 <img src="media/Usecase_Fig1b.jpg" alt="Usecase_Fig1b" style="zoom:67%;" />
 
-## **Use Case methodology**
+=======
+  
+
+## Use Case methodology
+
 
 This methodology is provided to guide users through using the RERT with real-world data and application to Kigeme Refugee Camp, Rwanda. The aim of this use case is to **understand the current (2019) cooking situation in Kigeme Camp and provide projections for viable cookstove interventions and their potential impacts.**
 
@@ -79,9 +87,11 @@ Baseline data was sourced and inserted into the RERT (see Figure 2), including:
 
 -   Landscape around the camp: **Evergreen Forest / Rainforest**
 
-![Usecase_Fig2a](media/Usecase_Fig2a.jpg)
+=======
+![](media/Usecase_Fig2a.jpg)
 
-![Usecase_Fig2b](media/Usecase_Fig2b.jpg)
+![](media/Usecase_Fig2b.jpg)
+
 
 Figure 2 - Setting Baseline Data
 
@@ -139,8 +149,11 @@ Recommendations are provided, based on the input baseline data and parameters re
 
 For Kigeme refugee camp, the top three best all round recommended options – based on their performance across ten indicators was quantified as listed in table 1 below – are listed below.
 
-| Gasifier stove for burning pellets: equivalent to the existing Inyenyeri mimi-moto stove that has been provided to 4 out of 10 families to date. |
+=======
+| |
 | ------------------------------------------------------------ |
+| Gasifier stove for burning pellets: equivalent to the existing Inyenyeri mimi-moto stove that has been provided to 4 out of 10 families to date. |
+
 | Cookstove for liquid fuel combustion with ethanol supply: not in use in the camp |
 | Cookstove for gas burning with biogas supply: not in use in the camp |
 
@@ -198,6 +211,9 @@ When set, the RERT will not recommend any interventions / technologies which bre
 
 Cookstove variables include: Stove Type; Fuel; IWA efficiency tier; efficiency; IWA indoor  missions Tie; Indoor emissions CO (g/min); Indoor emissions PM2.5 (mg/min); Capacity (kW); utilisation rate; Average daily stove use (hours). Other variables include: Energy fuel content (MJ/kg); Charcoal generation efficiency (%); Fuel emissions data (tCO2e per t/fuel); Forestry density (t/km2); Wood fuel plantation density (t/m3); Camp centre wood fuel variables.
 
+=======
+  
+
 ## Kigeme Use Case Conclusions
 
 The use case detailed above shows how the use case can be utilised, with a working example of data input and analysis. The recommendations for Kigeme Refugee Camp show that energy interventions may offer a host of benefits including health and environmental impacts.
@@ -212,8 +228,11 @@ The RERT evaluation shows that:
     
 -   The current programme to provide families with pellet gasifier stoves (mimi-moto) with a plantation sourced pellet supply chain is one of the best approaches to follow in the context of Kigeme, Rwanda.
 
-Discussion 
------------
+=======
+  
+
+## Discussion 
+
 
 Simple and accessible input of data and output information is the core focus of RERT, including those with expert knowledge of humanitarian energy and those without. With humanitarian energy increasingly a focus of organisations in the humanitarian sector, the tool will hopefully provide a first means of conducting energy assessments in refugee camps and similar settings.
 
