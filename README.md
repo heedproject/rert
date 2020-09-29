@@ -14,7 +14,7 @@ For a user guide and technical documentation, please visit this site <https://he
 
 There is also a [pdf](https://github.com/heedproject/rert/blob/gh-pages/RERT_Documentation.pdf) version of this documentation.
 
-A webinar setting out the RERT rationale, purpose and functionality, as well as a short question and answer session, may be found [here] (https://youtu.be/kW9I00c73fU) 
+A webinar setting out the RERT rationale, purpose and functionality, as well as a short question and answer session, may be found [here](https://youtu.be/kW9I00c73fU) 
 
 These pages get automatically updated with any changes made to the markdown documentation on the master branch.
 
