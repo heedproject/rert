@@ -1,4 +1,4 @@
-## Energy Access Tiers, Threshold Grouping & Ranking Calculations
+﻿## Energy Access Tiers, Threshold Grouping & Ranking Calculations
 
 **Energy Access Tier Calculations**
 
@@ -74,13 +74,9 @@ ESMAP (2015).[33]
 
 **Calculating the three recommended options**
 
-The aim of the three recommended option process is to select the **best scoring
-options within the user selected energy access tiers**. To evaluate the three
-recommended options a two-step procedure is provided. First, the scoring of each
-technology solution across performance indicators is calculated. To do so a
-relative ranking is made for each technology option. In case there are 16
-options therefore there will be a scoring of 1 to 16 points (16 the highest, 1
-the lowest).
+The aim of the three recommended option process is to select the **best scoring  options within the user selected energy access tiers**. To evaluate the three recommended options a two-step procedure is provided. First, the scoring of each technology solution across performance indicators is calculated. To do so a relative ranking is made for each technology option. In case there are 16 options therefore there will be a scoring of 1 to 16 points (16 the highest, 1 the lowest).
+
+Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.
 
 In mathematical terms the ranking can be described as having a number of options
 $$\j = 1,2,\ldots,n$$, with an integer value assigned based on the relative

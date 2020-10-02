@@ -75,6 +75,7 @@ is built on Open Source principles
 
 ![](media/7e7bf52f716cd1368c4fb22704b8536b.png)
 
+Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.
   
 ## Using the tool
 
@@ -262,6 +263,8 @@ Example Threshold Levels for Cooking Solutions to meet that are set by the user:
 
 ![](media/74727fbcc1849a5ab568090fa1ce5130.png)
 
+Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.
+
 ### Step 13 – Make specific changes in technology specifications
 
 ![](media/80b0de49bdb6209979d4f911ded95a1d.png)
@@ -291,9 +294,3 @@ calculation steps is shown in the figure below.
 
 Please see the technical documentation for more details
   
-    
-      
-        
-          
-            
-              
