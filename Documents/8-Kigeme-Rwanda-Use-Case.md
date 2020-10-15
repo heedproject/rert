@@ -1,11 +1,12 @@
-**Humanitarian Engineering for Energy for Displacement (HEED)**
+﻿**Humanitarian Engineering for Energy for Displacement (HEED)**
 
 **Funded by the ESPRC Global Challenges Research Fund**
 
 **Renewable Energy Recommendations Tool (RERT) **
 
 =======
-# Use Case: Kigeme Camp Rwanda - Cooking Solutions Evaluation
+# **Use Case: Kigeme Camp Rwanda**
+**Cooking Solutions Evaluation**
 
 
 > **Authors:** Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)
@@ -13,7 +14,7 @@
 > v.2.0 10th October 2019
 
 =======
-## Overview 
+## **Overview**
 
 
 This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of cook stove interventions at Kigeme Camp, Rwanda, and was undertaken in June 2019. When seeking to use the RERT, it is recommended that this case study is read in conjunction with the RERT User Guide.
