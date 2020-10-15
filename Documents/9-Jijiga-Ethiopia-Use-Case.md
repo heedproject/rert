@@ -9,7 +9,7 @@
 
 > **Authors:** Sandy Robinson (Scene), Megan Lancaster (Mercy Corps), Cecilia Ragazzi (Mercy Corps)
 
-> v.1.0 29th September 2020
+> v.1.2 15th October 2020
 
 ## **Overview** 
 
