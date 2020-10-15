@@ -9,7 +9,7 @@
 
 > **Authors:** Sandy Robinson (Scene), Megan Lancaster (Mercy Corps), Cecilia Ragazzi (Mercy Corps)
 
-> v.1.2 15th October 2020
+> v.1.2 1st October 2020
 
 ## **Overview** 
 
@@ -81,6 +81,9 @@ Using these metrics, the RERT tool was input with the baseline information shown
 The scenario criteria detailed below is an attempt to balance these aims, whilst achieving a marked improvement in camp-wide cooking improvements. It is worth noting that high household costs for purchase of tier 2 stoves and fuel would likely require funding from the camp authority or external stakeholders.
 
 ![](https://github.com/heedproject/rert/blob/master/Documents/media/Jijiga/Table%201%20-%20Jijiga%20Cooking%201.PNG)
+
+
+
  <sup>1</sup> Sample size of 138 (household surveys)
 <sup>2</sup> [http://catalog.cleancookstoves.org/stoves/170](http://catalog.cleancookstoves.org/stoves/170)
 
