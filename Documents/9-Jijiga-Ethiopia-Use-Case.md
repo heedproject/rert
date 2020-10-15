@@ -1,4 +1,4 @@
-﻿**Humanitarian Engineering for Energy for Displacement (HEED)**
+**Humanitarian Engineering for Energy for Displacement (HEED)**
 
 **Funded by the ESPRC Global Challenges Research Fund**
 
@@ -63,13 +63,13 @@ The Somali region is the poorest and most conflict-affected region of Ethiopia. 
 
 The Kebri Beyah camp was established in 1991 for Somali refugees fleeing the civil war in their country. The camp is not organized, and the refugee housing is mixed with that of the host community. In the satellite image below (see Figure 5), the refugee settlement is demarcated in orange, with the host community adjacent. In Kebri Beyah, the administrating offices of the agencies are not located in the same area of the camp except for those of the ARRA and UNHCR. While both offices have grid connectivity, it is not reliable and outages of 4-8 hours every day are a common feature. Since the refugee HHs are located along with those of the host communities, individuals of the host community extend their grid lines and provide electricity supply for a fee. A separate kitchen area is marked within the premises, Households cook using a three stone fire or the traditional charcoal stove.
 
-![](/media/Jijiga/Figure_1_Jijiga_Map.png)
+![](media/Jijiga/Figure_1_Jijiga_Map.PNG)
 
 ## **Cooking Analysis & Results**
 This section provides an overview of the current cooking situation in Kebri Beyah (i.e. the baseline situation), detailing the processes involved in using the RERT and the recommendations provided by the tool.
 
 ### **Baseline Situation**
-The baseline cooking situation in Kebri Beyah is between tier 0 – 1 in terms of energy acess, with most of camp residents surveyed<sup>1</sup> using firewood or charcoal in basic 3-stone fires (23%), charcoal stoves (16%) and Tikili charcoal stoves<sup>2</sup> ) (7%). A further 4% of residents used kerosene stoves for cooking. The average cost of fuel within the study sample was 310 ETB/week. Residents were found to be aspirational towards use of Charcoal Tikikil, kerosene or ethanol stoves and few respondents highlighted electric stoves as an aspiration.
+The baseline cooking situation in Kebri Beyah is between tier 0 – 1 in terms of energy access, with most of camp residents surveyed<sup>1</sup> using firewood or charcoal in basic 3-stone fires (23%), charcoal stoves (16%) and Tikili charcoal stoves<sup>2</sup> ) (7%). A further 4% of residents used kerosene stoves for cooking. The average cost of fuel within the study sample was 310 ETB/week. Residents were found to be aspirational towards use of Charcoal Tikikil, kerosene or ethanol stoves and few respondents highlighted electric stoves as an aspiration.
 
 Using these metrics, the RERT tool was input with the baseline information shown in table 1 (see associated RERT_Tool_v1_JIJIGA for further information). The study considered several key decision-making criteria to ensure that the scenario ambitions remained reasonable, including:
 
@@ -80,7 +80,7 @@ Using these metrics, the RERT tool was input with the baseline information shown
 
 The scenario criteria detailed below is an attempt to balance these aims, whilst achieving a marked improvement in camp-wide cooking improvements. It is worth noting that high household costs for purchase of tier 2 stoves and fuel would likely require funding from the camp authority or external stakeholders.
 
-![](/media/Jijiga/Table_1_Jijiga_Cooking_1.png)
+![](media/Jijiga/Table_1_Jijiga_Cooking_1.PNG)
 
  <sup>1</sup> Sample size of 138 (household surveys)
 <sup>2</sup> [http://catalog.cleancookstoves.org/stoves/170](http://catalog.cleancookstoves.org/stoves/170)
@@ -94,7 +94,7 @@ Whilst improved cookstoves are potentially more impactful that fired clay cookst
 
 It is worth noting that within the bounds of the scenario criteria (table 1), the tool could not find technology interventions which would fulfil all criteria. An example of this is the inability to meet the medium health risk criteria within the bounds of the wider scenario criteria.
 
-![](/media/Jijiga/Table_2_Jijiga_Cooking_2.png)
+![](media/Jijiga/Table_2_Jijiga_Cooking_2.png)
 ## **Household Electricity**
 This section provides an overview of the current electricity access and provision situation in Kebri Beyah (i.e. the baseline situation), detailing the processes involved in using the RERT and the recommendations provided by the tool.
 
@@ -107,7 +107,7 @@ Dominant camp resident aspirations were to have access to or be able to afford e
 
 Based on the above data, the scenario data set out in table 3 was defined, including achievable initial investment costs but focusing particularly on lowering electricity costs and improving reliability and affordability for camp households.
 
-![](/media/Jijiga/Table_3_Jijiga_HH_electricity_1.png)
+![](media/Jijiga/Table_3_Jijiga_HH_electricity_1.png)
 
 ### **Household Recommendations**
 Based on the previous criteria, the RERT recommends implementation of centralised wind or a combination of wind / solar PV alongside lithium-ion batteries. These are high cost interventions, selected due the fact that any system implemented in Kebri Beyah would be competing with an established diesel and national grid supplied electricity system. The RERT does not account for the quality of supply from generation sources, using average hours/day and hours/evening to calculate appropriate interventions.
@@ -116,7 +116,7 @@ Whilst high cost, the recommended interventions achieve several goals, including
 
 Affordability is very low across the board for household electricity solutions, due to the high initial cost of both centralised and decentralised options, although camp supported, or subsidised, electricity provision could bring costs in line with household incomes.
 
-![](/media/Jijiga/Table_4_Jijiga_HH_electricity_2.png)
+![](media/Jijiga/Table_4_Jijiga_HH_electricity_2.png)
 
 ## **Central Camp Electricity**
 
@@ -125,14 +125,14 @@ Camp facilities, including the camp administration offices, accommodation buildi
 
 With sufficient energy access, the focus of this section is to define interventions which meet wider criteria than improvements in energy access alone. This includes lower running costs, CO2 emissions reductions and system robustness (e.g. backup solutions). To this end, scenario criteria were set to ensure affordable running costs and emissions reductions, whilst not limiting costs.
 
-![](/media/Jijiga/Table_5_Jijiga_camp_electricity_1.png)
+![](media/Jijiga/Table_5_Jijiga_camp_electricity_1.png)
 
 ### **Camp Recommendations**
 The recommendations provided all centre on low carbon solutions, including 100% solar, 100% wind and multi-technology solutions. All recommendations included battery backup systems due to the intermittent grid issues at Kebri Beyah camp. All recommendations show a complete reduction in fuel emissions, though it is worth noting that any intervention would have a carbon cost associated to the procurement and deployment of new technologies.
 
 The major defining factor across the recommendations is cost. Solar PV is both the cheapest option and has the lowest operational cost per year. This reflects similar projects in the humanitarian sector, where solar PV is preferred for refugee camp situations. The addition of wind energy generation would provide some robustness to the energy system when solar irradiation is low, although an element of backup is already included for these situations through energy storage. Wind is significantly more expensive and increases operational costs, reducing its viability in this scenario.
 
-![](/media/Jijiga/Table_6_Jijiga_camp_electricity_2.png)
+![](media/Jijiga/Table_6_Jijiga_camp_electricity_2.png)
 
 ## **Use Case Conclusions**
 
@@ -142,7 +142,7 @@ The below section compares the recommendations and outputs of the RERT, as detai
 
 Table 7 sets out the recommendations as set out in the RERT and by the in-camp assessment. A discussion of the recommendations is provided below.
 
-![](/media/Jijiga/Table_7_Jijiga_Recommendations.png)
+![](media/Jijiga/Table_7_Jijiga_Recommendations.png)
 
 ### **Household Cooking**
 The RERT defined solutions which are feasible and provide energy access improvements in Kebri Beyah, although there is a lack of ambition in comparison to the in-camp assessment. The key reason for this is that the tool was instructed to target energy tier 2 (a significant jump from the original 0.5) and to make stoves affordable to households. The RERT did not consider electricity access for electric stoves, which greatly increases the feasibility of such solutions.
@@ -166,6 +166,6 @@ There are no solar streetlights currently operating at Kebri Beyah. This would b
 ## **Appendix A – Data Inputs**
 
 
-![](/media/Jijiga/Appendix_A_Jijiga_1.png)
+![](media/Jijiga/Appendix_A_Jijiga_1.png)
 
-![](/media/Jijiga/Appendix_A_Jijiga_2.png)
+![](media/Jijiga/Appendix_A_Jijiga_2.png)
