@@ -135,7 +135,9 @@ Camp facilities, including the camp administration offices, accommodation buildi
 
 With sufficient energy access, the focus of this section is to define interventions which meet wider criteria than improvements in energy access alone. This includes lower running costs, CO2 emissions reductions and system robustness (e.g. backup solutions). To this end, scenario criteria were set to ensure affordable running costs and emissions reductions, whilst not limiting costs.
 
-![](media/Jijiga/Table_5_Jijiga_camp_electricity_1.PNG)
+
+
+![](media/Jijiga/Table_5_Jijiga_Camp_electricity_1.PNG)
 
 
 
@@ -145,7 +147,7 @@ The recommendations provided all centre on low carbon solutions, including 100% 
 
 The major defining factor across the recommendations is cost. Solar PV is both the cheapest option and has the lowest operational cost per year. This reflects similar projects in the humanitarian sector, where solar PV is preferred for refugee camp situations. The addition of wind energy generation would provide some robustness to the energy system when solar irradiation is low, although an element of backup is already included for these situations through energy storage. Wind is significantly more expensive and increases operational costs, reducing its viability in this scenario.
 
-![](media/Jijiga/Table_6_Jijiga_camp_electricity_2.PNG)
+![](media/Jijiga/Table_6_Jijiga_Camp_electricity_2.PNG)
 
 
 
