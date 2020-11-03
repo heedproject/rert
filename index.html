@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158739630-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-158739630-1');
+    </script>
+    
+    <!-- pandoc template based on mdBook theme -->
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="author" content="Rembrandt Koppelaar (Scene)" />
+    <meta name="author" content="Jonathon Nixon (Coventry University)" />
+    <meta name="dcterms.date" content="2020-11-03" />
+    <meta name="keywords" content="HEED, RERT" />
+    <title>Documentation for the HEED RER Tool</title>
+
+    <link rel="shortcut icon" href="template/favicon.ico">
+    <link rel="stylesheet" href="template/screen.css" />
+    <link rel="stylesheet" href="template/print.css" media="print">
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        span.underline{text-decoration: underline;}
+        div.column{display: inline-block; vertical-align: top; width: 50%;}
+    </style>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="template/fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+     var mathElements = document.getElementsByClassName("math");
+     var macros = [];
+     for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+       katex.render(texText.data, mathElements[i], {
+        displayMode: mathElements[i].classList.contains('display'),
+        throwOnError: false,
+        macros: macros,
+        fleqn: false
+       });
+    }}});
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+</head>
+<body class="light">
+
+
+    <!-- Provide site root to javascript -->
+    <script type="text/javascript">
+        var path_to_root = "";
+        var default_theme = "light";
+    </script>
+
+    <!-- Work around some values being stored in localStorage wrapped in quotes -->
+    <script type="text/javascript">
+        try {
+            var theme = localStorage.getItem('mdbook-theme');
+            var sidebar = localStorage.getItem('mdbook-sidebar');
+
+            if (theme.startsWith('"') && theme.endsWith('"')) {
+                localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+            }
+
+            if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+            }
+        } catch (e) { }
+    </script>
+
+    <!-- Set the theme before any content is loaded, prevents flash -->
+    <script type="text/javascript">
+        var theme;
+        try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+        if (theme === null || theme === undefined) { theme = default_theme; }
+        document.body.className = theme;
+        document.querySelector('html').className = theme + ' js';
+    </script>
+
+    <!-- Hide / unhide sidebar before it is displayed -->
+    <script type="text/javascript">
+        var html = document.querySelector('html');
+        var sidebar = 'hidden';
+        if (document.body.clientWidth >= 1080) {
+            try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+            sidebar = sidebar || 'visible';
+        }
+        html.classList.remove('sidebar-visible');
+        html.classList.add("sidebar-" + sidebar);
+    </script>
+
+    <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <div class="toc">
+            <ul>
+            <li><a href="#user-guide"><span class="toc-section-number">1</span> User Guide</a>
+            <ul>
+            <li><a href="#tool-use-background"><span class="toc-section-number">1.1</span> Tool use background</a></li>
+            <li><a href="#five-steps-in-heed-rer-tool-usage"><span class="toc-section-number">1.2</span> Five Steps in HEED-RER Tool Usage</a></li>
+            <li><a href="#using-the-tool"><span class="toc-section-number">1.3</span> Using the tool</a></li>
+            <li><a href="#overview-of-models-and-methods-used"><span class="toc-section-number">1.4</span> Overview of Models and Methods used</a></li>
+            </ul></li>
+            <li><a href="#technical-documentation-for-tool-calculations"><span class="toc-section-number">2</span> Technical Documentation for Tool Calculations</a>
+            <ul>
+            <li><a href="#overview-of-calculation-flow"><span class="toc-section-number">2.1</span> Overview of Calculation Flow</a></li>
+            <li><a href="#energy-demand-calculations"><span class="toc-section-number">2.2</span> Energy Demand Calculations</a></li>
+            <li><a href="#energy-supply-calculations"><span class="toc-section-number">2.3</span> Energy Supply Calculations</a></li>
+            <li><a href="#option-indicator-calculations"><span class="toc-section-number">2.4</span> Option Indicator calculations</a></li>
+            <li><a href="#energy-access-tiers-threshold-grouping-ranking-calculations"><span class="toc-section-number">2.5</span> Energy Access Tiers, Threshold Grouping &amp; Ranking Calculations</a></li>
+            <li><a href="#references"><span class="toc-section-number">2.6</span> References</a></li>
+            <li><a href="#use-case-scenario"><span class="toc-section-number">2.7</span> Use Case Scenario</a></li>
+            <li><a href="#use-case-methodology"><span class="toc-section-number">2.8</span> Use Case methodology</a></li>
+            <li><a href="#kigeme-use-case-conclusions"><span class="toc-section-number">2.9</span> Kigeme Use Case Conclusions</a></li>
+            <li><a href="#discussion"><span class="toc-section-number">2.10</span> Discussion</a></li>
+            </ul></li>
+            <li><a href="#use-case-kebri-beyah-refugee-camp-ethiopia"><span class="toc-section-number">3</span> <strong>Use Case:</strong> Kebri Beyah Refugee Camp, Ethiopia</a>
+            <ul>
+            <li><a href="#overview"><span class="toc-section-number">3.1</span> Overview</a></li>
+            <li><a href="#use-case-scenario-1"><span class="toc-section-number">3.2</span> Use Case Scenario</a></li>
+            <li><a href="#cooking-analysis-results"><span class="toc-section-number">3.3</span> Cooking Analysis &amp; Results</a></li>
+            <li><a href="#household-electricity"><span class="toc-section-number">3.4</span> Household Electricity</a></li>
+            <li><a href="#central-camp-electricity"><span class="toc-section-number">3.5</span> Central Camp Electricity</a></li>
+            <li><a href="#use-case-conclusions"><span class="toc-section-number">3.6</span> Use Case Conclusions</a></li>
+            <li><a href="#appendix-a-data-inputs"><span class="toc-section-number">3.7</span> Appendix A – Data Inputs</a></li>
+            </ul></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="page-wrapper">
+
+        <div class="page">
+
+            <div id="menu-bar" class="menu-bar">
+                <div id="menu-bar-sticky-container">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Documentation for the HEED RER Tool</h1>
+
+                    <div class="right-buttons">
+                        <a onclick="window.print()" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fas fa-print"></i>
+                        </a>
+                        <a href="RERT_Documentation.pdf" title="View PDF file" aria-label="View PDF file">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                        </div> 
+                </div>
+            </div>
+
+
+            <div id="content" class="content">
+                <main>
+<p><img src="media/c1b04cd81c7afefa111aeac4b966ad18.png" /></p>
+<p><strong>Humanitarian Engineering for Energy for Displacement (HEED)</strong></p>
+<h1 data-number="1" id="user-guide"><span class="header-section-number">1</span> User Guide</h1>
+<p><strong>This is the HEED-RER tool user guide.</strong> It is designed to provide an accessible step-wise explanation for users on how to navigate the Excel Tool spreadsheet.</p>
+<p><a href="https://github.com/heedproject/rert" class="uri">https://github.com/heedproject/rert</a> Version 1.2</p>
+<blockquote>
+<p>Developed by: Rembrandt Koppelaar (Scene Connect) Reviewed by: Jonathan Nixon (Coventry University)</p>
+</blockquote>
+<h2 data-number="1.1" id="tool-use-background"><span class="header-section-number">1.1</span> Tool use background</h2>
+<p><strong>The Humanitarian Engineering and Energy for Displacement (HEED) project aims to understand the energy needs of forcibly displaced people to increase access to safe, sustainable and affordable energy.</strong></p>
+<p><strong>The HEED Renewable Energy Recommendations tool (HEED-RERT) for Camps:</strong></p>
+<p>The first version (v1) of the tool was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and August 2019.</p>
+<p>It aims <strong>to provide technology recommendations based on energy-economic-environment-health performance indicators</strong> to provide support for <strong>how best to increase energy access</strong> in refugee camps and improve sustainability for i) <strong>Cooking Energy, ii) Household Lighting and Electricity, iii) Community/Camp central Lighting and Electricity.</strong></p>
+<p>Users engage with an <strong>Excel spreadsheet</strong> where they answer questions to describe the population of the camp, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy and cooking options. This allows the <strong>user to localise the results into the local context</strong> as much as possible.</p>
+<p>Results are <strong>presented in the form of an indicator dashboard</strong> where different <strong>technology options can be compared</strong> with their performance indicator scoring.</p>
+<ol type="1">
+<li><p>It is recommended for each camp (or part of a camp) <strong>to save the spreadsheet with a new name as</strong> its own self-contained version. To this end information can be filled in on the overview tab in the sheet.</p></li>
+<li><p><strong>The tool has been built with Excel 2018 and Excel 2019 versions</strong>. It is not backwards compatible with older versions at this time. Please use recent versions of Microsoft Excel to use it.</p></li>
+<li><p><strong>Feel free to modify and adjust the tool for your own purposes.</strong> HEED-RERT is built on Open Source principles</p></li>
+</ol>
+<h2 data-number="1.2" id="five-steps-in-heed-rer-tool-usage"><span class="header-section-number">1.2</span> Five Steps in HEED-RER Tool Usage</h2>
+<h3 data-number="1.2.1" id="cooking-stove-fuel-combinations-currently-comparable"><span class="header-section-number">1.2.1</span> Cooking Stove &amp; Fuel Combinations <em>currently</em> comparable</h3>
+<p><img src="media/15a47cf0769db8d8f48dd2d949a09d55.png" /></p>
+<h3 data-number="1.2.2" id="household-lighting-electricity-options-currently-comparable-in-rert-v1"><span class="header-section-number">1.2.2</span> Household Lighting &amp; Electricity options <em>currently</em> comparable in RERT v1</h3>
+<p><img src="media/e1e84879cde1cd5e92c1e333f1ad4357.png" /></p>
+<h3 data-number="1.2.3" id="camp-community-infrastructure-energy-currently-comparable-in-rert-v1"><span class="header-section-number">1.2.3</span> Camp community / infrastructure energy <em>currently</em> comparable in RERT v1</h3>
+<p><img src="media/d94fc52962d8ff38edf99692da9930c3.png" /></p>
+<h3 data-number="1.2.4" id="dashboard-result-energy-technologies-compared-on-indicators"><span class="header-section-number">1.2.4</span> Dashboard Result: Energy Technologies Compared on Indicators</h3>
+<p><img src="media/12624be320cd25368acedadc502c9eaf.png" /></p>
+<h3 data-number="1.2.5" id="the-tool-identifies-the-top-3-best-scoring-options"><span class="header-section-number">1.2.5</span> The Tool Identifies the Top 3 Best Scoring Options</h3>
+<p><img src="media/7e7bf52f716cd1368c4fb22704b8536b.png" /></p>
+<p>Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.</p>
+<h2 data-number="1.3" id="using-the-tool"><span class="header-section-number">1.3</span> Using the tool</h2>
+<h3 data-number="1.3.1" id="step-1-opening-the-spreadsheet"><span class="header-section-number">1.3.1</span> Step 1 – Opening the Spreadsheet</h3>
+<p><strong>You need to enable “macro’s” when opening the spreadsheet when prompted otherwise the results cannot be calculated.</strong></p>
+<p><img src="media/b472f5a5a1c2eaa0b448f3dd7b7d9e18.png" /></p>
+<p><strong>For Help about this see the Microsoft Office Documentation here:</strong><br />
+<a href="https://support.office.com/en-us/article/enable-or-disable-macros-in-office-files-12b036fd-d140-4e74-b45e-16fed1a7e5c6" class="uri">https://support.office.com/en-us/article/enable-or-disable-macros-in-office-files-12b036fd-d140-4e74-b45e-16fed1a7e5c6</a></p>
+<h3 data-number="1.3.2" id="step-2-fill-in-overview-start-here---tab"><span class="header-section-number">1.3.2</span> Step 2 – Fill in Overview – START HERE - tab</h3>
+<p><img src="media/81cdce91ffc1bd13e6ef28b127fe58e8.png" /></p>
+<ul>
+<li><p>Fill this in to keep track of saved versions</p></li>
+<li><p>Fill this in with country, camp name and which <em>currency</em> to use in the calculations</p></li>
+<li><p>Select if you want to look only at i) cooking energy use, ii) at household electricity and lighting, iii) community/central lighting &amp; electricity, or iv) all three of these</p></li>
+</ul>
+<p><img src="media/50f27b5363e8e5457191c009027642bc.png" /></p>
+<h3 data-number="1.3.3" id="step-3-select-tool-modes"><span class="header-section-number">1.3.3</span> Step 3 – Select Tool Modes</h3>
+<p><img src="media/81cdce91ffc1bd13e6ef28b127fe58e8.png" /></p>
+<p>Select here if you are a technical user or a regular user. If you select the technical user option additional spreadsheet tabs will be unlocked and made visible:</p>
+<ul>
+<li><p>Calc_Energy_Demand – containing energy demand calculations</p></li>
+<li><p>Calc_Energy_Supply – containing demand-supply matching calculations</p></li>
+<li><p>Calculation_KPIs – containing the calculations for performance indicators</p></li>
+</ul>
+<p><img src="media/2a8b1724481ee36bc5561f322aaeb2d4.png" /></p>
+<h3 data-number="1.3.4" id="step-4---guide-to-provide-camp-information-where"><span class="header-section-number">1.3.4</span> Step 4 - Guide to Provide Camp Information – where</h3>
+<p>To create an <em>accurate baseline of the energy situation in the Entire Camp</em>, you need to answer close to 100 questions. These are divided in five main areas (spreadsheet tabs):</p>
+<p><img src="media/7e56c3f49d490af8669bcb2806fd7047.png" /></p>
+<ul>
+<li><p>#1CampMapping, lists 9 questions about the number of people living in the camp, how many households operate businesses, its geography and the availability of vacant space,</p></li>
+<li><p>#2CentralEnergyNeeds, lists 20 questions about camp buildings, the source of electricity and heat, the camp’s food centres, water supply, and street lights.</p></li>
+<li><p>#3HouseholdCooking, lists 10 questions about cooking stoves and fuel use</p></li>
+<li><p>#4 HouseholdElectricityLighting, lists 27 questions about use of mobile phones, lighting options available, and electrical appliances.</p></li>
+</ul>
+<h3 data-number="1.3.5" id="step-5---guide-to-provide-camp-information---how"><span class="header-section-number">1.3.5</span> Step 5 - Guide to provide Camp Information - How</h3>
+<p>There are two types of questions to fill in for each camp</p>
+<ul>
+<li>Multiple choice (yellow fields) with a selection drop down list:</li>
+</ul>
+<p><img src="media/8e7b558e25152ecff2656c1142cda86b.png" /></p>
+<ul>
+<li>Open questions (blue fields) where you need to fill in a quantity or a name</li>
+</ul>
+<p><img src="media/f2a4337c2da748faf0999717a7c46fea.png" /></p>
+<p>In some cases you may be prompted that you have filled in an answer that falls outside of the range that is possible (for example 12 out of 10 is not possible). If you fill in more or less than 10 when the totals should sum up to 10, you will be prompted to make sure as few errors as possible are entered.</p>
+<h3 data-number="1.3.6" id="step-6-calculate-results-to-obtain-a-baseline"><span class="header-section-number">1.3.6</span> Step 6 – Calculate Results to obtain a Baseline</h3>
+<p><img src="media/36816496c44b9749bdc7baf58a4d374f.png" /></p>
+<p>The results are calculated in the “results” tab separately for each type of energy use:</p>
+<ol type="1">
+<li><p>Cooking Energy,</p></li>
+<li><p>Household Lighting and Electricity,</p></li>
+<li><p>Community Lighting and Electricity.</p></li>
+</ol>
+<p>After you have filled in the answers to the tool questions for the first time, you can go to the results section and click on the calculate buttons.</p>
+<p><strong>Buttons for calculating results:</strong></p>
+<p><img src="media/f9bce42d6f9b132c6389945f2483261a.png" /></p>
+<p><img src="media/d323bbb10adffafc1576232fb6f672fa.png" /></p>
+<p><img src="media/d1defec25a22c97c91c193a95a7a4cc2.png" /></p>
+<h3 data-number="1.3.7" id="step-7-read-the-baseline-performance"><span class="header-section-number">1.3.7</span> Step 7 – Read the Baseline Performance</h3>
+<p><img src="media/0cd2fbc225f5e5f3d7ebca1c7c41096d.png" /></p>
+<p>Baseline Performance Of Current Camp Situation</p>
+<ol type="1">
+<li><p>Cost 35,866 USD if existing stoves were to be bought again</p></li>
+<li><p>Cost 14,830 USD to buy stove fuel per month</p></li>
+<li><p>4,497 tonnes CO2 emissions per year from cooking stoves in camp</p></li>
+</ol>
+<p>And so forth for all indicators</p>
+<h3 data-number="1.3.8" id="step-8-set-energy-access-tier-to-achieve"><span class="header-section-number">1.3.8</span> Step 8 – Set Energy Access Tier to Achieve</h3>
+<p>In the tab “Scenario Builder” you can set the Energy Access Tiers for Cooking, Lighting, Street Lighting, Electricity and Heating that the recommendations need to provide for:</p>
+<p><img src="media/ad5e34579fa757840c3b8964bca51818.png" /></p>
+<p>The impact is that the 3 main recommended solutions will be selected within the desired tier of energy access (e.g. if selecting tier 1 the recommendations will be tier 1 options)</p>
+<p><img src="media/4456e499ea8829af981a75aff1616012.png" /></p>
+<h3 data-number="1.3.9" id="step-9-what-are-energy-access-tiers"><span class="header-section-number">1.3.9</span> Step 9 – What are Energy Access Tiers?</h3>
+<p>The Energy Access Tiers framework was setup by ESMAP (Energy Sector Management Assistance Programme) to provide a common approach to understand the energy access for different types of energy use. It contains tables that outline under which conditions people or families achieve energy access levels ranging from 0 to 5 (see table below for the different type of indices).</p>
+<p>More details can be found here: <a href="https://www.esmap.org/node/55526" class="uri">https://www.esmap.org/node/55526</a></p>
+<p><img src="media/5db34f9b29606db764dc505a2d47feca.png" /></p>
+<p><img src="media/8bff17a3196011f15ecd27b288418791.png" /></p>
+<h3 data-number="1.3.10" id="step-10-set-thresholds-for-indicators"><span class="header-section-number">1.3.10</span> Step 10 – Set thresholds for indicators</h3>
+<p>In the tab “Scenario Builder” you can also set the minimum or maximum thresholds that a solution needs to take into account. Each technology solution is weighted on how many threshold option set by you it meets.</p>
+<p>If there are 10 performance indicators (like for Cooking in v1) each cooking stove + fuel solution can receive a score between 0 and 10 points</p>
+<p>Thresholds can be compared and set relative to the baseline situation. For example set a threshold that the cooking fuel cost per month should be at maximum as high as the current expenditure, or that the carbon dioxide emissions should be 50% lower in tonnage of CO2 per year.</p>
+<p>Example Threshold Levels for Cooking Solutions to meet that are set by the user:</p>
+<p><img src="media/3a4daea2a801605412efef07988b334c.png" /></p>
+<h3 data-number="1.3.11" id="step-11-re-run-results-with-your-energy-access-tier-thresholds"><span class="header-section-number">1.3.11</span> Step 11 – Re-run results with your Energy Access Tier + Thresholds</h3>
+<p><img src="media/36816496c44b9749bdc7baf58a4d374f.png" /></p>
+<p><strong>You can now re-run the results:</strong></p>
+<ol type="1">
+<li><p>Cooking Energy,</p></li>
+<li><p>Household Lighting and Electricity,</p></li>
+<li><p>Community Lighting and Electricity.</p></li>
+</ol>
+<p><img src="media/f9bce42d6f9b132c6389945f2483261a.png" /></p>
+<p><img src="media/d1defec25a22c97c91c193a95a7a4cc2.png" /></p>
+<p><img src="media/d323bbb10adffafc1576232fb6f672fa.png" /></p>
+<h3 data-number="1.3.12" id="step-12-interpret-your-results"><span class="header-section-number">1.3.12</span> Step 12 – Interpret your Results</h3>
+<p><img src="media/74727fbcc1849a5ab568090fa1ce5130.png" /></p>
+<p>Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.</p>
+<h3 data-number="1.3.13" id="step-13-make-specific-changes-in-technology-specifications"><span class="header-section-number">1.3.13</span> Step 13 – Make specific changes in technology specifications</h3>
+<p><img src="media/80b0de49bdb6209979d4f911ded95a1d.png" /></p>
+<p>In addition to the camp questions, in the “Parameter-Listing tab there are several hundred values that define the technologies compared in the model and the calculations.</p>
+<p>For example, if you have specific data for a specific stove you can adjust that here, if you have specific information about the cost of solar, if you have data on the energy use of appliances, and so forth.</p>
+<p>Any value in green can be edited here directly and this will change the calculations. Once editing a value here (or in the camp questions) you can run the results again and get an updated insight in the performance of the solutions.</p>
+<h2 data-number="1.4" id="overview-of-models-and-methods-used"><span class="header-section-number">1.4</span> Overview of Models and Methods used</h2>
+<p>The user guide explained the usage process for the RER tool. More detailed technical information can be found in the technical documentation made to describe the calculations carried out in the tool. An overview of the calculation steps is shown in the figure below.</p>
+<figure>
+<img src="media/bf4ed8ad8815b791bd9411d8fc825d9e.jpg" alt="A screenshot of a cell phone Description automatically generated" /><figcaption aria-hidden="true">A screenshot of a cell phone Description automatically generated</figcaption>
+</figure>
+<p>Please see the technical documentation for more details</p>
+<h1 data-number="2" id="technical-documentation-for-tool-calculations"><span class="header-section-number">2</span> Technical Documentation for Tool Calculations</h1>
+<blockquote>
+<p>Authors: Rembrandt Koppelaar (Scene), Jonathon Nixon (Coventry University)</p>
+</blockquote>
+<h2 data-number="2.1" id="overview-of-calculation-flow"><span class="header-section-number">2.1</span> Overview of Calculation Flow</h2>
+<p>The calculation setup is a linear flow based on five calculation “modules”, and three mechanisms by which the user adds data and conditions for the calculations (see Figure 1). The setup is designed without iteration in a demand-driven manner, in that supply is calculated to match demands, in contrast to an equilibrium-based calculation. Any iterations will be carried out by the user, by enabling a real-time output change due to user input alterations.</p>
+<figure>
+<img src="media/bf4ed8ad8815b791bd9411d8fc825d9e.jpg" alt="A screenshot of a cell phone Description automatically generated" /><figcaption aria-hidden="true">A screenshot of a cell phone Description automatically generated</figcaption>
+</figure>
+<p><strong>Figure 1.</strong> Calculation Flow of the RERT Tool</p>
+<p>Each of the calculation steps are described in the next sections including the parameters and user inputs as applicable. The energy demand calculations (B) are described in section 2, the calculations of supply options to meet the demands (C) are described in section 3. The calculation of performance indicators for energy supply options (D) is described in section 4, and the threshold grouping &amp; ranking based on energy access tiers and indicator thresholds (E) is described in section 5.</p>
+<h2 data-number="2.2" id="energy-demand-calculations"><span class="header-section-number">2.2</span> Energy Demand Calculations</h2>
+<p><strong>Generalised Equations for Energy Use Calculations</strong></p>
+<p>Energy use <span class="math display">E</span> in kWh is calculated for sets of devices with <span class="math display">i = 1,2\ldots
+n</span>as an index for the category of device, including cooking, lamps, streetlights, electric appliances, and electricity generation devices. The index <span class="math display">j = 1,2\ldots n</span> denotes the sub-type within a category, such as the type of cooking device for example, and <span class="math display">k = 1,2\ldots n</span> is an index for energy carrier type used including individual fuels and electricity. Energy use per period of time is thereby calculated as:</p>
+<p><span class="math display">E_{\text{ijk}} = \ \frac{c_{\text{ijk}} \cdot \ u_{\text{ij}} \cdot
+\sum_{t}^{n}A_{\text{ijt}}}{\varepsilon_{\text{ijk}}}</span> (1)</p>
+<p>With <span class="math display">\varepsilon_{\text{ij}}</span> as the efficiency in %, <span class="math display">c</span> as a capacity parameter typically in kW, <span class="math display">u</span> as a utilisation parameter indicating the proportion of capacity used, <span class="math display">A_{\text{ij}}</span> as a variable for average daily device use in hours. The time index <span class="math display">t = 1,2\ldots n</span> indicated the number of days in a month to obtain monthly device energy use.</p>
+<p>Fuel used in weight or volume unit can then be calculated as:</p>
+<p><span class="math display">F_{\text{ijk}} = \frac{\text{\ E}_{\text{ijk}} \cdot 3.6}{f_{\text{ijk}}}</span> (2)</p>
+<p>With <span class="math display">f_{\text{ijk}}</span> as a variable for fuel energy content per fuel type <span class="math display">\text{k\ }</span>in MJ per kilogram for solid fuels or MJ per m3 for gaseous fuels.</p>
+<p><strong>Energy Use – Cooking Specifics</strong></p>
+<p>Cooking energy demand is calculated in an integral manner with supply, as the energy need is highly interrelated with the type of stove used and the efficiency of fuel utilisation. First, the tool estimates which cooking devices are used based on how common they are (X,Y,Z, stoves of type A,B,C, per 10 families) and what type of fuels are used for these stoves. Based on the questions posed to the user and particular answers the current fuel requirements are calculated. The equation (1) above for cooking devices <span class="math display">i = c</span> is used to calculate cooking device energy usage. Fuel used for cooking in weight or volume unit is calculated with equation (2) as applicable. Cookstove fuel energy content data was taken from Vianello et al. (2016).[1]</p>
+<p>The combination of stoves and fuels results in a simplified approximation of the amount of “fuel stacking” that occurs, by allowing the user to set different fuel ratio’s per stove that is utilised on average. Fuel stacking is defined as the alternation between use of different fuels due to various factors including meal types, fuel prices, and disposable cash available.[2]</p>
+<p>To establish the type of cooking devices <span class="math display">\text{j\ }</span>and their range of usable fuels <span class="math display">k</span> the literature was consulted. The aim was to find distinct devices by energy carrier type and efficiency parameter <span class="math display">\varepsilon_{\text{ijk}}</span>. First, international standards to make cookstoves comparable in terms of performance were consulted, of which the most prominent is the IWA standard was developed by the Global Alliance for Clean Cookstoves (GACC). The IWA standard classifies cooking stoves by tiers from 0 to 4 based on their efficiency, carbon monoxide and particular matter emissions (outdoor and indoor), and use safety. This standard was adopted to link to the efficiency parameter <span class="math display">\varepsilon_{\text{ijk}}</span> and for calculating air pollution/health indicators.</p>
+<p>Second, studies with a comprehensive overview of different classifications of cooking stoves (traditional, improved, rocket etc.) were consulted.[3] As well as the categories of legacy and basic ICS, Intermediate ICS, Advanced ICS and Modern fuel stove as per Vianello et al. (2016)[1] Third datasets were analysed for cooking stoves in terms of their design, fuel use and IWA standard rating from lab and field tests. The main data sourced used was The Clean Cooking Alliance online cookstove catalogue with 476 stoves of which 81 have IWA efficiency ratings, and 60 have IWA indoor-emission ratings (see for the online catalogue: catalog.cleancookstoves.org). These were further supplemented with operational testing data for 15 different cookstoves on IWA parameters under lab conditions from Dean et al. (2015).[4] And with data from operational testing of fifty cooking stoves for efficiency, CO emissions and PM emissions by MacCarty et al. (2010).[5]</p>
+<p>Standard categories for cookstoves as used in Viannelo et al. (2016)[1] were not found helpful, to make a meaningful distinction between the efficiency of cookstoves. Cookstoves in particular categories were not found to correlate with IWA tiers of efficiency and indoor emissions, plausibly due to the fluidity of the categories in defining the stoves the variety of quality of builds within these categories. The data analysis did yield relevant results, however, resulting in a new classification of 8 types of cookstoves. These are distinct in their fuel use and IWA efficiency tiers, so as to form a meaningful classification for household cookstoves in terms of IWA efficiency and IWA indoor emissions. The subsets were defined based on manually analysing distinct IWA values based on specific properties of cookstoves in the above datasets, such as the difference between batch-loaded and side-fed cookstoves, which together result in the classification as per table 2 and 3 below for IWA efficiency, and IWA indoor-emissions.</p>
+<p>The capacity values for cookstoves <span class="math display">c_{i = c,jk}</span> and utilisation parameter <span class="math display">u_{i = c,jt}</span> were in the first iteration simplified to a standardised value of 1.0 kW for cookstove capacity, and an assumed 0.8 estimated for utilisation, indicating 80% utilisation of a cookstove’s capacity as it will not be fully loaded with wood or another fuel. The time of use variable value <span class="math display">A_{\text{ijt}}</span>was approximated at 2.5 hours per day assuming three meals per day. Analysis of these parameters has been carried out by Johnson &amp; Chiang (2015)[6], Ruiz-Mercado et al. (2012)[7], Bentson et al. (2013)[8], Pillarisetti et al. (2014)[9].</p>
+<p><strong>Categorisation of stove subtypes:</strong></p>
+<ul>
+<li><p>Stoves built with (unfired) clay components are typically of a tier 0 to 1 IWA efficiency and a 0 to 1 IWA indoor-emissions, unless they have advanced features such as a chimney.</p></li>
+<li><p>Stoves that are built with ceramic components (heated clay) in a metal housing are typically of a tier 2 IWA efficiency and a 0 to 1 IWA indoor-emissions efficiency.</p></li>
+<li><p>Stoves that are side-fed are typically of a Tier 0 to 2 IWA efficiency and 0 to 2 IWA indoor-emissions. If they have a fan they are on the higher spectrum within these IWA efficiency and indoor-emissions ranges.</p></li>
+<li><p>Stoves that are batch-loaded made from metal and burn on charcoal typically have a 3-4 efficiency tier and a 3-4 indoor emissions tier.</p></li>
+<li><p>Stoves that are batch-loaded made from metal and burn on wood typically have a 2 IWA efficiency tier and a 0-1 indoor emissions tier.</p></li>
+<li><p>No substantial distinction was found between IWA tiers for stoves with a fan as a single variable.</p></li>
+</ul>
+<p><strong>Fuels specific:</strong></p>
+<ul>
+<li><p>Ethanol/Alcohol burning stoves typically are of a Tier 4 efficiency and Tier 4 indoor-emissions category</p></li>
+<li><p>Stoves that can also burn on crop residues typically have a 0-2 IWA efficiency and 0-2 IWA indoor emissions.</p></li>
+<li><p>Stoves that burn on liquid petroleum gas typically have a 3 IWA tier for efficiency and indoor emissions.</p></li>
+<li><p>Stoves that burn pellets with a gasifier typically have a 3 to 4 IWA tier for indoor emissions, and a 3 to 4 IWA efficiency for high power thermal efficiency, whilst their low power specific consumption tier can vary between 0 and 4 depending on design.</p></li>
+<li><p>Stoves that burn on briquettes vary from 0 to 2 IWA Tier for efficiency and 0-2 Tier for indoor emissions.</p></li>
+</ul>
+<p>Note that more data is required to properly analyse these findings (outside of the scope of the renewable energy recommendations tool effort/HEED project) as the datasets utilised and available are too limited to draw robust conclusions.</p>
+<p><strong>Table 1.</strong> Overview of cook-stoves implemented in the model in relation to utilisable fuel types</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Fuel type Cookstove</strong></th>
+<th>Wood</th>
+<th>Charcoal</th>
+<th>Pellets</th>
+<th>Ethanol</th>
+<th>Kerosene</th>
+<th>LPG</th>
+<th>Biogas</th>
+<th>Electricity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Traditional three stone with pot stove</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Unfired Clay Stove</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ceramic Clay stove in metal housing</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Side-fed metal stove</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Batch-loaded metal stove</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Pellet gasifier stoves</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LPG/Bio-gas stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Liquid Fuel stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Electric cooking stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 2.</strong> overview of cook-stoves implemented in the model in relation to IWA efficiency tiers</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Fuel type Cookstove</strong></th>
+<th>Wood</th>
+<th>Charcoal</th>
+<th>Pellets</th>
+<th>Ethanol</th>
+<th>Kerosene</th>
+<th>LPG</th>
+<th>Biogas</th>
+<th>Electricity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Traditional three stone with pot stove</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Unfired Clay Stove</td>
+<td>0-1</td>
+<td>0-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ceramic Clay stove in metal housing</td>
+<td>2</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Side-fed metal stove</td>
+<td>0-2</td>
+<td>0-2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Batch-loaded metal stove</td>
+<td>2</td>
+<td>3-4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Pellet gasifier stoves</td>
+<td></td>
+<td></td>
+<td>3-4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LPG/Bio-gas stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Liquid Fuel stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Electric cooking stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 3</strong>. overview of cook-stoves implemented in the model in relation to IWA indoor-emission tiers</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Fuel type Cookstove</strong></th>
+<th>Wood</th>
+<th>Charcoal</th>
+<th>Pellets</th>
+<th>Ethanol</th>
+<th>Kerosene</th>
+<th>LPG</th>
+<th>Biogas</th>
+<th>Electricity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Traditional three stone with pot stove</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Unfired Clay Stove</td>
+<td>0-1</td>
+<td>0-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ceramic Clay stove in metal housing</td>
+<td>2</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Side-fed metal stove</td>
+<td>0-2</td>
+<td>0-2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Batch-loaded metal stove</td>
+<td>0-1</td>
+<td>3-4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Pellet gasifier stoves</td>
+<td></td>
+<td></td>
+<td>3-4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LPG/Bio-gas stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Liquid Fuel stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Electric cooking stoves</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy Use – Household Lighting</strong></p>
+<p>Lighting energy needs are calculated on the basis of equation (1) with <span class="math display">i = l</span> with subtypes <span class="math display">j</span> using energy carriers <span class="math display">k</span>. Capacity of a light source for lighting <span class="math display">c</span> is expressed in Wh/hour, the <span class="math display">\varepsilon</span> parameter is not utilised here and set to 1. Values for Average use per day in hours<span class="math display">\text{A}</span> can be entered by the user and are pre-loaded with literature values from surveys.[10] The utilisation rate <span class="math display">u</span> is set to 0.95 indicating the frequency of using the lighting source.[10] In case of kerosene lamps, fuel use can be calculated using equation 2 to obtain litres of Kerosene used per family per month.</p>
+<p>Capacity values for solar lighting devices were obtained from specification sheets in the lighting global database (<a href="http://www.lightingglobal.org/products/" class="uri">http://www.lightingglobal.org/products/</a>) which were averaged to obtain a representative value. Flashlight data was taken from Evan’s et al. (2015)[11] and Kerosene Lamp data from Mills et al. (2003).[12] Values were also obtained for specific torches/flaslights from product data on the Kenyan electronic goods website <a href="http://www.jumia.co.ke">www.jumia.co.ke</a>.</p>
+<p><strong>Table 4.</strong> types of lighting devices and their parameters used</p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Total Capacity Wh</strong></th>
+<th><strong>Hourly cons.</strong> <strong>(Wh/h)</strong></th>
+<th><strong>Total hours of usage</strong></th>
+<th><strong>Max. Lumens*</strong></th>
+<th><strong>Panel</strong> <strong>Watts</strong></th>
+<th><strong>Fuel fill (Wh)</strong></th>
+<th><strong>Fuel Cons. (Wh/h)</strong></th>
+<th><strong>Source of data</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Battery torch/flashlight</td>
+<td>3.20</td>
+<td>0.03</td>
+<td>120</td>
+<td>120</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.jumia.co.ke">www.jumia.co.ke</a> - SK68 LED Torch Cree - CREE XPE Mini LED Flashlight - LED Flaslight</td>
+</tr>
+<tr class="even">
+<td>Mobile phone torch/flashlight</td>
+<td>30.40</td>
+<td>0.15</td>
+<td>200</td>
+<td>100</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.x-tigi.com">www.x-tigi.com</a></td>
+</tr>
+<tr class="odd">
+<td>Rechargeable battery torch/flashlight (sealed battery)</td>
+<td>1.90</td>
+<td>0.38</td>
+<td>5</td>
+<td>300</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.jumia.co.uk">www.jumia.co.uk</a></td>
+</tr>
+<tr class="even">
+<td>Solar lantern (mobile) with integrated solar panel</td>
+<td>1.70</td>
+<td>0.31</td>
+<td>5.5</td>
+<td>35</td>
+<td>0.45</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.lightingglobal.org">www.lightingglobal.org</a></td>
+</tr>
+<tr class="odd">
+<td>Solar lantern (mobile) with pico solar panel (&lt;10 W)</td>
+<td>10.50</td>
+<td>1.55</td>
+<td>6.8</td>
+<td>142</td>
+<td>4.00</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.lightingglobal.org">www.lightingglobal.org</a></td>
+</tr>
+<tr class="even">
+<td>Solar lamp(s) (stationary) with pico solar panel (&lt;10 W)</td>
+<td>14.40</td>
+<td>3.07</td>
+<td>4.7</td>
+<td>500</td>
+<td>5.60</td>
+<td>-</td>
+<td>-</td>
+<td><a href="http://www.lightingglobal.org">www.lightingglobal.org</a></td>
+</tr>
+<tr class="odd">
+<td>Kerosene wick lamp</td>
+<td>-</td>
+<td></td>
+<td>12.6</td>
+<td>8</td>
+<td>-</td>
+<td>1042</td>
+<td>83</td>
+<td>Mills (2003)[12]</td>
+</tr>
+<tr class="even">
+<td>Kerosene Hurricane Style Lamp</td>
+<td>-</td>
+<td></td>
+<td>7.9</td>
+<td>36</td>
+<td>-</td>
+<td>2257</td>
+<td>285</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Candles</td>
+<td>-</td>
+<td>-</td>
+<td>7.5</td>
+<td>12</td>
+<td>-</td>
+<td>1476</td>
+<td>197</td>
+<td>Grimm et al. (2005)[13]</td>
+</tr>
+<tr class="even">
+<td>Grid connected stationary LED lighting</td>
+<td>-</td>
+<td>2.50</td>
+<td>-</td>
+<td>350</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>Mills et al. (2015)[11]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Universal Powerbank phone S23</p></li>
+<li><p>- Ultabright USB-rechargeable LED Torch</p></li>
+</ul>
+<p>Mills et al. (2015)[11]</p>
+<ul>
+<li><p>Waka Waka</p></li>
+<li><p>D.light S3</p></li>
+<li><p>Enviro SL36</p></li>
+<li><p>Sun King Pico Plus</p></li>
+<li><p>PSHS 3000</p></li>
+<li><p>Sun King Boom</p></li>
+<li><p>CAA Solar Lantern</p></li>
+<li><p>Lagazel Kalo 3000</p></li>
+<li><p>Sun King Pro easybuy/Pro X</p></li>
+<li><p>Shanghai Easy Solar Home Light Kit (2 lamps)</p></li>
+<li><p>Poly oslar 10W Solar Home Lighting System</p></li>
+<li><p>Sun King Home 40Z</p></li>
+<li><p>Solarway Solar Home Power System</p></li>
+<li><p>WOWSolar 60</p></li>
+</ul>
+<p>*Total value across multiple lamps if systems have multiple lamps.</p>
+<p><strong>Energy Use – Mobile Phones</strong></p>
+<p>The electricity use for mobile phones <span class="math display">i = m</span> per month in kWh is estimated on the basis of the number of times the phone is charged per day, <span class="math display">r_{j}</span> ,multiplied by the time-period of use, <span class="math display">t</span>, the electricity required for a full charge as battery capacity, <span class="math display">\theta</span>, and the average depth of charging from a discharged to charged state, <span class="math display">d</span> , as:</p>
+<p><span class="math display">E_{j} = r_{j} \cdot \theta_{j} \cdot d \cdot t</span> (3)</p>
+<p>The assumption for the depth of charging parameter <span class="math display">d</span> is 0.8 indicating an 80% average charge of the battery capacity. Electricity required for a full charge, and the number of times charged per day, vary depending on phone type <span class="math display">j = 1,2,3,4</span> with four types of phones distinguished in the model:</p>
+<ul>
+<li><p>‘Dumb’ phones that have no internet access capabilities</p></li>
+<li><p>Feature phones that can access the internet and run one app at a time</p></li>
+<li><p>Low end smart phones that have costs 50 pounds or less, typically restricted to 3G capability</p></li>
+<li><p>High end smart phones that have all modern phone capabilities</p></li>
+</ul>
+<p>To obtain values for <span class="math display">\theta</span> battery capacities for a wide range of phones were evaluated as sold in low- and middle-income countries based on vendor websites, such as <a href="http://www.jumia.co.ke">www.jumia.co.ke</a>, and specific popularity tech articles (Maina 2017)[14], resulting in a selection of smartphones listed in Table 5 below.</p>
+<p><strong>Table 5</strong>. Mobile phone brands for which capacity data was obtained to obtain charge value averages</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Dumb phones</strong></th>
+<th><strong>Feature phones</strong></th>
+<th><strong>Low-end smart phones</strong></th>
+<th><strong>High-end smart phones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nokia 150</td>
+<td>Nokia 3310</td>
+<td>Oukitel C9</td>
+<td>Samsung Galaxy J1 Ace</td>
+</tr>
+<tr class="even">
+<td>Alcatel one Touch 10.35X</td>
+<td>Doro 6050</td>
+<td>FreeTel ICE 3</td>
+<td>Samsung Galaxy J5</td>
+</tr>
+<tr class="odd">
+<td>Nokia 225</td>
+<td>Alcatel OneTouch</td>
+<td>Motorola Moto C</td>
+<td>Huawei P8 Lite</td>
+</tr>
+<tr class="even">
+<td>Samsung E1270</td>
+<td>STK R45i</td>
+<td>viWa i7</td>
+<td>Samsung Grand Prime Plus</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Nokia 105</td>
+<td></td>
+<td>Huawei P9 Lite</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Nokia 3310</td>
+<td></td>
+<td>Samsung Galaxy S5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Amplicomms PowerTel</td>
+<td></td>
+<td>Samsung Galaxy S6</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>iTel 2080</td>
+<td></td>
+<td>Samsung galaxy S7 edge</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>iTel 5010</td>
+<td></td>
+<td>Infinix Hot 4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>iTel 5610</td>
+<td></td>
+<td>Infinix Hot 4 Lite</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Samsung Guru</td>
+<td></td>
+<td>Tecno Y3+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Tecno C8</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Infinix X507</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Xiaomo Redmi Note 4</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Oppo a37F</td>
+</tr>
+</tbody>
+</table>
+<p>Capacity is measured by the industry in electrical charge as milliamp-hours. To establish battery capacity in terms of energy usable in kilowatt-hours, the mAh value is converted by multiplication with the battery voltage (typically 4 volt) as:</p>
+<p><span class="math display">\theta_{j} = \frac{\text{mAh}_{j}\  \cdot V}{10^{6}}</span> (4)</p>
+<p>The following values were obtained at 0.0035, 0.0044, 0.0079, and 0.0120 kWh for dumb, feature, low end, and high-end smart phones, based on the average for each category of the phones in Table 5, respectively. To obtain values for the number of times the phone is charged per day, <span class="math display">r_{j}</span> , values were consulted from the literature to obtain a base value for charging frequency.[15] In the tool the user can insert the distribution across the four mobile phone types, the number of phones owned by a family, and the charging frequency estimate.</p>
+<p><strong>Table 6.</strong> Default parameter values used for mobile phones</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Charge (kWh)</strong></th>
+<th><strong>Default values for charging frequency (times per week)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dumb phones</td>
+<td>0.0035</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>Feature phones</td>
+<td>0.0044</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>Low-end smart phones</td>
+<td>0.0079</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>High-end smart phones</td>
+<td>0.0120</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy Use – Electric appliances</strong></p>
+<p>The energy use associated with electric appliances is informed by user questions about the number of appliances per family (x out of 10 families), and for variable appliances their utilisation rate per day in hours.</p>
+<p>Appliance use is then calculated using a simplified version of formula (1) as:</p>
+<p><span class="math display">E_{\text{ijk}} = \ c_{\text{ijk}} \cdot \ \sum_{t}^{n}A_{\text{ijt}}</span> (5)</p>
+<p>The capacity value in watts is predetermined based on literature values. A preliminary assessment for capacity wattage can be found in Table 6 below. Values for appliances sold with Solar Home Systems were taken from the validated catalogue from <a href="http://www.lightingglobal.org">www.lightingglobal.org</a>, and the study by Phadke et al. (2015).[16] Values for other appliances were derived from the studies of Blodgett et al. (2017), Hartvigsson and Ahlgren (2018), the LEAP 2017 off-grid appliance market survey, and the GIZ 2016 Catalogue of DC Appliances for Photovoltaics.[17]–[20]</p>
+<p>A total of five appliances are included in the first version of the Renewable Energy Recommendations Tool, as listed in Table 6 with the data values. Further expansion will be made in a future version. The duration of use for each appliance was simplified based on taking an estimated 2 hour per day value for each appliance as a default value, with the possibility of creating specific per appliance use durations where data is available. Users can adjust the parameters to create localised solutions based on specific appliances.</p>
+<p><strong>Table 7</strong>. Electricity Input requirements for Electric Appliances</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Appliance</strong></th>
+<th><strong>AC/DC</strong></th>
+<th><strong>Type/Context</strong></th>
+<th><strong>Wattage</strong></th>
+<th><strong>Included in V1 RERT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Television</td>
+<td>DC</td>
+<td>With Solar Household System</td>
+<td>10.8</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Radio</td>
+<td>DC</td>
+<td>With Solar Household System</td>
+<td>5.0</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Fan</td>
+<td>DC</td>
+<td>With Solar Household System</td>
+<td>20.0</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Small Fridge 50 Litres</td>
+<td>DC</td>
+<td></td>
+<td></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Television</td>
+<td>AC</td>
+<td>Standalone / without SHS</td>
+<td>88.0</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Radio</td>
+<td>AC</td>
+<td>Standalone / without SHS</td>
+<td>26.0</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Fan</td>
+<td>AC</td>
+<td>Standalone / without SHS</td>
+<td>20.0</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Air Cooler</td>
+<td>AC</td>
+<td></td>
+<td>100.0</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Small Fridge 50 Litres</td>
+<td>AC</td>
+<td></td>
+<td>40.0</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Small Fridge + Freezer</td>
+<td>AC</td>
+<td></td>
+<td>120.0</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Music system</td>
+<td>AC</td>
+<td></td>
+<td>75.0</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Laptop</td>
+<td>AC</td>
+<td></td>
+<td>60.0</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Iron</td>
+<td>AC</td>
+<td></td>
+<td>1000.0</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Washing Machine</td>
+<td>AC</td>
+<td></td>
+<td>500.0</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Hair dryer</td>
+<td>AC</td>
+<td></td>
+<td>900.0</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Microwave</td>
+<td>AC</td>
+<td></td>
+<td>900.0</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy Use – Street lighting</strong></p>
+<p>The number of streetlights in the current situation is informed by the answers from the user in terms of the housing density and the % of main roads area covered by grid connected or solar streetlights. It is assumed that streetlights are placed only on main roads.</p>
+<p>The main road area length, <span class="math display">R</span>, is approximated based on the number of families in the camp,<span class="math display">n</span>, the average camp area per person, <span class="math display">x</span>, in m2, a percentage of main road area per camp area parameter, <span class="math display">s</span>, and the average width of roads or streets, <span class="math display">w</span>, as:</p>
+<p><span class="math display">R = \frac{n \cdot x \cdot s}{w}</span> (6)</p>
+<p>The value of the parameter <span class="math display">s</span> will vary per camp and is to be established (pre-loaded) by analysis of satellite imagery for a sample of refugee camps. As a standard value 3% is assumed.</p>
+<p>After the main road area length is calculated the number of streetlights can be determined based on the spacing,<span class="math display">\text{\ S}</span>, required per pole. The formula for this is taken from Shehadeh (2015)[21] as:</p>
+<p><span class="math display">S = \frac{l \cdot u \cdot 0.8}{lt \cdot w}</span> (7)</p>
+<p>With<span class="math display">\text{\ l}</span> as the amount of lamp lumens,<span class="math display">\ u,</span> as a coefficient of utilisation, and<span class="math display">\text{\ lt}</span>, as a threshold minimum required average illumination in lumen per m2. The number of estimated streetlights thereby varies depending on the quality of the light source.</p>
+<p>The type of existing streetlights are informed by the user questions on how long the street lights typically are on during the dark hours in terms of hours, whether they are grid connected or solar street lights.</p>
+<p>Two main types, <span class="math display">j</span>, of streetlights are incorporated, a solar streetlight and a grid connected High Pressure Sodium (HPS) gas discharge street light. It is assumed that the solar streetlight integrates a lamp, battery and solar panel per light.</p>
+<p>Electrical energy used <span class="math display">E</span> for streetlights is calculated using equation (1) above based on the efficiency <span class="math display">\varepsilon</span> of streetlights, the standardised capacity, <span class="math display">c</span>, the usage hours per day <span class="math display">A</span>, and the coefficient of utilisation <span class="math display">u</span>.</p>
+<p>A solar supply calculation is carried out to establish the solar-PV and battery sizing of the solar streetlights to match with the hours of use required for the ESMAP street-lighting energy access tier. In case of tier 1 a night-time availability of 2 hours per day is required, in case of tier 2 a 25% neighbourhood coverage and 4 nights per day availability, and in case of tier 4 a 50% neighbourhood availability and 50% of night hours per day is required. By selecting a particular energy access tier the number of street lights required are multiplied to achieve the required coverage, and in case of solar street lights, the type of street lights are altered so as to achieve night-time availability.</p>
+<p><strong>Energy Use – Camp Community &amp; Management Buildings Cooling &amp; Heating</strong></p>
+<p>The energy use for central camp buildings cooling and heating was estimate using the heating and cooling degree day method. Heating Degree Days (HDD) are expressed as the average number of degrees for a day above a specified base temperature for a period (monthly or yearly). Cooling Degree Days (CDD) are the opposite, as the number of degrees for a day below a specified base temperature. Usually these values are expressed in a cumulative manner for a particular period, such as the monthly or annual HDD or CDD. Cumulative annual HDD and CDD per country was taken from the CMCC-KAPSARC database developed by Atalla et al. (2018) containing values for 147 countries from 1948 to 2013.[22]</p>
+<p>The energy use associated with HDD and CDD is estimated based on an amended version of the formulation in Sarak &amp; Satman (2003)[23], resulting in the formula:</p>
+<p><span class="math display">E_{j,t} = \frac{m\  \cdot \ U}{H\eta_{j}}{p \cdot DD}_{t}</span> (8)</p>
+<p>With <span class="math display">E</span> as energy consumption, <span class="math display">p</span>, as the share of time that the system is heating or cooling for non-continuous operation, <span class="math display">\ m</span> as the building surface area in m2, <span class="math display">\ U</span> as the building heat transfer coefficient in W per m2 per degree, <span class="math display">H</span>, as the fuel heating value (with 1 if no fuel is used), <span class="math display">\eta</span>, the efficiency of the heating system per type <span class="math display">j</span>, and <span class="math display">\text{DD}</span> the cooling or heating degree days value.</p>
+<p>Standardised values used for these parameters as described above used to calculate cooling and heating systems can be found in table 8 below. Users can adjust the parameters based on more advanced studies or specific localised technology systems for particular camps.</p>
+<p><strong>Table 8.</strong> Standard Values for Buildings for Heating and Cooling</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 19%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Building Type</strong></th>
+<th><strong>Typical building size (m2)</strong></th>
+<th><strong>Heating Time %</strong></th>
+<th><strong>Building heat loss coefficient (AU)</strong></th>
+<th><strong>Heating Systems Efficiency</strong></th>
+<th><strong>Cooling Time %</strong></th>
+<th><strong>Cooling System efficiency (%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Administrative office building</td>
+<td>300</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>Registration office</td>
+<td>50</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="odd">
+<td>Camp Staff accommodation building</td>
+<td>200</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>Health centre building</td>
+<td>150</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="odd">
+<td>Security Post Building</td>
+<td>100</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>School building</td>
+<td>300</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="odd">
+<td>Large Market Building</td>
+<td>500</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>Food Centre Building</td>
+<td>500</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="odd">
+<td>Distribution Centre Building</td>
+<td>100</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>Storage Building</td>
+<td>200</td>
+<td>10%</td>
+<td>1.5</td>
+<td>45%</td>
+<td>30%</td>
+<td>45%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy Demand – Water Supply</strong></p>
+<p>The water supply requirements were first established, based on a fixed average demand per camp family for low, medium and high-income families with a distribution as provided by the user. For example, data surveys for Ghana’s capital city Accra provide a range of 25-50 litres per day per capita for low income families, 50-90 litres per day per capita for middle income families, and 90 to 140 litres per day per capita for high income families.[24] Water usage is influenced by the type of supply and its intermittency. UN guidelines for refugee camps indicate a minimum requirement of 20 litres per person per day that should be available. Water usage surveys for refugee camps indicate a wide range of water availability with about 53% of camps in 2005 meeting the 20 litres per day standard on average (excluding distribution effects). [25],[26]</p>
+<p>The tool does not estimate the amount of water used, instead the electricity use for water use is defined based on the number of electrically run ground water pumps installed in the camp. It is assumed that water supplied from local boreholes and is not treated for improving the quality. In addition, if the water comes from an external piped system then no direct energy use is assumed for the camp energy use.</p>
+<p>The energy use for groundwater pumps is calculated based on the total vertical distance from the groundwater source to the points of consumption, the hours of operation, and a standard hydraulic pumping equation that incorporates the flow needs for water usage. The hydraulic power equation utilised is expressed as:</p>
+<p><span class="math display">P_{\text{hydraulic}} = H \cdot \rho \cdot g \cdot Q*(1 + \varepsilon)</span> (9)</p>
+<p>Where H is the difference in height between the inlet and outlet of the pipe from the pump under which the fluid is lifted, in this case water, <span class="math display">\rho</span> is the density of the fluid involved, g is the gravitational constant, Q is the desired low rate per second, and <span class="math display">\varepsilon</span> is an efficiency factor that captures the friction of the pump system.[27] The equation captures the main factor of influence on the energy costs: the vertical distance to which the water needs to be lifted, both within the borehole, and between the borehole and the point of use. For example, a height difference between 50- and 200-meters lift can result in an increase from 0.3 to 1.2 kWh/m3 of water pumped for a 44% efficient pump.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>As a standard value for the desired flow rate Q a value of 0.0006 m3 per second is used, which amounts to a little over 2 cubic metres per hour or over 50 cubic metres if operating constantly during a 24-hour period. The standard parameters used for pump efficiency are 44%, and for the friction in the pump system is 10%. The system efficiency fin converting electricity to mechanical energy to lift the water is based on a large number of real life evaluations (Conlon et al. 1996).[28] Based on these values total energy costs amount to 0.24 kWh per m3 of water pumped for a 35 meter vertical distance.</p>
+<h2 data-number="2.3" id="energy-supply-calculations"><span class="header-section-number">2.3</span> Energy Supply Calculations</h2>
+<p><strong>Linking Energy Demands to Energy Supply Sources</strong></p>
+<p>The Renewable Energy Recommendations Tool works by generating a total demand side profile for different types of energy use divided into:</p>
+<ul>
+<li><p>Cooking energy use requirements for camp families/households for use in cooking stoves.</p></li>
+<li><p>Centralised electricity energy use requirements for camp community buildings/uses, camp management/NGO’s, and streetlighting, as well as water pump requirements.</p></li>
+<li><p>Decentralised electricity energy use requirements for camp families/households, including lighting, mobile phone, and electric appliance utilisation.</p></li>
+</ul>
+<p>After calculating profiles for one or more of these demands (depending on user interest) the tool will first calculate the baseline demand based on the current energy infrastructure in the camp, as entered in the tool by the user. This provides for a baseline current energy situation assessment.</p>
+<p>Subsequently, the tool seeks to calculate how the demands can be met using different supply options. In the current version a total of 16 cooking stove options are evaluated (Figure 2), a total of 11 options for camp family/household electricity supply (Figure 3), and a total of 12 options for centralised electricity use for camp community buildings, main buildings, streetlighting and water pumping needs (Figure 4).</p>
+<p><img src="media/257413c697f48330ed48c34f86ed8d68.png" /></p>
+<p><strong>Figure 2</strong>. Cooking Stove Options Compared in V1 of RERT</p>
+<p><img src="media/1f1d4c173a240ca8b7ee68efd34be35b.png" /></p>
+<p><strong>Figure 3.</strong> Household/Family Electricity Supply Options Compared in V1 of RERT</p>
+<p><img src="media/381c5fc4d80cee8de37d96b45890427e.png" /></p>
+<p><strong>Figure 4.</strong> Camp Community/Institutions Electricity Supply Options Compared in V1 of RERT</p>
+<p><strong>Translation of cooking fuel demands into a load profile</strong></p>
+<p>The calculation of cooking fuel demand and supply was described in section 2 under the cooking energy use section. In brief the demands are based on the population in the camp, the stove distribution, the type of fuels used in the stoves, and use duration, stove efficiency and capacity parameters. The calculation results in the aggregate fuel use in the camp. To calculate new fuel supply needs the tool estimates what the requirements are for different type of stove options (16 in total as mentioned above. Based on the assumption that each family/household will utilise one stove type as a simplification, with multiple fuel options.</p>
+<p><strong>Translation of household/family electricity demands into a load profile</strong></p>
+<p>To evaluate the electricity supply options for households/families the electricity use needs to be translated from energy usage in kWh into a power demand profile requirement in watts per hour, <span class="math display">E_{j,t}^{d}</span>. An aggregate approach is utilised based on which total electricity use is superimposed on the same electricity use pattern by category.</p>
+<p>Three different categories are utilised:</p>
+<ul>
+<li><p>Low appliance household/Family electricity use pattern, who do not utilise any appliances beyond mobile phones and lighting</p></li>
+<li><p>Medium appliance household/Family electricity use pattern, who own and use a television and/or an electric radio.</p></li>
+<li><p>High appliance household/Family (with a business) electricity use pattern, who own and use the above as well as an electric washing machine or a small food fridge or an electric fan or combinations of the three.</p></li>
+</ul>
+<p>The divisions of electric appliances are based on the ownership questions posed to the user. For each of the three household/family categories a different electricity use load profile is applied and superimposed on total electricity use. The profile determination builds upon the data in Blodgett et al. (2017) with combined energy use surveys and measured data from SteamaCo mini-grids of 176 households in Kenya.[20] Load profile data is also available in Hartvigsson and Ahlgren (2018) but here it is based on only survey data to elicitate time of use information from 47 households in Tanzania, which is less reliable.[19] The analysis in Blodgett et al. (2017) yields three user types, “night users” that utilise their electricity mostly from 18:00 to 24:00, “day users” that utilise their electricity mostly from 08:00 to 20:00, and “mixed users” that utilise about 60% of their electricity in the evening and 40% during the day (see Figure 3 below). Day users are mostly businesses and mixed users are mostly mixed business/households.[20]</p>
+<p>In the simulation the low and medium appliance household/family users the profile from Blodgett et al. (2017)[20] for day user groups is applied, whilst for the high appliance household/family users the mixed user group profile is applied.</p>
+<p><img src="media/cc3d2e80eabd500c004105aa65ae3212.png" /></p>
+<p><strong>Figure 5.</strong> Load profiles for night users (left), day users (middle), and mixed users (right).</p>
+<p>Figure adapted from Blodgett et al. (2017) [20]</p>
+<p><strong>Translation of community/institutional electricity use into a load profile</strong></p>
+<p>Similar to the households/family’s evaluation, the community/institutional electricity use needs to be translated from energy usage in kWh into a power demand profile requirement in watts per hour, <span class="math display">E_{j,t}^{d}</span>. To this end an aggregate approach is utilised based on different types of energy uses that are distributed over hourly slots across the day. The estimations are carried out by informed assumptions that can be adjusted by the tool user as required. The following standard assumption are made:</p>
+<ul>
+<li><p><strong>Water pumping energy use</strong>, distributed from 07:00 in the morning until the end of the evening at 23:00.</p></li>
+<li><p><strong>Building Heating energy use</strong>, distributed from 00:00 at night until 05:00 in the morning.</p></li>
+<li><p><strong>Building Cooling</strong>, distributed from 14:00 in the afternoon until 01:00 in the morning.</p></li>
+<li><p><strong>Street Lighting</strong>, varying by energy access tier from 19:00 until 21:00, 23:00 or later in the night.</p></li>
+<li><p><strong>Community Cooking</strong>, distributed from 08:00 to 10:00 in the morning, 13:00 to 15:00 in the afternoon, and 19:00 to 21:00 in the evening.</p></li>
+</ul>
+<p>Note that in case buildings are not assigned to have heating or cooling by the user, or if no community cooking takes place, these values will amount to zero in the calculations.</p>
+<p><strong>Energy Supply – Electricity for Household/Family and Institutional/Community needs</strong></p>
+<p>The nameplate capacity, <span class="math display">C</span>, required to provide electricity supply <span class="math display">E^{l}</span> per year was calculated for fuel stock based generation options based on the facility lifetime <span class="math display">t = 1,2,\ldots l</span>, the capacity factor of the power generation unit, <span class="math display">f</span>, and the degradation <span class="math display">\sigma</span> of the annual capacity factor, using:</p>
+<p><span class="math display">C_{j} = \frac{E_{j}^{l}}{(f_{j,t} - \sigma_{j,t}) 8760}</span> (10)</p>
+<p>Parameters for electricity supply options were taken from Kis et al. (2018).[29] In case of intermittent wind and solar-PV sources a different approach was taken to establish the required capacity. First, an hourly profile was generated using the Merra-2 Global dataset using the renewables ninja tool.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In case of solar a zero tracking system was assumed with a system loss or performance ratio, <span class="math display">\upsilon</span>, estimated at an average of 80% based on real-life evaluations from tens of thousands of existing solar systems from the literature.[29] Second, a lithium-ion battery supply option is added where relevant, in order to meet the availability needs for the electricity supply in the evening.</p>
+<p>Third, the generation source is scaled in terms of capacity to match the respective supply point output needs to meet demands. The scaling is done based on a three step procedure:</p>
+<ol type="1">
+<li><p>The maximum kWh among hourly loads of demand across the entire year is selected,</p></li>
+<li><p>The value is multiplied by a factor, so as to minimize the lack of supply on sunless or windless days.</p>
+<ol type="1">
+<li><p>The selected factor for combined large scale (centralised) battery plus solar and/or wind system is selected at 1.2, to further oversize the system slightly and enable more constant power supply.</p></li>
+<li><p>The selected factor for household/family solar-PV is set to 0.2, in case of solar-PV plus 2 hours of batteries it is set to 0.4, for solar-PV + 4 hours of batteries it is set to 0.6, and for solar-PV plus 6 and 8 hours of battery it is set to 1. The scaling is selected to be closer to average (instead of maximum loads) to optimise costs, and gradually increase with battery systems included, as without batteries oversizing the solar-PV system is on average not helpful in case of sun-less days.</p></li>
+</ol></li>
+<li><p>The result value is divided for each generation type (solar, wind) by the maximum average hourly supply load in kWh provided by 1 kW of capacity, localised for the particular camp from the hourly profile using the renewables ninja tool.</p></li>
+</ol>
+<p>The end result of this procedure is the number of kW of solar-PV or wind power generation that is required to meet demand loads in aggregate. In case of households/family needs the total generation can be divided by the number of families to obtain per household capacity requirement.</p>
+<p>In case of scenario’s where solar and/or wind generation is complemented with diesel generation, the diesel generation is scaled to meet the missing maximum load per hour. Thereby all demands can be met at all time.</p>
+<p>In case of scenario’s of combined battery systems with centralised solar and/or wind generation the capacity of the battery systems is set equivalent to the generation capacity, and subsequently scaled by a factor 1.5 for community/institutional use, and a factor 2 for household/family use.</p>
+<p>Battery capacity for household/families with solar-PV plus battery is based on the average evening time capacity requirement to meet demand from 18:00 plus additional hours (2 hours for the 2 hours of battery scenario until 20:00 4 hours for the 4 hour battery scenarios, and so forth).</p>
+<h2 data-number="2.4" id="option-indicator-calculations"><span class="header-section-number">2.4</span> Option Indicator calculations</h2>
+<h3 data-number="2.4.1" id="cooking-indicators"><span class="header-section-number">2.4.1</span> Cooking – Indicators</h3>
+<p>The RERT tool v1 incorporates ten performance indicators for cooking solutions as presented in table 11, calculated for each of the 16 cooking solutions. The methodology on how they are calculated for each are discussed in this section by type of indicator: economic, environmental and health indicators.</p>
+<p><strong>Table 9</strong>. Indicators for Cooking Solutions</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>No.</strong></th>
+<th><strong>Scale</strong></th>
+<th><strong>Indicators for Cooking Solutions</strong></th>
+<th><strong>Unit</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Camp</td>
+<td>Investment cost for cooking interventions</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Camp</td>
+<td>Total Monthly Cooking Fuel Cost</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Camp</td>
+<td>Carbon Dioxide emissions per year</td>
+<td>Tonnes</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Camp</td>
+<td>Annual area at risk from deforestation for woodfuel use</td>
+<td>Km2</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Camp</td>
+<td>Area used for providing woodfuel from plantations</td>
+<td>Km2</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Household</td>
+<td>Affordability of Cooking Fuel</td>
+<td>Very low to Very High</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Household</td>
+<td>Monthly Cooking Fuel Cost</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Household</td>
+<td>Cost of purchasing cooking stove</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Household</td>
+<td>Carbon Dioxide emissions per family per year</td>
+<td>Tonnes</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Household</td>
+<td>Health risk associated with cooking</td>
+<td>Very low to Very High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cooking - Economic indicators</strong></p>
+<p>Generalised cookstove costings data including purchase cost, and fuel cost estimates and lifespan for 47 cookstoves are available from Vianello et al. (2016).[1] The approach incorporates location and currency specific data based on 2018 exchange rates, so as to make the calculations as localised as possible. The country and associated currency can be selected in the overview tab.</p>
+<p>The <strong>investment cost for cooking interventions</strong> is based on the total cost of the cooking stoves for supplying these to all families in the camp as a one-off purchase. The <strong>monthly cooking fuel cost</strong> is based on the parameter for the price of fuel multiplied with the amount of fuel usage per month as estimated with user inputs, split out between households and total camp use for all families.</p>
+<p><strong>Affordability of cooking fuel is</strong> based on an estimate provided by the user of camp household incomes split into low income, medium income, and high-income households, and their % shares in the camp (for example, 70% low, 20% medium, 10% high income households), based on camp surveys or other estimates.</p>
+<p>The user also needs to supply the average cost of a healthy food basket per month. Subsequently, the RERT tool calculates how much income would be left for each household type after subtracting the cost of food to the income level. Then it calculates what % of households would have sufficient income left to afford monthly cooking fuel based on remaining income, as an approximation of the affordability of cooking fuel.</p>
+<p>Finally, the % share is categories among the very low to very high scale as follows:</p>
+<ul>
+<li><p>Very low if less than 20% of households being able to afford cooking fuel.</p></li>
+<li><p>Low if between 20% and 40% of households are able to afford cooking fuel.</p></li>
+<li><p>Medium if between 40% and 60% of households are able to afford cooking fuel.</p></li>
+<li><p>High if between 60% and 80% of households are able to afford cooking fuel.</p></li>
+<li><p>Very high if more than 80% of households are able to afford cooking fuel.</p></li>
+</ul>
+<p><strong>Cooking Solutions - Air Pollution/Health indicators</strong></p>
+<p>The <strong>health risk from cooking solutions</strong> is a tiered indicator with five levels from very low, low, medium, high, to very high risks. The qualitative levels correspond to the IWA tiers for indoor-emissions (see Table 10 below). Each International Workshop Agreement (IWA) tier, as set by the clean cooking alliance, from 0 to 4 was utilised with 0 corresponding to very low and 4 corresponding to very high risks. Based on the statistical assessment using the database for cookstoves from the clean cooking alliance, and additional literature sources, as described in section 2, each of the 16 cookstove types in the tool were assessed on what their IWA tier level was ranked at based on the carbon monoxide emissions, and the fine particulate matter emissions, as these are directly related to health risks. As such, the RERT tool can identify how different cookstove solutions rank on IWA tiers, and thereby on the qualitative scaling from very low to very high risks.</p>
+<p><strong>Table 10</strong>. IWA Tiers for Cooking Solutions.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 11%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>IWA Tier </th>
+<th>Thermal Efficiency (%)</th>
+<th> Carbon   Monoxide   Emissions (gram/megajoule   delivered) </th>
+<th>Fine Particulate   Matter Emissions   (milligram/megajoule   delivered)</th>
+<th> Safety   (score)  </th>
+<th> Durability   (score)  </th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td><span class="math display">\geq</span>50</td>
+<td><span class="math display">\leq</span>3.0</td>
+<td><span class="math display">\leq</span>5</td>
+<td><span class="math display">\geq</span>95</td>
+<td>&lt;10</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math display">\geq</span>40</td>
+<td><span class="math display">\leq</span>4.4</td>
+<td><span class="math display">\leq</span>62</td>
+<td><span class="math display">\geq</span>86</td>
+<td>&lt;15</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math display">\geq</span>30</td>
+<td><span class="math display">\leq</span>7.2</td>
+<td><span class="math display">\leq</span>218</td>
+<td><span class="math display">\geq</span>77</td>
+<td>&lt;20</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math display">\geq</span>20</td>
+<td><span class="math display">\leq</span>11.5</td>
+<td><span class="math display">\leq</span>481</td>
+<td><span class="math display">\geq</span>68</td>
+<td>&lt;25</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><span class="math display">\geq</span>10</td>
+<td><span class="math display">\leq</span>18.3</td>
+<td><span class="math display">\leq</span>1031</td>
+<td><span class="math display">\geq</span>60</td>
+<td>&lt;35</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>&lt;10</td>
+<td>&gt;18.3</td>
+<td>&gt;1031</td>
+<td>&lt;60</td>
+<td>&gt;35</td>
+</tr>
+</tbody>
+</table>
+<p>The approach provides for a robust simple means to categorise different stoves and assess their health risks in a transparent manner. A more detailed approach is the global burden of disease and exposure distribution method developed for Household Air Pollution (HAP).[30] An existing tool that includes this is the Household Air Pollution Intervention Tool (HAPIT).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><strong>Cooking Solutions – Carbon Emissions indicators</strong></p>
+<p>The amount of carbon dioxide emissions <span class="math display">E_{\text{ijk}}</span>associated with cooking can be established based on a direct association of CO2 emissions, per unit of fuel consumed, as :</p>
+<p><span class="math display">E_{\text{ijk}} = \ F_{\text{ijk}} \cdot \ \gamma_{\text{jk}}</span> (13)</p>
+<p>With <span class="math display">\gamma_{\text{jk}}</span> as a parameter to establish the carbon dioxide emissions in weight value per cookstove and fuel type weight that is burnt. Data for this parameter for 22 cookstoves with six fuel types was analysed by Jetter et al. (2012) as utilised in the tool.[31] The approach allows for calculating the carbon dioxide emissions per household/family and for the entire camp.</p>
+<p><strong>Cooking Solutions – Deforestation Risk indicators</strong></p>
+<p>The RERT tool includes two indicators related to biomass use and deforestation risk. The first, <strong>the annual area at risk from deforestation for woodfuel use</strong>, is estimated based on the calculated amount of woodfuel need either directly or from charcoal usage. The value is compared with the estimated biomass growth in tonne per km2 per year from different ecosystem types, including evergreen forest/rain forest, forest-savanna (Mosaic), deciduous forest, sparse forest (woodland), shrubland, and grassland/savannah. As such the total km2 that is at risk is provided as the amount of wood taken commensurate with the growth per year per km2. Values for tonnes per year were taken from [reference].</p>
+<p>Second, <strong>the area used for providing woodfuel from plantations</strong>, based on the user inputs on whether either woodfuel or charcoal is provided by the camp management or other organisations sourcing from managed plantations. As well as the amount of woodfuel or charcoal is provided. It is assumed that the sourcing is based on eucalyptus plantations biomass growth per km2 per year, with a standard value from Ugande et al. (2001).[32] Thereby the total area used for providing plantation woodfuel is calculated, through estimating the amount supplied, and the area needed to grow this supply.</p>
+<h3 data-number="2.4.2" id="householdfamily-electricity-lighting-indicators"><span class="header-section-number">2.4.2</span> Household/Family Electricity &amp; Lighting – Indicators</h3>
+<p>The RERT tool v1 incorporates 6 performance indicators for household/family lighting and electricity solutions as presented in table 11, calculated for each of the 11 solutions. The methodology on how they are calculated for each are discussed in this section by type of indicator: economic, availability, and environmental.</p>
+<p><strong>Table 11</strong>. indicators for Household Lighting and Electricity Solutions (decentralised)</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 72%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>No.</strong></th>
+<th><strong>Scale</strong></th>
+<th><strong>Indicators for Cooking Solutions</strong></th>
+<th><strong>Unit</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Camp</td>
+<td>Investment cost for household lighting and electricity</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Household</td>
+<td>First three years Monthly total electricity cost including lighting per household with 3-year leasing of equipment</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Household</td>
+<td>Affordability of Lighting and Electricity Options</td>
+<td>Very low to very high</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Household</td>
+<td>Time availability of electricity and lighting (17:00 - 24:00) on average</td>
+<td>Hours</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Household</td>
+<td>Time availability of electricity and lighting (24 hours) on average</td>
+<td>Hours</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Household</td>
+<td>Lighting and Electricity Carbon Dioxide emissions per year</td>
+<td>Tonnes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Household/family lighting and electricity – Economic Indicators</strong></p>
+<p>The affordability indicators and investment cost indicators are calculated in a similar manner to the cooking solution indicators as described in section 5.1. In case of affordability, not the cooking solution cost, but the monthly electricity cost if the investment and operation for solar-PV and/or wind and/or batteries would need to be recouped over a three year period is selected based on dividing the investment costs over 3 years. This assumes that the equipment is leased to the households over a three year period.</p>
+<p>In addition a new indicator is introduced that is related <strong>– First three years Monthly total electricity cost including lighting per household with 3-year leasing of equipment –</strong> which calculates the total monthly cost if the equipment would need to be fully costed by the household/family under a three year leasing scheme, based on i) the total investment cost divided into 36 portions covering 3 years x 12 months, the total operational and maintenance cost over a 12 month period, and any remaining diesel generation cost if diesel generators are part of the solution.</p>
+<p><strong>Household/family lighting and electricity – Availability indicators</strong></p>
+<p>The time availability indicators are based on comparing the demand and supply load profiles for electricity usage and how each technology solution provides or does not provide power during particular hours. Based on the comparison for each solution the availability from 17:00 to 24:00 is estimated, and that relative to a 24 hour period. As such the solutions that can provide as much evening time electricity (for cooking, lighting and other uses) and night-time electricity are ranked higher under these indicators.</p>
+<p><strong>Household/family lighting and electricity – Carbon Emissions indicators</strong></p>
+<p>The calculation is carried out in a similar fashion as the cooking solution carbon emission indicators, as described in section 5.1.</p>
+<h3 data-number="2.4.3" id="householdfamily-electricity-lighting-indicators-1"><span class="header-section-number">2.4.3</span> Household/Family Electricity &amp; Lighting – Indicators</h3>
+<p>The RERT tool v1 incorporates 3 performance indicators for community/institutional electricity solutions as presented in table 12, calculated for each of the 12 solutions. The methodology on how they are calculated for each are discussed in this section by type of indicator: economic, and environmental.</p>
+<p><strong>Table 12.</strong> Indicators for Camp Lighting and Electricity Solutions (centralised)</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 9%" />
+<col style="width: 61%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>No.</strong></th>
+<th><strong>Scale</strong></th>
+<th><strong>Indicators for Camp Lighting and Electricity Solutions</strong></th>
+<th><strong>Unit</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Camp</td>
+<td>Total lighting and electricity operational cost (max threshold)</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Camp</td>
+<td>Total annual lighting and electricity Investment cost (max threshold)</td>
+<td>Currency (as selected)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Camp</td>
+<td>Total fuel combustion CO2 emissions per year (max threshold)</td>
+<td>Tonnes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Community/Institutional lighting and electricity – Economic Indicators</strong></p>
+<p>The investment cost and operational costs are standard indicators based on the aggregate investment cost for the 12 electricity supply solutions (e.g. combinations of solar-PV, wind energy, batteries, diesel generation), and estimated operational costs on an annual basis.</p>
+<p><strong>Household/family lighting and electricity – Carbon Emissions indicators</strong></p>
+<p>The calculation is carried out in a similar fashion as the cooking solution carbon emission indicators, as described in section 4.1.</p>
+<h2 data-number="2.5" id="energy-access-tiers-threshold-grouping-ranking-calculations"><span class="header-section-number">2.5</span> Energy Access Tiers, Threshold Grouping &amp; Ranking Calculations</h2>
+<p><strong>Energy Access Tier Calculations</strong></p>
+<p>After electricity demands for the current baseline are established as per the calculations above, the current Energy Access Tiers are calculated (see ESMAP (2015)[33]. The ESMAP energy access tiers framework defines different Energy Access Tiers based on a series of tables/matrices. Five areas of energy access are considered for households/families: electricity services, lighting, cooking, heating, and street lighting.</p>
+<p>The calculation in the RERT tool is carried out by comparison of the distribution of energy use technologies/infrastructures for each area, and the extent to which it matches with the first 3 tiers of energy access, using a set of if-then matching rule, based on pre-estimated qualities that indicate whether an option meets a particular tier. The if-then matching rules are defined at an abstract level as:</p>
+<p><span class="math display">\ If\ for\ Energy\ option\ j\ service\ the\ service\ and\ availability\ is\ met\ for\ Tier\ X,\ \text{set\ the\ Energy\ Access\ Tier\ to\ X}\ for\ the\ \%\ of\ the\ population\ using\ option\ j.</span></p>
+<p>After the current Energy Access Tiers are calculated, each potential technology solution can be compared against the current baseline situation. To this end each technology solution has been identified at which energy-access tier level it can be rated in a pre-defined way, by assessing the performance capabilities for that solution and how it fits with providing the related energy access tier. For example, a gasifier cooking stove using pellet supply is ranked at energy access tier 3 for cooking, given the limited time needed to acquire fuel (pellet fuel is sold or provided directly), the minor amount of stove preparation time in filling the stove and lighting it, less than 5 minutes, and the associated low PM and carbon monoxide emissions. The approach allows the RERT tool to identify which energy access tiers are associated with each solution, for comparison and selection purposes.</p>
+<p>The energy access tiers are in the tool related to a user selection of which tier the solutions should attain, such that the three recommended options fit as closest as possible to the required tier improvement. The user to this end can select four options, Current Average Tier, Tier 1, Tier 2 or Tier 3 for the solution requirement (see Figure 6).</p>
+<p><strong>Figure 6.</strong> An overview of the interface where Energy Access Tier Requirements for the Technology Solutions are set by the user.</p>
+<p><img src="media/e4d9f580707a9eebfec6e4b931487989.png" /></p>
+<p><strong>Table 13.</strong> Tiers of Household Energy Access based on ESMAP values. Source: ESMAP (2015)[33]</p>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 12%" />
+<col style="width: 20%" />
+<col style="width: 23%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Metric</strong></th>
+<th><strong>Tier 1</strong></th>
+<th><strong>Tier 2</strong></th>
+<th><strong>Tier 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Electricity</td>
+<td>Services</td>
+<td>Task lighting, phone charging</td>
+<td>General lighting &amp; phone charging &amp; television &amp; fan (if needed)</td>
+<td>Tier 2 + ANY medium power appliances (refrigerator, air cooler, food processor, water pump, rice cooker).</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Power</td>
+<td>3 Watts</td>
+<td>50 Watts</td>
+<td>200 Watts</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Capacity</td>
+<td>12 Wh</td>
+<td>200 Wh</td>
+<td>1 kWh</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Availability</td>
+<td>4 hours per day, 1 hour per evening</td>
+<td>4 hours per day, 2 hours per evening</td>
+<td>8 hours per day, 3 hours per evening</td>
+</tr>
+<tr class="odd">
+<td>Lighting</td>
+<td>Service per person</td>
+<td>1000 lumen hours per day</td>
+<td>Electrical lighting</td>
+<td>Electrical lighting</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Availability</td>
+<td>&gt;4 hours per day</td>
+<td>&gt;4 hours per day</td>
+<td>&gt;8 hours per day</td>
+</tr>
+<tr class="odd">
+<td>Cooking</td>
+<td>Fuel acquisition preparation time</td>
+<td>&lt;7 hours per week</td>
+<td>&lt;3 hours per week</td>
+<td>&lt;1.5 hours per week</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Stove preparation time</td>
+<td>&lt;15 minutes per meal</td>
+<td>&lt;10 minutes per meal</td>
+<td>&lt;5 minutes per meal</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>PM2.5 Exposure (<span class="math display">\mu</span>g/m3)</td>
+<td><span class="math display">\leq</span>800</td>
+<td><span class="math display">\leq</span>400</td>
+<td><span class="math display">\leq</span>170</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>CO Exposure (mg/m3)</td>
+<td><span class="math display">\leq</span>35</td>
+<td><span class="math display">\leq</span>25</td>
+<td><span class="math display">\leq</span>18</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Health Risk*</td>
+<td>Tentatively 60% higher long-term mortality than level 5</td>
+<td>Tentatively 45% higher long-term mortality than level 5</td>
+<td>Tentatively 30% higher long-term mortality than level 5</td>
+</tr>
+<tr class="even">
+<td>Heating</td>
+<td>Capacity</td>
+<td>Personal space around individuals heated</td>
+<td>One or more rooms heated</td>
+<td>One or more rooms heated</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Convenience / fuel collection time</td>
+<td>7 hours per week</td>
+<td>3 hours per week</td>
+<td>1.5 hours per week</td>
+</tr>
+</tbody>
+</table>
+<p>*Health risk is relative to tier 5 which is the “lowest level above which total cardiopulmonary and lung cancer mortality increases in response to PM2.5</p>
+<p><strong>Table 14.</strong> Tiers of Community Energy Access based on ESMAP values. Source: ESMAP (2015).[33]</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 28%" />
+<col style="width: 19%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Metric</strong></th>
+<th><strong>Tier 1</strong></th>
+<th><strong>Tier 2</strong></th>
+<th><strong>Tier 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Street lighting</td>
+<td>Capacity</td>
+<td>1 functional street lamp in neighbourhood</td>
+<td>25% of neighbourhood covered</td>
+<td>50% of neighbourhood covered with street lights</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Availability</td>
+<td>2 night hours / day</td>
+<td>4 night hours per day</td>
+<td>50% of night hours per day</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculating the three recommended options</strong></p>
+<p>The aim of the three recommended option process is to select the <strong>best scoring options within the user selected energy access tiers</strong>. To evaluate the three recommended options a two-step procedure is provided. First, the scoring of each technology solution across performance indicators is calculated. To do so a relative ranking is made for each technology option. In case there are 16 options therefore there will be a scoring of 1 to 16 points (16 the highest, 1 the lowest).</p>
+<p>Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.</p>
+<p>In mathematical terms the ranking can be described as having a number of options <span class="math display">\j = 1,2,\ldots,n</span>, with an integer value assigned based on the relative quantitative ranking between options. The best indicator scoring received the highest number, and the lowest indicator the lowest number. The total number of points that can be awarded in case of 16 options and ten performance criteria is therefore 160 points (16 x 10). See figure</p>
+<p><img src="media/31c3d1acd6a455ae5843ca42712d3561.png" /></p>
+<p><strong>Figure 7.</strong> Scoring of different solutions visible to technical users</p>
+<p>In case of qualitative indicators a ranking value <span class="math display">R_{j}</span> is assigned using a value assignment depending on the number of categories within the indicators, whereby:</p>
+<p><span class="math display">\ R_{j} = \left\{ \begin{matrix} \frac{1}{8}\ \text{n\ \ \ }\text{if\
+}\text{ranking\ is\ low\ \ \ \ \ \ \ \ } \\ \frac{4}{8}\text{n\ \ \ if\
+}\text{ranking\ is\ medium} \\ \frac{7}{8}\text{n\ \ \ if\ }\text{ranking\ is\
+high\ \ \ \ \ \ \ \ } \\ \end{matrix} \right.</span> (14)</p>
+<p>And</p>
+<p><span class="math display">\ R_{j} = \left\{ \begin{matrix} \frac{2}{16}\ \text{n\ \ \ }\text{if\
+}\text{ranking\ is\ very\ low\ \ \ \ \ \ \ \ } \\ \frac{5}{16}\ \text{n\ \ \
+}\text{if\ }\text{ranking\ is\ low\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \\
+\frac{8}{16}\text{n\ \ \ if\ r}\text{anking\ is\ medium\ \ \ \ \ \ \ \ \ \ \ \ \
+} \\ \frac{11}{16}\ \text{n\ \ \ }\text{if\ }\text{ranking\ is\ high\ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ } \\ \frac{14}{16}\text{n\ \ \ if\ r}\text{anking\ is\
+very\ high\ \ \ \ \ \ \ \ \ \ } \\ \end{matrix} \right.</span> (15)</p>
+<p>Second, out of the ranking the options are selected that are at or closest to the Energy Access Tier that is selected by the user (1, 2, or 3). The <strong>best scoring options within the selected energy access tier</strong> are selected as the <strong>top three recommended</strong> solutions (see Figure 8 below). The total scoring is displayed as a ranking for each option alongside the results, so as to compare between options within the recommended group and the non-recommended group of options.</p>
+<p><img src="media/c6d8cfa4862d6678a5fbfdd126945fb6.png" /></p>
+<p><strong>Figure 8.</strong> Top Three Recommended Options Result Example</p>
+<p><strong>Threshold Ranking per Option</strong></p>
+<p>In addition to selecting the energy access tiers and the ranking for option performance the user also can select a series of minimum or maximum thresholds for each performance indicator across cooking, household/family electricity &amp; lighting, and/or community/institutional lighting. The threshold gives a scoring for a solution when it either surpasses or falls below an energy solution design criteria.</p>
+<p>A scoring of 0 or 1 is assigned to each performance criteria, such that if there are 10 performance indicators like for cooking solutions, an individual solution can at maximum have a score of 10, and at minimum a score of 0. This allows for a ranking of how well each solution performs against each-other by user set criteria. Eeach indicator thus has an equal weight.</p>
+<p>The process is similar for quantitative and qualitative indicators, given that qualitative indicators range from low to high, or from very low to very high. Thereby a bigger or lower than comparison can be made to establish which binary value to assign.</p>
+<p>The ranking is displayed for each option so that the user can understand how well each option performance based on the design needs. The ranking provides a similar solution idea to the more precise performance ranking as explained above. And helps users understand how well the options fit within their specific camp solution needs.</p>
+<h2 data-number="2.6" id="references"><span class="header-section-number">2.6</span> References</h2>
+<p>[1] Vianello, M. A Review of Cooking Systems for Humanitarian Settings. <em>Mov. Energy Initiat.</em> May (2016).</p>
+<p>[2] Corbyn, D. &amp; Vianello, M. <em>Prices , Products and Priorities Meeting Refugees ’ Energy Needs</em>. January 74 pages (2018).</p>
+<p>[3] Barbieri, J., Riva, F. &amp; Colombo, E. Cooking in refugee camps and informal settlements: A review of available technologies and impacts on the socio-economic and environmental perspective. <em>Sustain. Energy Technol. Assessments</em> 22<strong>,</strong> (2017).</p>
+<p>[4] Still, D., Bentson, S. &amp; Li, H. Results of Laboratory Testing of 15 Cookstove Designs in Accordance with the ISO/IWA Tiers of Performance. <em>Ecohealth</em> 12<strong>,</strong> 1 (2015).</p>
+<p>[5] MacCarty, N., Still, D. &amp; Ogle, D. Fuel use and emissions performance of fifty cooking stoves in the laboratory and related benchmarks of performance. <em>Energy Sustain. Dev.</em> 14<strong>,</strong> 3 (2010).</p>
+<p>[6] Johnson, M. A. &amp; Chiang, R. A. Quantitative guidance for stove usage and performance to achieve health and environmental targets. <em>Environ. Health Perspect.</em> 123<strong>,</strong> 8 (2015).</p>
+<p>[7] Ruiz-Mercado, I., Canuz, E. &amp; Smith, K. R. Temperature dataloggers as stove use monitors (SUMs): Field methods and signal analysis. <em>Biomass Bioenergy</em> 47<strong>,</strong> (2012).</p>
+<p>[8] Bentson, S., Still, D., Thompson, R. &amp; Grabow, K. The influence of initial fuel load on Fuel to Cook for batch loaded charcoal cookstoves. <em>Energy Sustain. Dev.</em> 17<strong>,</strong> 2 (2013).</p>
+<p>[9] Pillarisetti, A. <em>et al.</em> Patterns of stove usage after introduction of an advanced cookstove: The long-term application of household sensors. <em>Environ. Sci. Technol.</em> 48<strong>,</strong> 24 (2014).</p>
+<p>[10] Business Innovation Facility. <em>Off-grid lighting and phone charging study A snapshot of household technologies, habits and expenditure in Malawi</em>. August (2016).</p>
+<p>[11] Mills, E., Tracy, J. L., Alstone, P., Jacobson, A. &amp; Avato, P. Low-cost LED flashlights and market spoiling in Kenya’s off-grid lighting market. <em>Energy Effic.</em> 8<strong>,</strong> 2 (2015).</p>
+<p>[12] Mills, E. Technical and economic performance analysis of kerosene lamps and alternative approaches to illumination in developing countries. <em>Lawrence Berkeley Natl. Lab.</em> (2003).</p>
+<p>[13] Grimm, M., Anicet, M., Jorg, P. &amp; Maximiliane, S. <em>A First Step up the Energy Ladder? Low Cost Solar Kits and Household’s Welfare in Rural Rwanda</em>. (2014).</p>
+<p>[14] Maina, S. Africa’s Most Popular Smartphones Show a Budding Love for Budget Devices. <em>Techweez</em> (2017). Available at: http://techweez.com/2017/09/08/africa-most-common-smartphones/.</p>
+<p>[15] Stojanovski, O., Thurber, M. &amp; Wolak, F. Rural energy access through solar home systems: Use patterns and opportunities for improvement. <em>Energy Sustain. Dev.</em> 37<strong>,</strong> (2017).</p>
+<p>[16] Phadke, A. A. <em>et al.</em> Powering a Home with Just 25 Watts of Solar PV. Super-Efficient Appliances Can Enable Expanded Off-Grid Energy Service Using Small Solar Power Systems. (2015). doi:10.2172/1229861</p>
+<p>[17] GIZ. <em>Photovoltaics for Productive Use Applications</em>. 252 pages (2016).</p>
+<p>[18] Global Leap, Energy, C. &amp; Dalberg. <em>The State of the Global Off-Grid Appliance Market</em>. 37 pages (2017).</p>
+<p>[19] Hartvigsson, E. &amp; Ahlgren, E. O. Comparison of load profiles in a mini-grid: Assessment of performance metrics using measured and interview-based data. <em>Energy Sustain. Dev.</em> 43<strong>,</strong> (2018).</p>
+<p>[20] Blodgett, C., Dauenhauer, P., Louie, H. &amp; Kickham, L. Accuracy of energy-use surveys in predicting rural mini-grid user consumption. <em>Energy Sustain. Dev.</em> 41<strong>,</strong> (2017).</p>
+<p>[21] Shehaded, N. H. <em>Sustainable Street Lighting: A Guide to Efficient Public Street Lighting for Lebanon APublication</em>. 57 pages (2015).</p>
+<p>[22] Atalla, T., Gualdi, S. &amp; Lanza, A. A global degree days database for energy-related applications. <em>Energy</em> 143<strong>,</strong> April (2018).</p>
+<p>[23] Sarak, H. &amp; Satman, A. The degree-day method to estimate the residential heating natural gas consumption in Turkey: A case study. <em>Energy</em> 28<strong>,</strong> 9 (2003).</p>
+<p>[24] Lamptey, F. Determination of domestic water consumption pattern in Accra. (2010).</p>
+<p>[25] Cronin, A. A. <em>et al.</em> A review of water and sanitation provision in refugee camps in association with selected health and nutrition indicators – the need for integrated service provision. <em>J. Water Health</em> 6<strong>,</strong> (2008).</p>
+<p>[26] Shrestha, D. &amp; Cronin, A. A. The right to water and protecting refugees. <em>Waterlines</em> 24<strong>,</strong> 3 (2006).</p>
+<p>[27] Fraenkel, P. &amp; Thake, J. <em>Water Lifting Devices: A Handbook</em>. . <em>FAO and Intermediate Technological Publications</em> 337 pages (2006).</p>
+<p>[28] Conlon, T. &amp; Weisbrod, G. <em>We ’ ve Been Testing Water Pumps For Years- Has Their Efficiency Changed ?</em> 583–594 pages (1996).</p>
+<p>[29] Kis, Z., Pandya, N. &amp; Koppelaar, R. H. E. M. Electricity generation technologies: Comparison of materials use, energy return on investment, jobs creation and CO2emissions reduction. <em>Energy Policy</em> 120<strong>,</strong> October 2017 (2018).</p>
+<p>[30] Burnett, R. T. <em>et al.</em> An integrated risk function for estimating the global burden of disease attributable to ambient fine particulate matter exposure. <em>Environ. Health Perspect.</em> 122<strong>,</strong> 4 (2014).</p>
+<p>[31] Jetter, J. <em>et al.</em> Pollutant emissions and energy efficiency under controlled conditions for household biomass cookstoves and implications for metrics useful in setting international test standards. <em>Environ. Sci. Technol.</em> 46<strong>,</strong> 19 (2012).</p>
+<p>[32] Ugalde, L., Perez, O. &amp; Mead, D. J. <em>Forest Plantations Thematic Papers: Mean Annual Volume Increment of Selected Industrial Forest Plantation Species</em>. 27 pages (2001). doi:10.1017/S0020818300006160</p>
+<p>[33] Bhatia, M. &amp; Angelou, N. <em>BEYOND CONNECTIONS Energy Access Redefined</em>. 244 pages (2015).</p>
+<p><strong>Humanitarian Engineering for Energy for Displacement (HEED)</strong></p>
+<p><strong>Funded by the ESPRC Global Challenges Research Fund</strong></p>
+<p><strong>Renewable Energy Recommendations Tool (RERT) </strong></p>
+<p>======= # <strong>Use Case: Kigeme Camp Rwanda</strong> <strong>Cooking Solutions Evaluation</strong></p>
+<blockquote>
+<p><strong>Authors:</strong> Sandy Robinson (Scene), Rembrandt Koppelaar (Scene)</p>
+</blockquote>
+<blockquote>
+<p>v.2.0 10th October 2019</p>
+</blockquote>
+<p>======= ## <strong>Overview</strong></p>
+<p>This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of cook stove interventions at Kigeme Camp, Rwanda, and was undertaken in June 2019. When seeking to use the RERT, it is recommended that this case study is read in conjunction with the RERT User Guide.</p>
+<p><strong>About Humanitarian Energy and Engineering for Development (HEED)</strong></p>
+<p>The HEED project is an innovative response to growing recognition of the need to improve access to energy, particularly renewable energy sources, for populations displaced by conflict and natural disasters. The focus of HEED is on the lived experiences in three refugee camps in Rwanda (Nyabiheke, Gihembe and Kigeme) and internally displaced persons (IDPs) forced to leave their homes as a result of the 2015 earthquake in Nepal.</p>
+<p><strong>Renewable Energy Recommendations Tool (RERT)</strong></p>
+<p>The RERT was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and April 2019. It aims to provide technology recommendations based on 23 performance indicators to increase energy access in refugee camps and improve sustainability for:</p>
+<ol type="1">
+<li><p>Cooking Energy;</p></li>
+<li><p>Household Lighting and Electricity;</p></li>
+<li><p>Community/Camp central Lighting and Electricity.</p></li>
+</ol>
+<p>Users engage with an Excel spreadsheet where they answer questions to describe the population of the camp and the social and economic situation, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy options.</p>
+<h2 data-number="2.7" id="use-case-scenario"><span class="header-section-number">2.7</span> Use Case Scenario</h2>
+<p>The purpose of providing a use case scenario is to give tool users a practical guide through a real-world example of using the tool in a humanitarian setting. The following evaluation details how to:</p>
+<ol type="1">
+<li><p><strong>Input data</strong> on current cookstove utilisation in Kigeme, Rwanda;</p></li>
+<li><p><strong>Interpret baseline energy use</strong> outcomes from the tool, including economic and environmental analyses;</p></li>
+<li><p><strong>Define what level of energy access</strong> has been achieved, based on the ESMAP multi-tier energy access matrices;</p></li>
+<li><p><strong>Understand tool recommendations</strong> for cookstove interventions in a specific context;</p></li>
+<li><p><strong>Set boundary criteria</strong> and alter specific parameters of the tool.</p></li>
+</ol>
+<p>A special focus included to provide an understanding of which solutions could provide significant <strong>climate change carbon emission impacts reductions,</strong> as part of the improvements that could be achieved with shifts to better cooking solutions.</p>
+<p><strong>Kigeme Refugee Camp</strong></p>
+<p>The Kigeme displaced people camp in Rwanda was setup in 2012 to address the influx of Congolese refugees into the country. As of early 2019 there are close to 21,000 residents and over 4,000 families living in the camp. The camp is situated in Nyamagabe district in South-West Rwanda, to the east of Nyungwe Forest National Park (see Figure 1). The area is hilly with land uses including forests, agriculture and host community settlements.</p>
+<p>A number of programmes have been recently conducted in Kigeme, making it a particularly interesting use case in respect to cooking interventions. Alongside a cash assistance programme, which replace the provision of food and in-kind support with mobile phone accessible cash transfers, a number of new energy schemes have been deployed. This includes the introduction of an innovative cooking fuel solution which gives refugees the option to buy clean fuel (pellets) for use in improved cooking stoves with their cash allowances.</p>
+<p>The improved cook stove solution scheme is being delivered in the camp by a Rwandan private sector social enterprise, <a href="https://www.inyenyeri.com/our-solution">Inyenyeri</a>, who produce environmentally sustainable fuel burning pellets and lease clean and highly efficient cook stoves to residents.</p>
+<p>Data utilised in this use case was collected using existing data sources and via an integrated questionnaire deployed in Kigeme camp in 2018/19. Data was provided / collected by the HEED project team, with the support of UN humanitarian staff, Kigeme camp authorities and humanitarian energy researchers.</p>
+<p><img src="media/Usecase_Fig1a.png" alt="Usecase_Fig1a" style="zoom: 67%;" /></p>
+<p><img src="media/Usecase_Fig1b.jpg" alt="Usecase_Fig1b" style="zoom:67%;" /></p>
+<p>=======</p>
+<h2 data-number="2.8" id="use-case-methodology"><span class="header-section-number">2.8</span> Use Case methodology</h2>
+<p>This methodology is provided to guide users through using the RERT with real-world data and application to Kigeme Refugee Camp, Rwanda. The aim of this use case is to <strong>understand the current (2019) cooking situation in Kigeme Camp and provide projections for viable cookstove interventions and their potential impacts.</strong></p>
+<h3 data-number="2.8.1" id="stage-1-baseline-data"><span class="header-section-number">2.8.1</span> Stage 1: Baseline Data</h3>
+<p>Baseline data was sourced and inserted into the RERT (see Figure 2), including:</p>
+<ul>
+<li><p>Camp Population: <strong>21,000</strong></p></li>
+<li><p>No. of families in camp: <strong>4,000</strong></p></li>
+<li><p>Percentage share of households operating a business: <strong>8%</strong></p></li>
+<li><p>Landscape around the camp: <strong>Evergreen Forest / Rainforest</strong></p></li>
+</ul>
+<p>======= <img src="media/Usecase_Fig2a.jpg" /></p>
+<p><img src="media/Usecase_Fig2b.jpg" /></p>
+<p>Figure 2 - Setting Baseline Data</p>
+<p>The baseline cooking situation was estimated with the RERT using an integrated questionnaire approach (see Figure 3). The cooking modes primarily utilised in the camp include:</p>
+<ul>
+<li><p>Three stone pot cookstoves or similar traditional devices using wood fuel (“Basic cookstoves”): <strong>4 out of 10 families</strong></p></li>
+<li><p>Cookstove made with fired clay (ceramic) with a metal holder using charcoal or briquette fuel (“Fired clay cookstoves): <strong>2 out of 10 families</strong></p></li>
+<li><p>Cookstove made for burning wood pellets (“Inyenyeri mimi-moto stove”) using wood pellets: <strong>4 out of 10 families</strong></p></li>
+</ul>
+<p>Further to this, the type and usage of fuels were estimated, including:</p>
+<ul>
+<li><p>Basic cookstove: <strong>Firewood - 9 out of 10 families / Charcoal - 1 out of 10 families</strong></p></li>
+<li><p>Fired clay cookstove: <strong>Firewood - 6 out of 10 families / Charcoal - 4 out of 10 families</strong></p></li>
+<li><p>Inyenyeri mimi-moto stove: <strong>Wood pellet - 10 out of 10 families</strong></p></li>
+</ul>
+<p>Finally, baseline income values, distribution and in-kind provision by camp authorities was set, including:</p>
+<ul>
+<li><p>Low Income bracket: <strong>23,600 RWF / month (US$26) (70% of camp population)</strong></p></li>
+<li><p>Medium Income bracket: <strong>61,000 RWF / month (US$66) (20% of camp population)</strong></p></li>
+<li><p>High income bracket: <strong>165,000 RWF / month (US$178) (10% of camp population)</strong></p></li>
+</ul>
+<p>Further to this a number of further variables are taken into account, including: monthly food cost per household; camp fuel provision and / or subsidisation; fuel production methods.</p>
+<p><img src="media/Usecase_Fig3a.jpg" alt="Usecase_Fig3a" style="zoom:80%;" /></p>
+<p><img src="media/Usecase_Fig3b.jpg" alt="Usecase_Fig3b" style="zoom:80%;" /></p>
+<p>Figure 3 - Setting baseline cookstove use</p>
+<h3 data-number="2.8.2" id="stage-2-baseline-result"><span class="header-section-number">2.8.2</span> Stage 2: Baseline Result</h3>
+<p>The evaluation of the current state of cooking covered, <strong>ten baseline performance indicators are output by the model,</strong> of which the results are shown in Table 1 below in the column headed ‘Current Situation’. An aggregate energy access indicator for cooking for the camp is also shown.</p>
+<p>Energy access is estimated by looking at the tier level - from 0 to 5 - for each cooking stove and fuel and their utilisation and generate an average value. The result for the entire camp is <strong>an energy access level of 1.6 for cooking solutions</strong>, given the prominence of burning wood pellet stoves that are already in use.</p>
+<p>In terms of current cooking stove performance results, the <strong>monthly total fuel expenditure was estimated at close to 1.6 million RWF</strong>, versus a <strong>capital cost of 5.5 million RWF in case all current cookstoves would need to be replaced</strong> (asset value of the cookstoves used). Current <strong>annual CO2 emissions for the camp were evaluated at 6,475 tonnes</strong> for cooking which comes down to 1.33 tonnes per year per family. The utilisation of wood-fuel without provisioning of such fuels in a sustainable manner is evaluated by RERT to be associated with a <strong>forest area of 0.24 km2 that is at annual risk of deforestation</strong>, given biomass needs to supply cooking fuels for all the 4,000 families in the camp. Finally, <strong>health risks due to stove usage are still high</strong> given the prominence of three stone post cookstoves, and to a lesser extent fired clay (ceramic) stoves.</p>
+<h3 data-number="2.8.3" id="stage-3-energy-intervention-recommendations"><span class="header-section-number">2.8.3</span> Stage 3: Energy Intervention Recommendations</h3>
+<p>Recommendations are provided, based on the input baseline data and parameters relating to the cost, performance (capacity &amp; utilisation), energy efficiency, fuel type and efficiency, emissions and energy tier. <strong>Sixteen different cooking solutions are evaluated based on the current stove and fuel options in the tool, with the three most viable options recommended</strong>. All recommendations are considered against the baseline results and displayed comparatively with all economic, social and environmental variables.</p>
+<p>For Kigeme refugee camp, the top three best all round recommended options – based on their performance across ten indicators was quantified as listed in table 1 below – are listed below.</p>
+<p>======= | | | ———————————————————— | | Gasifier stove for burning pellets: equivalent to the existing Inyenyeri mimi-moto stove that has been provided to 4 out of 10 families to date. |</p>
+<div class="line-block">Cookstove for liquid fuel combustion with ethanol supply: not in use in the camp |<br />
+Cookstove for gas burning with biogas supply: not in use in the camp |</div>
+<p>The results given by the model are determined by the thresholds set by the user, which put stronger or weaker emphasis on particular aspects of energy supply, e.g. cost, carbon emissions, etc. In this case these stoves are recommended above all other stoves due to their combined benefits including:</p>
+<ul>
+<li><p>40%-80% carbon emission savings;</p></li>
+<li><p>over 25% operational fuel cost reductions;</p></li>
+<li><p>and a strong reduction in health risks from on average High to Low or Very Low.</p></li>
+</ul>
+<p>In addition, all three recommended options strongly reduce or bring to zero any deforestation risks. And all <strong>three raise the energy access level</strong> of families in the camp from the current average <strong>1.6 to a level of 3.</strong></p>
+<p>Whilst offering many benefits, all recommendations have an <strong>investment cost of between 2 to 3 times that of the current situation</strong>. The tool thus allows decision makers to assess acceptable costs directly alongside potential social and environmental impacts. Also notable is that the cost of <strong>purchasing the recommended cookstoves is at least twice as expensive</strong> as the current situation, meaning decision makers must factor in these costs into any business case or subsidy support scheme.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Indicator</strong></th>
+<th><strong>Unit</strong></th>
+<th><strong>Current Situation</strong></th>
+<th><strong>Gasifier Stove for burning pellets with pellet supply</strong></th>
+<th><strong>Cookstove for liquid fuel combustion with ethanol supply</strong></th>
+<th><strong>Cookstove for gas burning with biogas supply</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Camp</strong> - Investment cost for cooking interventions</td>
+<td>Franc (RWF)</td>
+<td>5,523,926</td>
+<td>12,992,936</td>
+<td>15,340,048</td>
+<td>10,394,349</td>
+</tr>
+<tr class="even">
+<td><strong>Camp</strong> - Total Cooking Fuel Cost</td>
+<td>Franc (RWF)</td>
+<td>1,574,164</td>
+<td>809,901</td>
+<td>1,180,563</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><strong>Camp</strong> - Carbon Dioxide emissions per year</td>
+<td>Tonnes</td>
+<td>6,475</td>
+<td>3,869</td>
+<td>1,504</td>
+<td>2,464</td>
+</tr>
+<tr class="even">
+<td><strong>Camp</strong> – Annual area at risk from deforestation for wood fuel use</td>
+<td>Km2</td>
+<td>0.216</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td><strong>Camp</strong> - Area used for providing wood fuel from plantations</td>
+<td>Km2</td>
+<td>0.036</td>
+<td>0.04</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td><strong>Household</strong> - Affordability of Cooking Fuel</td>
+<td>Very low to Very High</td>
+<td>Very low</td>
+<td>Very low</td>
+<td>Very low</td>
+<td>Very low</td>
+</tr>
+<tr class="odd">
+<td><strong>Household</strong> - Monthly Cooking Fuel Cost</td>
+<td>Franc (RWF)</td>
+<td>393</td>
+<td>202</td>
+<td>295</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>Household</strong> - Cost of purchasing cooking stove</td>
+<td>Franc (RWF)</td>
+<td>1,380</td>
+<td>3,245</td>
+<td>3,831</td>
+<td>2,596</td>
+</tr>
+<tr class="odd">
+<td><strong>Household</strong> - Carbon Dioxide emissions per family per year</td>
+<td>Tonnes</td>
+<td>1.90</td>
+<td>0.97</td>
+<td>0.38</td>
+<td>0.62</td>
+</tr>
+<tr class="even">
+<td><strong>Household</strong> - Health risk associated with cooking</td>
+<td>Very low to Very High</td>
+<td>High</td>
+<td>Low</td>
+<td>Very low</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 1:</strong> Overview of the performance of the <strong>top three</strong> recommended cooking stove solutions</p>
+<h3 data-number="2.8.4" id="stage-4-recommendation-scenarios-parameters"><span class="header-section-number">2.8.4</span> Stage 4: Recommendation Scenarios &amp; Parameters</h3>
+<p>Though not utilised within the Kigeme use case, the RERT offers the ability to set recommendation scenarios, where specific criteria or thresholds may be set for the recommendation system. This may include setting a maximum capital cost level limit, emission target or affordability criteria. Further to this adjustment may be made to the data parameters to fit particular use contexts, such as a specific cook stove product.</p>
+<p><strong>Setting Recommendation Scenarios</strong> A number of criteria may be set in the model to act as upper limits to the tool’s recommendations system. This includes setting specific limits on:</p>
+<ul>
+<li>(Technology) Energy Access Tier (1 – 3)</li>
+<li>(Camp) Investment cost for cooking interventions</li>
+<li>(Camp) Total Cooking Fuel Cost per Month</li>
+<li>(Camp) Carbon Dioxide emissions per year</li>
+<li>(Camp) Annual area deforested for wood fuel use</li>
+<li>(Camp) Area used for providing wood fuel from plantations</li>
+<li>(Household) Affordability of Cooking Fuel</li>
+<li>(Household) Monthly Cooking Fuel Cost</li>
+<li>(Household) Cost of purchasing cooking stove</li>
+<li>(Household) Carbon Dioxide emissions per family per year</li>
+<li>(Household) Health risk associated with cooking</li>
+</ul>
+<p>When set, the RERT will not recommend any interventions / technologies which breach these scenario limits.</p>
+<p><strong>Adjusting Data Parameters</strong> The RERT uses standardised parameters for all technologies and analyses carried out during the recommendation process. These may be adapted by for more in-depth analysis, such as particular cookstove models or brands.</p>
+<p>Cookstove variables include: Stove Type; Fuel; IWA efficiency tier; efficiency; IWA indoor missions Tie; Indoor emissions CO (g/min); Indoor emissions PM2.5 (mg/min); Capacity (kW); utilisation rate; Average daily stove use (hours). Other variables include: Energy fuel content (MJ/kg); Charcoal generation efficiency (%); Fuel emissions data (tCO2e per t/fuel); Forestry density (t/km2); Wood fuel plantation density (t/m3); Camp centre wood fuel variables.</p>
+<p>=======</p>
+<h2 data-number="2.9" id="kigeme-use-case-conclusions"><span class="header-section-number">2.9</span> Kigeme Use Case Conclusions</h2>
+<p>The use case detailed above shows how the use case can be utilised, with a working example of data input and analysis. The recommendations for Kigeme Refugee Camp show that energy interventions may offer a host of benefits including health and environmental impacts.</p>
+<p>The RERT evaluation shows that:</p>
+<ul>
+<li><p>The current cook stove situation has negative health and environmental impacts on cookstove users and the wider camp environment at present;</p></li>
+<li><p>The introduction of pellet gasifier stoves has begun to reduce these negative health and environmental impacts, though further deployment / uptake would be beneficial;</p></li>
+<li><p>With a relatively small investment (around 10,000 to 15,000 US Dollars), that pays itself back due to fuel cost reductions in about 15 years, substantial improvements for the families in the camp can be made in terms of livelihoods and environmental gains;</p></li>
+<li><p>The current programme to provide families with pellet gasifier stoves (mimi-moto) with a plantation sourced pellet supply chain is one of the best approaches to follow in the context of Kigeme, Rwanda.</p></li>
+</ul>
+<p>=======</p>
+<h2 data-number="2.10" id="discussion"><span class="header-section-number">2.10</span> Discussion</h2>
+<p>Simple and accessible input of data and output information is the core focus of RERT, including those with expert knowledge of humanitarian energy and those without. With humanitarian energy increasingly a focus of organisations in the humanitarian sector, the tool will hopefully provide a first means of conducting energy assessments in refugee camps and similar settings.</p>
+<p>The RERT provides added value as a high-level assessment tool, enabling selection of technologies / interventions which will have the greatest impacts within a particular humanitarian context. Importantly, the tool is accessible to anyone with basic experience with Excel and data input, whilst offering more advanced data modelling capabilities for those with specialist expertise. This means the tool can provide non-technical stakeholders with the means to conduct an energy assessment, as well as technical users with the ability to conduct more detailed pre-feasibility assessments using more advanced functionality.</p>
+<p>The RERT is considered most suitable for “non-emergency” humanitarian situations, including:</p>
+<ul>
+<li><p>Recently established refugee camps (after 6 months – 1 year) to assess early options for energy infrastructure improvements;</p></li>
+<li><p>Long running camps (over 1 year) to address existing camp energy infrastructure and design long-term, economically viable and impactful energy interventions;</p></li>
+<li><p>Within aggregate humanitarian settings (e.g. IDP within a specific area but not considered a refugee camp) or within host community settlements.</p></li>
+</ul>
+<p>It is expected that the RERT will be used by a number of humanitarian stakeholders, including: Intergovernmental organisations (e.g. regional UNHCR offices / Camp specific energy &amp; environment officers); Camp authorities; 3rd sector humanitarian organisations; humanitarian research bodies / projects; in-camp energy technology / service providers.</p>
+<p>Though initial effectiveness of the RERT has been assessed and, to some extent, proven via the Kigeme use case described above, as well as similar analyses conducted within the HEED project. Further investigation of how the tool performs must be conducted both geographically and temporally. In particular, long-term testing of the tool over 6 – 12 months is critical to understanding how the recommendations provided are reflected in real world interventions.</p>
+<p><strong>Humanitarian Engineering for Energy for Displacement (HEED)</strong></p>
+<p><strong>Funded by the ESPRC Global Challenges Research Fund</strong></p>
+<p><strong>Renewable Energy Recommendations Tool (RERT) </strong></p>
+<h1 data-number="3" id="use-case-kebri-beyah-refugee-camp-ethiopia"><span class="header-section-number">3</span> <strong>Use Case:</strong> Kebri Beyah Refugee Camp, Ethiopia</h1>
+<p><strong>Cooking &amp; Electricity Solutions</strong></p>
+<blockquote>
+<p><strong>Authors:</strong> Sandy Robinson (Scene), Megan Lancaster (Mercy Corps), Cecilia Ragazzi (Mercy Corps)</p>
+</blockquote>
+<blockquote>
+<p>v.1.2 1st October 2020</p>
+</blockquote>
+<h2 data-number="3.1" id="overview"><span class="header-section-number">3.1</span> Overview</h2>
+<p>This document supports the Renewable Energy Recommendations Tool (RERT) produced as part of the Humanitarian Energy and Engineering for Development (HEED) research project. It provides a use case scenario to guide RERT users through the process of using the tool. The use case is particular to the assessment and recommendation of energy access at Kebri Beyah Refugee Camp, Ethiopia undertaken by Mercy Corps up to February 2020.</p>
+<p>The purpose of this document is to provide a comparative assessment of the RERT against a parallel in-camp assessment at Kebri Beyah Refugee Camp, conducted by Mercy Corp.</p>
+<p><strong>About Humanitarian Energy and Engineering for Development (HEED)</strong></p>
+<p>The HEED project is an innovative response to growing recognition of the need to improve access to energy, particularly renewable energy sources, for populations displaced by conflict and natural disasters. The focus of HEED is on the lived experiences in three refugee camps in Rwanda (Nyabiheke, Gihembe and Kigeme) and internally displaced persons (IDPs) forced to leave their homes as a result of the 2015 earthquake in Nepal.</p>
+<p><strong>Renewable Energy Recommendations Tool (RERT)</strong></p>
+<p>The RERT was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and April 2019. It aims to provide technology recommendations based on 23 performance indicators to increase energy access in refugee camps and improve sustainability for:</p>
+<ol type="1">
+<li><p>Cooking Energy;</p></li>
+<li><p>Household Lighting and Electricity;</p></li>
+<li><p>Community/Camp central Lighting and Electricity.</p></li>
+</ol>
+<p>Users engage with an Excel spreadsheet where they answer questions to describe the population of the camp and the social and economic situation, as well as the camp energy infrastructure and energy use of families therein. They can also enter technical data for particular renewable energy options.</p>
+<h2 data-number="3.2" id="use-case-scenario-1"><span class="header-section-number">3.2</span> Use Case Scenario</h2>
+<p>The purpose of providing a use case scenario is to give tool users a practical guide through a real-world example of using the tool in a humanitarian setting. The following evaluation details how to:</p>
+<ol type="1">
+<li><p><strong>Input data</strong> on current energy utilisation in Kebri Beyah, Ethiopia;</p></li>
+<li><p><strong>Interpret baseline energy use</strong> outcomes from the tool, including economic and environmental analyses;</p></li>
+<li><p><strong>Define what level of energy access</strong> has been achieved, based on the ESMAP multi-tier energy access matrices;</p></li>
+<li><p><strong>Understand tool recommendations</strong> for cookstove interventions in a specific context;</p></li>
+<li><p><strong>Set boundary criteria</strong> and alter specific parameters of the tool.</p></li>
+<li><p><strong>Compare tool outputs</strong> with survey analysis and recommendations made by in-country consultants.</p></li>
+</ol>
+<p>A special focus of this case provide an understanding of how the RERT compares to real-world feasibility assessments for energy interventions, where the RERT tool is best suited in the assessment process, the limitations of the tool and potential improvements which would benefit the tool in future.</p>
+<h3 data-number="3.2.1" id="mercy-corps"><span class="header-section-number">3.2.1</span> <strong>Mercy Corps</strong></h3>
+<p><a href="https://www.mercycorps.org/">Mercy Corps</a> is a global team of humanitarians, working together on current crises across more than 40 countries around the world. Through 6,000 staff members Mercy Corps works directly with people living through poverty, disaster, violent conflict and the acute impacts of climate change. Mercy Corps has been working in Ethiopia <a href="https://www.mercycorps.org/where-we-work/ethiopia">since 2004</a>. Ethiopia is Africa’s second-most populous nation, and although the economy has been steadily growing, the vast majority of Ethiopia remains impoverished. More than 83 percent of the population lives in rural areas vulnerable to droughts caused by climate change as well as economic instability and conflict spill over from neighbouring Somalia and South Sudan.</p>
+<p><strong>Methodology</strong></p>
+<p>In February 2020, Mercy Corp conducted on the ground energy assessments across three refugee camps in the Jijiga district of Ethiopia. The assessments are based on surveys of 413 households, focus group discussions and key informant interviews within the camps to understand energy access and needs, alongside a technical assessment of electrical loads and cooking patterns within the camps. The purpose of the assessment was to define current energy access and use, towards defining the viability and cost of future energy interventions in the camps. This included assessment of solar home systems, microgrids and improved cooking solutions, as well as financing and enabling mechanisms for implementation of interventions.</p>
+<p>The survey and interview questions prepared were to collect the data from the refugee camps and host communities in terms of energy access – delivery methods, quality of supply where it exists, expenses incurred and aspirational loads. The questionnaire sought information based on various elements that influenced refugee living conditions and in specific access to reliable energy. They are: Geography, Demography, Economic conditions, Living conditions, Access to cooking fuel, Livestock condition, Access to electricity, Water accessibility and Health</p>
+<p>Random systematic sampling methods were used to extrapolate survey results to camp populations (see table). Further to this, technical assessments were conducted in line with ESPMAP-MTF, including smart digital clamp-meter / multi-meter systems to collect electrical demand data and portable weighing scales for cooking fuel measurements. Key Informant Interviews (KII) included UNHCR, Government of Ethiopia (GoE), Ethiopian Electric Utility, INGOs, Service Providers (Market research), Financing Agencies. Focused Group Discussions (FGDs) were held with 3 different groups - a Women’s Group, Men’s Group, Youth Group (&lt;=18yrs).</p>
+<p><img src="media/Jijiga/Table_0_Sampling_Methods.PNG" /></p>
+<p>When inputting into the RERT, the data obtained from the above methods was reformatted into an appropriate measure for the tool. Percentage values from the sample were used to populate cooking and electrical appliance fields (e.g. number of camp residents out of 10 using three-stone cooking fires). Income bands were based on UNHCR data on median camp income, combined with the results of the surveying process.</p>
+<h3 data-number="3.2.2" id="kebri-beyah-refugee-camp"><span class="header-section-number">3.2.2</span> <strong>Kebri Beyah Refugee Camp</strong></h3>
+<p>Ethiopia is a country with a history of hosting refugees and has been maintaining an open-door asylum policy of giving humanitarian access and protection to the neediest. <a href="https://data2.unhcr.org/en/country/eth">Ethiopia hosts 800,000 refugees</a> and most are accommodated in 26 refugee camps with limited services and opportunities and depend largely on humanitarian assistance. Almost 99% of the fleeing communities are from its neighbours – Somalia, Sudan, South Sudan and Eritrea.</p>
+<p>The Somali region is the poorest and most conflict-affected region of Ethiopia. The <a href="http://hdr.undp.org/en/countries/profiles/ETH">Human Development Index (HDI) score is the lowest in Somali</a>. The Somali region hosts the largest refugees in Fafan zone. The three camps in the Jigjiga district are in the north eastern part of Ethiopia, bordering Somalia, comprising of three different refugee camps with a total refugee population of 36,916.</p>
+<p>The <a href="https://data2.unhcr.org/en/documents/details/62682">Kebri Beyah camp</a> was established in 1991 for Somali refugees fleeing the civil war in their country and currently has a population of 14,685 displaced people. The camp is not organized, and the refugee housing is mixed with that of the host community. In the satellite image below (see Figure 1), the refugee settlement is demarcated in orange, with the host community adjacent. In Kebri Beyah, the administrating offices of the agencies are not located in the same area of the camp except for those of the ARRA and UNHCR. While both offices have grid connectivity, it is not reliable and outages of 4-8 hours every day are a common feature. Since the refugee HHs are located along with those of the host communities, individuals of the host community extend their grid lines and provide electricity supply for a fee. A separate kitchen area is marked within the premises, Households cook using a three stone fire or the traditional charcoal stove.</p>
+<p>Further information relating to Kebri Beyah, including contextual camp data used within this assessment can be found on the <a href="https://data2.unhcr.org/en/situations/horn/location/174">UNHCR website</a>.</p>
+<p><img src="media/Jijiga/Figure_1_Jijiga_Map.PNG" /></p>
+<h2 data-number="3.3" id="cooking-analysis-results"><span class="header-section-number">3.3</span> Cooking Analysis &amp; Results</h2>
+<p>This section provides an overview of the current cooking situation in Kebri Beyah (i.e. the baseline situation), detailing the processes involved in using the RERT and the recommendations provided by the tool.</p>
+<h3 data-number="3.3.1" id="baseline-situation"><span class="header-section-number">3.3.1</span> <strong>Baseline Situation</strong></h3>
+<p>The baseline cooking situation in Kebri Beyah is between tier 0 – 1 in terms of energy access, with most of camp residents surveyed<sup>1</sup> using firewood or charcoal in basic 3-stone fires (23%), charcoal stoves (16%) and Tikili charcoal stoves<sup>2</sup> ) (7%). A further 4% of residents used kerosene stoves for cooking. The average cost of fuel within the study sample was 310 ETB/week. Residents were found to be aspirational towards use of Charcoal Tikikil, kerosene or ethanol stoves and few respondents highlighted electric stoves as an aspiration.</p>
+<p>Using these metrics, the RERT tool was input with the baseline information shown in table 1. The study considered several key decision-making criteria to ensure that the scenario ambitions remained reasonable, including:</p>
+<ul>
+<li><strong>Energy access tier 2</strong>, in line with camp resident ambitions;</li>
+<li><strong>Rational total investment cost</strong> (101,710 ETB);</li>
+<li><strong>Affordability of cooking fuel</strong> at camp level and household level;</li>
+<li>Targeting <strong>improvements in emissions and health</strong>.</li>
+</ul>
+<p>The scenario criteria detailed below is an attempt to balance these aims, whilst achieving a marked improvement in camp-wide cooking improvements. It is worth noting that high household costs for purchase of tier 2 stoves and fuel would likely require funding from the camp authority or external stakeholders.</p>
+<p><img src="media/Jijiga/Table_1_Jijiga_Cooking_1.PNG" /></p>
+<p><sup>1</sup> Sample size of 138 (household surveys)</p>
+<p><sup>2</sup> <a href="http://catalog.cleancookstoves.org/stoves/170">http://catalog.cleancookstoves.org/stoves/170</a></p>
+<h3 data-number="3.3.2" id="cooking-recommendations"><span class="header-section-number">3.3.2</span> <strong>Cooking Recommendations</strong></h3>
+<p>Based on the above criteria, the below recommendations were provided by the RERT. To achieve energy access tier 2, fired clay wood / charcoal stoves or, with significantly more investment, improved wood fuel stoves are recommended.</p>
+<p>Implementation of both fired clay (Woodfuel) and fired clay (charcoal) stoves would improve energy access tier (0.5 - &gt; 2), reduce monthly cooking costs (50 - 60% across the camp), reduce carbon emissions (50 – 60%), reduce deforestation risks, reduce monthly costs of fuel at the household level (30 - 45%), reduce household CO2 emissions (55 – 70%) and reduce associated health risks (very high -&gt; high).</p>
+<p>Whilst improved cookstoves are potentially more impactful that fired clay cookstoves, the high investment costs, low household affordability and negligible additional benefits mean it is a less recommended intervention by the RERT. The implementation of improved cookstoves would be dependent on the final product specification and support (i.e. funding, grants) available for implementation.</p>
+<p>It is worth noting that within the bounds of the scenario criteria (table 1), the tool could not find technology interventions which would fulfil all criteria. An example of this is the inability to meet the medium health risk criteria within the bounds of the wider scenario criteria.</p>
+<p><img src="media/Jijiga/Table_2_Jijiga_Cooking_2.PNG" /></p>
+<h2 data-number="3.4" id="household-electricity"><span class="header-section-number">3.4</span> Household Electricity</h2>
+<p>This section provides an overview of the current electricity access and provision situation in Kebri Beyah (i.e. the baseline situation), detailing the processes involved in using the RERT and the recommendations provided by the tool.</p>
+<h3 data-number="3.4.1" id="baseline-situation-1"><span class="header-section-number">3.4.1</span> Baseline Situation</h3>
+<p>Currently Kebri Beyah has relatively good electricity access, with 80% of households connected via wired networks. Primarily, power is provided via national grid connections via host community households or by diesel generators run by private operators. Of the 20% without a wired connection, 28% of households have some form of dry cell battery storage, and 33% have solar lanterns. Candles and solar home systems (SHS) were not evident in the camps, with the lack of spares and repairs for SHS and high initial costs attributed for the lack of SHS uptake.</p>
+<p>On average, households receive 5 – 8 hours of grid electricity in Kebri Beyah, primarily in the evening and night hours. Electricity is delivered via informal connections to host households for a monthly flat fee. Diesel-source energy is charged at ~30 ETB per bulb and 90 – 100 ETB per larger appliance (e.g. televisions). Households were found to have 3 bulbs and one larger appliance on average – an average of ~200 ETB / week. Grid and private generation are not reliable in Kebri Beyah, therefore the average hours of electricity does not reflect levels of system breakdown / grid failure in the camp, which can be regular and occasionally long-term.</p>
+<p>Dominant camp resident aspirations were to have access to or be able to afford enough electricity to routinely use entertainment (e.g. speakers, tv) or a mixer grinder in their kitchen. Furthermore, consistent and reliable phone charging and access to in-home sockets were seen as priorities by camp residents. Charging costs for residents can be between 3 – 10 ETB for mobile phones and up to 20 ETB for larger appliances (e.g. laptops).</p>
+<p>Based on the above data, the scenario data set out in table 3 was defined, including achievable initial investment costs but focusing particularly on lowering electricity costs and improving reliability and affordability for camp households.</p>
+<p><img src="media/Jijiga/Table_3_Jijiga_HH_electricity_1.PNG" /></p>
+<h3 data-number="3.4.2" id="household-recommendations"><span class="header-section-number">3.4.2</span> <strong>Household Recommendations</strong></h3>
+<p>Based on the previous criteria, the RERT recommends implementation of centralised wind or a combination of wind / solar PV alongside lithium-ion batteries. These are high cost interventions, selected due the fact that any system implemented in Kebri Beyah would be competing with an established diesel and national grid supplied electricity system. The RERT does not account for the quality of supply from generation sources, using average hours/day and hours/evening to calculate appropriate interventions.</p>
+<p>Whilst high cost, the recommended interventions achieve several goals, including greater available energy and negligible CO2 emissions. All of these systems could be implemented in a way which reaches those without current wired electricity sources, as well as providing marked improvements in safety (in comparison to informal host household connections which often lack any wiring protection or switches), lowering costs (in comparison to current tariffs for grid and / or diesel electricity purchase) and providing more robust energy service provision.</p>
+<p>Affordability is very low across the board for household electricity solutions, due to the high initial cost of both centralised and decentralised options, although camp supported, or subsidised, electricity provision could bring costs in line with household incomes.</p>
+<p><img src="media/Jijiga/Table_4_Jijiga_HH_electricity_2.PNG" /></p>
+<h2 data-number="3.5" id="central-camp-electricity"><span class="header-section-number">3.5</span> Central Camp Electricity</h2>
+<h3 data-number="3.5.1" id="baseline-situation-2"><span class="header-section-number">3.5.1</span> <strong>Baseline Situation</strong></h3>
+<p>Camp facilities, including the camp administration offices, accommodation buildings (2), health centre (1) and school buildings (2), are powered by a mixture of regional grid electricity (when available) and diesel generators (including camp authority run and private run generators). At present 3 diesel generators provide electricity to camp buildings, totalling 34 kW of capacity.</p>
+<p>With sufficient energy access, the focus of this section is to define interventions which meet wider criteria than improvements in energy access alone. This includes lower running costs, CO2 emissions reductions and system robustness (e.g. backup solutions). To this end, scenario criteria were set to ensure affordable running costs and emissions reductions, whilst not limiting costs.</p>
+<p><img src="media/Jijiga/Table_5_Jijiga_Camp_electricity_1.PNG" /></p>
+<h3 data-number="3.5.2" id="camp-recommendations"><span class="header-section-number">3.5.2</span> <strong>Camp Recommendations</strong></h3>
+<p>The recommendations provided all centre on low carbon solutions, including 100% solar, 100% wind and multi-technology solutions. All recommendations included battery backup systems due to the intermittent grid issues at Kebri Beyah camp. All recommendations show a complete reduction in fuel emissions, though it is worth noting that any intervention would have a carbon cost associated to the procurement and deployment of new technologies.</p>
+<p>The major defining factor across the recommendations is cost. Solar PV is both the cheapest option and has the lowest operational cost per year. This reflects similar projects in the humanitarian sector, where solar PV is preferred for refugee camp situations. The addition of wind energy generation would provide some robustness to the energy system when solar irradiation is low, although an element of backup is already included for these situations through energy storage. Wind is significantly more expensive and increases operational costs, reducing its viability in this scenario.</p>
+<p><img src="media/Jijiga/Table_6_Jijiga_Camp_electricity_2.PNG" /></p>
+<h2 data-number="3.6" id="use-case-conclusions"><span class="header-section-number">3.6</span> Use Case Conclusions</h2>
+<p>The below section compares the recommendations and outputs of the RERT, as detailed in the previous section, against energy interventions recommended by Mercy Corp consultants through engagement and surveying with camp residents and authorities at Kebri Beyah. The purpose of this section is to detail the commonalities and differences between each approach, demonstrating the effectiveness of the RERT and providing a platform for future changes and improvements to the tool.</p>
+<h3 data-number="3.6.1" id="comparative-assessment"><span class="header-section-number">3.6.1</span> <strong>Comparative assessment</strong></h3>
+<p>Table 7 sets out the recommendations as set out in the RERT and by the in-camp assessment. A discussion of the recommendations is provided below.</p>
+<p><img src="media/Jijiga/Table_7_Jijiga_Recommendations.PNG" /></p>
+<h3 data-number="3.6.2" id="household-cooking"><span class="header-section-number">3.6.2</span> <strong>Household Cooking</strong></h3>
+<p>The RERT defined solutions which are feasible and provide energy access improvements in Kebri Beyah, although there is a lack of ambition in comparison to the in-camp assessment. The key reason for this is that the tool was instructed to target energy tier 2 (a significant jump from the original 0.5) and to make stoves affordable to households. The RERT did not consider electricity access for electric stoves, which greatly increases the feasibility of such solutions.</p>
+<p>The in-camp assessment suggests that the biggest barriers to uptake are not technical or even purely financial, although costs of stoves and fuel are big pressures on camp households. The building of awareness of modern cooking solutions was defined as a key barrier, as well as the creation of stronger supply chains for alternative fuels (e.g. ethanol). The main recommendation of the assessment was to conduct a pilot trial with 50 households using electric stoves alongside a microgrid system, as defined in the following household electricity assessment.</p>
+<p>In this case, the social drivers, supply chain considerations and synergies between projects (i.e. microgrid -&gt; electric stoves) are not calculated in the RERT, leading to differing recommendations. The RERT interventions are reasonable high-level assumptions but the on-the-ground picture is more complex, with opportunities to define more ambitious projects and more robust local energy systems.</p>
+<h3 data-number="3.6.3" id="household-electricity-1"><span class="header-section-number">3.6.3</span> <strong>Household Electricity</strong></h3>
+<p>In line with recommendations from the in-country assessment, the RERT does not recommend use of smaller decentralised solutions, such as solar home systems. These systems were deemed unaffordable to most camp residents and a poor alternative to the current level of energy access (tier 2) from grid electricity and diesel generation.</p>
+<p>The RERT recommends suitable solutions for the context, where grid connectivity is high but system robustness and performance are poor. Solar PV and / or wind capacity with lithium-ion storage would be feasible in a centralised manner but would require improvement and upgrades to the current grid infrastructure. Due to the high costs of the deployment, it is uncertain whether the recommended intervention could cost compete with the current grid / diesel generation mix. In all likelihood, central funding with subsidised tariffing would be necessary to implement such ambitious systems.</p>
+<p>The in-country assessment does not provide exact recommendations on the best approach to improving household electricity access, focusing more on the barriers to deployment of specific technologies. The critical issues highlighted include household energy cost, system performance and safety. Whilst the RERT recommendations proposed would address cost and performance, these are not functions within the model. Improvements to how costs are dealt with (e.g. suggested tariffing levels / household costs), performance (e.g. number of households reached, backup capacity or time) and safety (e.g. cost of wiring, lighting and socket upgrades) would improve the specificity and applicability of tool outputs.</p>
+<h3 data-number="3.6.4" id="central-camp-electricity-1"><span class="header-section-number">3.6.4</span> <strong>Central Camp Electricity</strong></h3>
+<p>The in-camp assessment does not include an assessment of central camp buildings, focusing only on household energy. With a highly connected electricity system in Kebri Beyah, it seems likely that all camp buildings would have sufficient access to electricity, though limited by system performance. The RERT recommendations are suitable low carbon solutions but are relatively high cost. This means they are unlikely to be cost-effective when considering camp buildings alone. It is likely that a system deployed at Kebri Beyah would include provision of energy to households, businesses and central camp buildings.</p>
+<p>There are no solar streetlights currently operating at Kebri Beyah. This would be a low cost, low carbon intervention but would require cost comparison against utilising the existing grid to power streetlights. One possible improvement to the RERT tool in this assessment would be to include a breakdown of potential societal benefits (e.g. safety, later working hours, community spirit/cohesion) which may be influenced by solar street lights and improved electricity availability at key camp locations.</p>
+<h2 data-number="3.7" id="appendix-a-data-inputs"><span class="header-section-number">3.7</span> Appendix A – Data Inputs</h2>
+<p><img src="media/Jijiga/Appendix_A_Jijiga_1.PNG" /></p>
+<p><img src="media/Jijiga/Appendix_A_Jijiga_2.PNG" /></p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Internal calculations<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://www.renewables.ninja/" class="uri">https://www.renewables.ninja/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>https://hapit.shinyapps.io/HAPIT/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+                </main>
+
+                <nav class="nav-wrapper" aria-label="Page navigation">
+                    <!-- Mobile navigation buttons -->
+
+
+
+
+                    <div style="clear: both"></div>
+                </nav>
+            </div>
+        </div>
+
+        <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+        </nav>
+
+    </div>
+
+    <script src="template/book.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
