@@ -51,7 +51,17 @@ versions of Microsoft Excel to use it.
 3. **Feel free to modify and adjust the tool for your own purposes.** HEED-RERT
 is built on Open Source principles
 
-  
+## Version and Known Issues
+
+Patch Version: 1.0 
+
+Version Date: 28-Aug-19
+
+| Issue   | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| **#1**  | Conflict  between MTF 3 cooking stoves and provision of electricity at camp level. Tool  will recommend electric stoves as the best intervention option in cases where  tier 3 is set as a scenario criteria, even when no electricity availability  is specified. |
+| **\#2** | Biogas cooking fuel costs assumptions. No cost is currently attributed to biogas supply, as the tool assumes onsite production in cases where digestors are defined or stated as unknown. |
+
 ## Five Steps in HEED-RER Tool Usage
 
 
@@ -76,7 +86,7 @@ is built on Open Source principles
 ![](media/7e7bf52f716cd1368c4fb22704b8536b.png)
 
 Note: The top 3 recommended options are not ranked or presented in any particular order, they are the three best performing options in relation to the scenario thresholds set by the user.
-  
+
 ## Using the tool
 
 ### Step 1 – Opening the Spreadsheet
@@ -282,7 +292,7 @@ calculations. Once editing a value here (or in the camp questions) you can run
 the results again and get an updated insight in the performance of the
 solutions.
 
-  
+
 ## Overview of Models and Methods used
 
 The user guide explained the usage process for the RER tool. More detailed
@@ -293,4 +303,3 @@ calculation steps is shown in the figure below.
 ![A screenshot of a cell phone Description automatically generated](media/bf4ed8ad8815b791bd9411d8fc825d9e.jpg)
 
 Please see the technical documentation for more details
-  
