@@ -14,6 +14,8 @@ spreadsheet.
 >   Developed by: Rembrandt Koppelaar (Scene Connect)
 >   Reviewed by: Jonathan Nixon (Coventry University)
 
+*The authors would like to acknowledge the financial support of the  Engineering and Physical Science Research Council (EPSRC) for funding  the Humanitarian Engineering and Energy for Displacement (HEED) project as part of the Global Challenges Research Fund  (EP/P029531/1). The authors would like to acknowledge and thank project delivery partners Practical Action and Scene Connect for their  significant role in co-ordinating in-camp activities and providing technical inputs and tools. We would also like to recognise the  support of MIDIMAR (Ministry of Disaster Management and Refugees) and UNHCR (United Nations High Commissioner for Refugees)* *and the* *contributions of the Global Plan of Action, Chatham House, and the RE4R (Renewable Energy for Refugees)  Project (a partnership between Practical Action and UNHCR, supported by  the IKEA Foundation).* 
+
 ## Tool use background
 
 **The Humanitarian Engineering and Energy for Displacement (HEED) project aims

@@ -1,4 +1,6 @@
 # The HEED Renewable Energy Recommendations Tool (RERT)
+*The authors would like to acknowledge the financial support of the  Engineering and Physical Science Research Council (EPSRC) for funding  the Humanitarian Engineering and Energy for Displacement (HEED) project as part of the Global Challenges Research Fund  (EP/P029531/1). The authors would like to acknowledge and thank project delivery partners Practical Action and Scene Connect for their  significant role in co-ordinating in-camp activities and providing technical inputs and tools. We would also like to recognise the  support of MIDIMAR (Ministry of Disaster Management and Refugees) and UNHCR (United Nations High Commissioner for Refugees)* *and the* *contributions of the Global Plan of Action, Chatham House, and the RE4R (Renewable Energy for Refugees)  Project (a partnership between Practical Action and UNHCR, supported by  the IKEA Foundation).* 
+
 The first version (v1) of the tool was built by Scene Connect with support from Coventry University and Practical Action between June 2018 and August 2019. 
 
 It aims to provide technology recommendations based on energy-economic-environment-health performance indicators to provide support for how best to increase energy access in refugee camps and improve sustainability for:
